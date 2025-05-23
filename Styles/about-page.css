@@ -82,6 +82,79 @@ li {
 	text-decoration: none;
 }
 
+.profile-container {
+	position: relative;
+}
+
+.profile-info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.profile-icon {
+	position: relative;
+	width: 30px;
+	height: 30px;
+}
+
+.profile-icon img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+/* Profile Name */
+.profile-name {
+	font-size: 16px;
+	color: #333;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+	font-size: 12px;
+	transition: transform 0.3s;
+}
+
+/* Rotate arrow when active */
+.dropdown-arrow.active {
+	transform: rotate(180deg); /* Point the arrow up */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: none;
+	width: 150px;
+}
+
+.dropdown-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.dropdown-menu li {
+	padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: background-color 0.2s;
+}
+
+.dropdown-menu li:hover a {
+	background-color: #f4f4f4;
+}
+
 /* Hero Section  */
 .hero-section {
 	height: 100vh; /* Full viewport height */
