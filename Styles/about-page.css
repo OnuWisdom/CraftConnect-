@@ -33,6 +33,7 @@ body {
 	gap: 30px;
 	height: 94px;
 	width: 100%;
+	font-weight: bolder;
 	/* position: fixed; */
 	/* position: sticky; */
 	/* top: 0; */
@@ -74,8 +75,19 @@ a:hover {
 	color: var(--secondary-color);
 }
 
-a:active {
-	text-decoration: dashed;
+.nav-links a.active {
+	/* text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-underline-offset: 15px;
+	color: var(--primary-color); */
+
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 3px;
+	border-bottom: 3px solid var(--primary-color);
+	padding-left: 10px; /* Extends underline left */
+	padding-right: 10px; /* Extends underline right */
+	padding-bottom: 12px; /* Adjusts the space between text and underline */
 }
 
 li {
