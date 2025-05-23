@@ -282,7 +282,7 @@ button {
 }
 
 /* Footer Section  */
-footer {
+.footer {
 	display: flex;
 	gap: 40px;
 	justify-content: space-around;
@@ -325,10 +325,9 @@ footer {
 .prd {
 	display: flex;
 	gap: 20px;
-	background: #f2e6fc;
 	font-size: 10px;
 	padding: 40px;
-	border-radius: 20px;
+	margin-bottom: 60px;
 }
 
 .footer-list {
@@ -345,4 +344,33 @@ footer {
 
 .footer-logo {
 	width: 30%;
+	margin-right: 20px;
+}
+
+.unik {
+	margin-bottom: 15px;
+}
+
+.unique {
+	display: flex;
+	flex-direction: column;
+	background: #f2e6fc;
+	border-radius: 20px;
+}
+
+.bottom {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	font-size: 10px;
+	padding-left: 40px;
+}
+
+.bottom a {
+	text-decoration: none;
+	color: #3e3838;
+}
+
+.copyright {
+	margin-right: 55px;
 }
