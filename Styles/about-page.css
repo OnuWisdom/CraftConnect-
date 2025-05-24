@@ -172,25 +172,36 @@ li {
 
 /* Hero Section  */
 .hero-section {
-	height: 100vh; /* Full viewport height */
-	background-image: url('/images/four.jpg');
+	height: 100vh;
+	background-color: #145a32;
+	background-image: url('/images/About-hero-image.png');
 	background-repeat: no-repeat;
 	background-size: cover;
+	width: 100%;
+	/* height: 300px; */
+	/* margin: 30px; */
+	background-position: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 0 20px;
 }
 
+.hero-container {
+	max-width: 30%;
+}
+
 .hero-container h3 {
 	font-size: 28px;
 	color: var(--primary-color); /* Purple for emphasis */
+	text-align: center;
 }
 
 .hero-container p {
 	font-size: 15px;
 	color: var(--text-color);
 	line-height: 1.5;
+	text-align: center;
 }
 
 /* Mission and Vision Section */
@@ -329,15 +340,15 @@ li {
 /* Call to Action Section */
 .CTA-section {
 	display: flex;
-	gap: 40px;
+	gap: 25px;
 	justify-content: space-around;
 	padding: 40px 65px;
 	align-items: center;
 }
 
 .carousal {
-	width: 50px;
-	height: 50px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	object-fit: cover;
 	margin: 0 auto;
