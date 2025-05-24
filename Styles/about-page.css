@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css');
 
 * {
 	margin: 0;
@@ -16,11 +17,16 @@
 	--font-family: 'poppins', sans-serif;
 }
 
+html,
 body {
 	background-color: var(--background-color);
 	font-family: var(--font-family);
 	color: var(--text-color);
 	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
 }
 
 /* Header Section */
@@ -28,11 +34,12 @@ body {
 	display: flex;
 	background-color: var(--background-color);
 	align-items: center;
-	/* justify-content: center; */
 	justify-content: space-between;
 	gap: 30px;
 	height: 94px;
 	width: 100%;
+	font-weight: bolder;
+	padding: 0% 60px;
 	/* position: fixed; */
 	/* position: sticky; */
 	/* top: 0; */
@@ -74,35 +81,140 @@ a:hover {
 	color: var(--secondary-color);
 }
 
-a:active {
-	text-decoration: dashed;
+.nav-links a.active {
+	/* text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-underline-offset: 15px;
+	color: var(--primary-color); */
+
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 3px;
+	border-bottom: 3px solid var(--primary-color);
+	padding-left: 10px; /* Extends underline left */
+	padding-right: 10px; /* Extends underline right */
+	padding-bottom: 12px; /* Adjusts the space between text and underline */
 }
 
 li {
 	text-decoration: none;
 }
 
-/* Hero Section  */
-.hero-section {
-	height: 100vh; /* Full viewport height */
-	background-image: url('/images/four.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20px;
+.profile-container {
+	position: relative;
 }
 
+.profile-info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.profile-icon {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 50px;
+}
+
+.profile-icon img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+/* Profile Name */
+.profile-name {
+	font-size: 16px;
+	color: #333;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+	font-size: 12px;
+	transition: transform 0.3s;
+}
+
+/* Rotate arrow when active */
+.dropdown-arrow.active {
+	transform: rotate(180deg); /* Point the arrow up */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: none;
+	width: 150px;
+}
+
+.dropdown-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.dropdown-menu li {
+	padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: background-color 0.2s;
+}
+
+.dropdown-menu li:hover a {
+	background-color: #f4f4f4;
+}
+
+/* Hero Section  */
+.hero-container {
+	/* height: 100vh; */
+	background-color: #145a32;
+	background-image: url('/images/About-hero-image.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 400px;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* .hero-container {
+	max-width: 60%;
+} */
+
 .hero-container h3 {
-	font-size: 28px;
+	font-size: 38px;
+	font-weight: 50px;
 	color: var(--primary-color); /* Purple for emphasis */
+	text-align: center;
+	font-size: 3rem;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-container p {
-	font-size: 15px;
+	font-size: 20px;
 	color: var(--text-color);
 	line-height: 1.5;
+	text-align: center;
+	font-size: 1.2rem;
+	margin-top: 10px;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 /* Mission and Vision Section */
@@ -241,15 +353,15 @@ li {
 /* Call to Action Section */
 .CTA-section {
 	display: flex;
-	gap: 40px;
+	gap: 25px;
 	justify-content: space-around;
 	padding: 40px 65px;
 	align-items: center;
 }
 
 .carousal {
-	width: 50px;
-	height: 50px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	object-fit: cover;
 	margin: 0 auto;

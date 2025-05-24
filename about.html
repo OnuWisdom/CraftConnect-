@@ -22,17 +22,37 @@
 					<li><a href="about.html">Home</a></li>
 					<li><a href="about.html">Explore Artisans</a></li>
 					<li><a href="about.html">Become an Artisan</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="about.html" class="active">About</a></li>
 					<li><a href="about.html">Contacts</a></li>
 				</ul>
 			</nav>
+
+			<div class="profile-container">
+				<div class="profile-info" onclick="toggleDropdown()">
+					<div class="profile-icon">
+						<img src="/images/icons and favicon/user.png" alt="Profile" />
+					</div>
+					<span class="profile-name">Hi, John</span>
+					<span class="dropdown-arrow" id="arrow">&#9660;</span>
+					<!-- Down arrow -->
+				</div>
+				<div class="dropdown-menu" id="dropdown">
+					<ul>
+						<li><a href="#">Dashboard</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
 		</header>
 
 		<!-- The Hero Section  -->
 		<section class="hero-section">
 			<div class="hero-container">
 				<h3 class="about">
-					We’re crafting opportunities. One service at a time.
+					<strong
+						>We’re crafting opportunities. <br />One service at a time.
+					</strong>
 				</h3>
 				<p class="about">
 					CraftConnect is built to empower student artisans and make it easier
@@ -114,7 +134,7 @@
 			</div>
 
 			<div class="explore-btn">
-				<button class="exp-btn" type="submit">Explore an Artisan</button>
+				<button class="exp-btn" type="button">Explore an Artisan</button>
 			</div>
 		</section>
 
@@ -122,21 +142,21 @@
 		<section class="CTA-section">
 			<div class="image-carousal">
 				<img
-					src="/images/two.jpg"
+					src="/images/About-2.png"
 					alt="tradeImg"
-					width="200px"
+					width="300px"
 					class="carousal"
 				/>
 				<img
-					src="/images/two.jpg"
+					src="/images/About-2.png"
 					alt="tradeImg"
-					width="200px"
+					width="300px"
 					class="carousal"
 				/>
 				<img
-					src="/images/two.jpg"
+					src="/images/About-2.png"
 					alt="tradeImg"
-					width="200px"
+					width="300px"
 					class="carousal"
 				/>
 			</div>
@@ -149,7 +169,7 @@
 				</p>
 			</div>
 
-			<button class="btn community" type="submit">Become an Artisan</button>
+			<button class="btn community" type="button">Become an Artisan</button>
 		</section>
 
 		<!-- The Footer Section  -->
@@ -162,7 +182,7 @@
 						connect to craft men and women, while getting opportunity to
 						showcase your own craft.
 					</p>
-					<button class="btn cta-btn" type="submit">Become an Artisan</button>
+					<button class="btn cta-btn" type="button">Become an Artisan</button>
 				</div>
 				<div class="unique">
 					<div class="prd">
@@ -211,5 +231,7 @@
 				</div>
 			</div>
 		</footer>
+
+		<script src="script.js"></script>
 	</body>
 </html>
