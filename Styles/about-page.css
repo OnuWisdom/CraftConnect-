@@ -40,7 +40,7 @@ body {
 	width: 100%;
 	font-weight: bolder;
 	padding: 0% 60px;
-	/* position: fixed; */
+	position: fixed;
 	/* position: sticky; */
 	/* top: 0; */
 }
@@ -176,7 +176,7 @@ li {
 }
 
 /* Hero Section  */
-.hero-container {
+.hero-section {
 	/* height: 100vh; */
 	background-color: #145a32;
 	background-image: url('/images/About-hero-image.png');
@@ -256,6 +256,7 @@ li {
 	background: linear-gradient(295deg, #3771c8, #8000dc);
 	display: flex;
 	flex-direction: column;
+	/* position: relative; */
 }
 
 .title-works {
