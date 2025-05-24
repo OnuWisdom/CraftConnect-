@@ -1,4 +1,4 @@
-// Fucntion For the Profile Dropdown
+// Function For the Profile Dropdown
 function toggleDropdown() {
 	const dropdown = document.getElementById('dropdown');
 	const arrow = document.getElementById('arrow');
