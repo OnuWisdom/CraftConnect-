@@ -187,8 +187,8 @@ li {
 
 /* Hero Section  */
 .hero-container {
-	/* min-height: 500px; */
-	min-height: 80vh;
+	min-height: 500px;
+	/* min-height: 80vh; */
 	background-image: url('/images/about-hero-image.png');
 	background-repeat: no-repeat;
 	background-position: center;
@@ -488,7 +488,7 @@ button {
 /* Responsive Design / Media Queries */
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 	.navbar {
 		display: none;
 		flex-direction: column;
@@ -499,6 +499,10 @@ button {
 		background-color: var(--background-color);
 		width: 100%;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.nav-links a.active {
+		border: none;
 	}
 
 	.navbar.show {
@@ -515,6 +519,7 @@ button {
 	}
 
 	.profile-container {
-		display: none; /* Optionally hide the profile on small screens */
+		display: flex;
+		margin-left: 320px;
 	}
 }
