@@ -40,7 +40,7 @@ body {
 	width: 100%;
 	font-weight: bolder;
 	padding: 0% 60px;
-	position: fixed;
+	/* position: fixed; */
 	/* position: sticky; */
 	/* top: 0; */
 }
@@ -176,41 +176,19 @@ li {
 }
 
 /* Hero Section  */
-.hero-section {
-	/* height: 100vh; */
-	background-color: #145a32;
-	background-image: url('/images/About-hero-image.png');
+.hero-container {
+	min-height: 500px;
+	background-image: url('/images/about-hero-image.png');
 	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100%;
-	height: 400px;
 	background-position: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 20px;
+	background-size: cover;
 	text-align: center;
-	margin-bottom: 20px;
+	border-radius: 20px;
 }
 
-.hero-container h3 {
-	font-size: 38px;
-	font-weight: 50px;
-	color: var(--primary-color); /* Purple for emphasis */
-	text-align: center;
-	font-size: 3rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.hero-container p {
-	font-size: 20px;
-	color: var(--text-color);
-	line-height: 1.5;
-	text-align: center;
-	font-size: 1.2rem;
-	margin-top: 10px;
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+.hero-section {
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 50px;
 }
 
 /* Mission and Vision Section */
