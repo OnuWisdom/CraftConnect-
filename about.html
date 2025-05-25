@@ -12,18 +12,18 @@
 			<div class="logo">
 				<h2>
 					<a href="http://home.html"
-						><span class="sp1">Craft</span><span class="sp2">Connect</span></a
-					>
+						><span class="sp1">Craft</span><span class="sp2">Connect</span>
+					</a>
 				</h2>
 			</div>
 
 			<nav class="navbar">
 				<ul class="nav-links">
-					<li><a href="about.html">Home</a></li>
-					<li><a href="about.html">Explore Artisans</a></li>
-					<li><a href="about.html">Become an Artisan</a></li>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="explore-artisans.html">Explore Artisans</a></li>
+					<li><a href="become-an-artisan.html">Become an Artisan</a></li>
 					<li><a href="about.html" class="active">About</a></li>
-					<li><a href="about.html">Contacts</a></li>
+					<li><a href="contact.html">Contacts</a></li>
 				</ul>
 			</nav>
 
@@ -38,23 +38,26 @@
 				</div>
 				<div class="dropdown-menu" id="dropdown">
 					<ul>
-						<li><a href="#">Dashboard</a></li>
-						<li><a href="#">Settings</a></li>
-						<li><a href="#">Logout</a></li>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="settings.html">Settings</a></li>
+						<li><a href="index.hmtl">Logout</a></li>
 					</ul>
 				</div>
 			</div>
+
+			<!-- Mobile Menu Toggle Button -->
+			<button class="menu-toggle" onclick="toggleNavbar()">☰</button>
 		</header>
 
 		<!-- The Hero Section  -->
 		<section class="hero-section">
 			<div class="hero-container">
-				<h3 class="about">
+				<h3 class="hero-h3">
 					<strong
 						>We’re crafting opportunities. <br />One service at a time.
 					</strong>
 				</h3>
-				<p class="about">
+				<p class="hero-p">
 					CraftConnect is built to empower student artisans and make it easier
 					for people to find skilled, trustworthy help within their community.
 				</p>
@@ -95,7 +98,7 @@
 		</section>
 
 		<!-- The How It Works Section  -->
-		<section class="how-it-works">
+		<section class="how-it-works" id="target">
 			<div class="title-works">
 				<h1>How it Works</h1>
 				<p>
@@ -134,7 +137,13 @@
 			</div>
 
 			<div class="explore-btn">
-				<button class="exp-btn" type="button">Explore an Artisan</button>
+				<button
+					class="exp-btn"
+					type="button"
+					onclick="location.href='explore-artisans.html'"
+				>
+					Explore an Artisan
+				</button>
 			</div>
 		</section>
 
@@ -169,7 +178,13 @@
 				</p>
 			</div>
 
-			<button class="btn community" type="button">Become an Artisan</button>
+			<button
+				class="btn community"
+				type="button"
+				onclick="location.href='become-an-artisan.html'"
+			>
+				Become an Artisan
+			</button>
 		</section>
 
 		<!-- The Footer Section  -->
@@ -182,26 +197,32 @@
 						connect to craft men and women, while getting opportunity to
 						showcase your own craft.
 					</p>
-					<button class="btn cta-btn" type="button">Become an Artisan</button>
+					<button
+						class="btn cta-btn"
+						type="button"
+						onclick="location.href='sign-up.html'"
+					>
+						Get Started Today.
+					</button>
 				</div>
 				<div class="unique">
 					<div class="prd">
 						<div>
 							<ul class="footer-list">
 								<li class="unik"><a href="#">Product</a></li>
-								<li><a href="#">Explore Artisan</a></li>
+								<li><a href="explore-artisans">Explore Artisan</a></li>
 								<li><a href="#">Top-Rated Artisan</a></li>
-								<li><a href="#">Become an Artisan</a></li>
-								<li><a href="#">How it Works</a></li>
+								<li><a href="becone-an-artisan">Become an Artisan</a></li>
+								<li><a href="#target">How it Works</a></li>
 							</ul>
 						</div>
 						<div>
 							<ul class="footer-list">
 								<li class="unik"><a href="#">Community</a></li>
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">FAQs</a></li>
-								<li><a href="#">Trust & Safety</a></li>
-								<li><a href="#">Report a Problem</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">FAQs</a></li>
+								<li><a href="contact.html">Trust & Safety</a></li>
+								<li><a href="contact.html">Report a Problem</a></li>
 							</ul>
 						</div>
 						<div>
