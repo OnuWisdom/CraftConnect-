@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
 @import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css');
 
 * {
@@ -8,7 +9,7 @@
 }
 
 :root {
-	--primary-color: #6a0dad;
+	--primary-color: #8000dc;
 	--secondary-color: #145a32;
 	--alternate-color: #4caf50;
 	--background-color: #f9f9f9;
@@ -177,7 +178,8 @@ li {
 
 /* Hero Section  */
 .hero-container {
-	min-height: 500px;
+	/* min-height: 500px; */
+	min-height: 80vh;
 	background-image: url('/images/about-hero-image.png');
 	background-repeat: no-repeat;
 	background-position: center;
@@ -189,6 +191,25 @@ li {
 .hero-section {
 	background-color: rgba(255, 255, 255, 0.5);
 	padding: 50px;
+}
+
+.hero-h3 {
+	font-size: 45px;
+	font-weight: 500;
+	color: var(--primary-color); /* Purple for emphasis */
+	text-align: center;
+	line-height: 64px;
+	padding-top: 65px;
+	/* outline: 2px solid var(--primary-color); */
+}
+
+.hero-p {
+	font-size: 22px;
+	font-weight: 600;
+	color: var(--text-color);
+	text-align: center;
+	margin: 0 auto;
+	width: 800px;
 }
 
 /* Mission and Vision Section */
