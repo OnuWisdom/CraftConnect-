@@ -1,3 +1,4 @@
+// ------------------- About Page Script ------------------- //
 // Function For the Profile Dropdown
 function toggleDropdown() {
 	const dropdown = document.getElementById('dropdown');
@@ -21,3 +22,11 @@ document.addEventListener('click', (event) => {
 		document.getElementById('arrow').classList.remove('active');
 	}
 });
+
+// ---Mobile Navbar Toggle--- //
+
+// Navbar toggle function for mobile
+function toggleNavbar() {
+	const navbar = document.querySelector('.navbar');
+	navbar.classList.toggle('show');
+}

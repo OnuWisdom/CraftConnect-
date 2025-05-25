@@ -41,7 +41,7 @@ body {
 	width: 100%;
 	font-weight: bolder;
 	padding: 0% 60px;
-	/* position: fixed; */
+	position: fixed;
 	/* position: sticky; */
 	/* top: 0; */
 }
@@ -174,6 +174,15 @@ li {
 
 .dropdown-menu li:hover a {
 	background-color: #f4f4f4;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+	display: none;
+	font-size: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 /* Hero Section  */
@@ -474,4 +483,38 @@ button {
 
 .copyright {
 	margin-right: 55px;
+}
+
+/* Responsive Design / Media Queries */
+
+/* Media Queries */
+@media (max-width: 768px) {
+	.navbar {
+		display: none;
+		flex-direction: column;
+		gap: 10px;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		background-color: var(--background-color);
+		width: 100%;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.navbar.show {
+		display: flex;
+	}
+
+	.menu-toggle {
+		display: block;
+	}
+
+	.nav-links {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.profile-container {
+		display: none; /* Optionally hide the profile on small screens */
+	}
 }
