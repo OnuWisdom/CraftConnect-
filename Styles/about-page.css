@@ -52,7 +52,7 @@ body {
 	/* font-style: italic; */
 	text-decoration: none;
 	color: #333;
-	font-weight: bolder;
+	font-weight: bold;
 	/* transition: transform 0.5s ease-in-out; */
 }
 
@@ -187,7 +187,7 @@ li {
 
 /* Hero Section  */
 .hero-container {
-	min-height: 500px;
+	min-height: 700px;
 	/* min-height: 80vh; */
 	background-image: url('/images/about-hero-image.png');
 	background-repeat: no-repeat;
