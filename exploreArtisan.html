@@ -8,28 +8,47 @@
 </head>
 <body>
     <div id="container">
-        <div id="header">
-        <header>
-            <a href="" id="titleName">
-            <div id="name">
-                <h1 id="first">Craft</h1><h1 id="second">Connect</h1>
-            </div>
-            </a>
-            
-            <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Explore Artisans</a></li>
-                    <li><a href="">Become An Artisan</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </nav>
+        <header class="header">
+			<div class="logo">
+				<h2>
+					<a href="http://home.html"
+						><span class="sp1">Craft</span><span class="sp2">Connect</span>
+					</a>
+				</h2>
+			</div>
 
-            <div id="userNameDiv">
-                <p id="userName">Hi, John</p>
-            </div>
-        </header>
+			<nav class="navbar">
+				<ul class="nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="explore-artisans.html" class="active">Explore Artisans</a></li>
+					<li><a href="become-an-artisan.html">Become an Artisan</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contacts</a></li>
+				</ul>
+			</nav>
+
+			<div class="profile-container">
+				<div class="profile-info" onclick="toggleDropdown()">
+					<div class="profile-icon">
+						<img src="/images/icons and favicon/user.png" alt="Profile" />
+					</div>
+					<span class="profile-name">Hi, John</span>
+					<span class="dropdown-arrow" id="arrow">&#9660;</span>
+					<!-- Down arrow -->
+				</div>
+				<div class="dropdown-menu" id="dropdown">
+					<ul>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="settings.html">Settings</a></li>
+						<li><a href="index.html">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Mobile Menu Toggle Button -->
+			<button class="menu-toggle" onclick="toggleNavbar()">☰</button>
+		</header>
+
     </div>
     
       <div id="searchDiv">
@@ -186,7 +205,7 @@
     </div>
      <!-- Making the product page -->
 
-        <div id="productContainer">
+    <div id="productContainer">
 
                 <div id="itemContainer">
 
@@ -270,5 +289,87 @@
 
                 </div>
         </div>
+
+        <div>
+				<h2>Join the CraftConnect Community</h2>
+				<p>
+					Become a student artisan today and showcase your craft!
+					<br />Over <strong>20,000+</strong> student professionals
+				</p>
+			</div>
+
+			<button
+				class="btn community"
+				type="button"
+				onclick="location.href='become-an-artisan.html'"
+			>
+				Become an Artisan
+			</button>
+
+		<!-- The Footer Section  -->
+	<footer>
+			<div class="footer">
+				<div class="cta">
+					<h2>Sign in as an Artisan</h2>
+					<p>
+						sign in now to get the best from this service and enjoy premium
+						connect to craft men and women, while getting opportunity to
+						showcase your own craft.
+					</p>
+					<button
+						class="btn cta-btn"
+						type="button"
+						onclick="location.href='sign-up.html'"
+					>
+						Get Started Today.
+					</button>
+				</div>
+				<div class="unique">
+					<div class="prd">
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Product</a></li>
+								<li><a href="explore-artisans">Explore Artisan</a></li>
+								<li><a href="#">Top-Rated Artisan</a></li>
+								<li><a href="becone-an-artisan">Become an Artisan</a></li>
+								<li><a href="#target">How it Works</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Community</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">FAQs</a></li>
+								<li><a href="contact.html">Trust & Safety</a></li>
+								<li><a href="contact.html">Report a Problem</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Learn</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Codes of Conduct</a></li>
+								<li><a href="#">Community Guideline</a></li>
+							</ul>
+						</div>
+						<div class="footer-logo logo">
+							<a href="http://home.html"
+								><span class="sp1">Craft</span
+								><span class="sp2">Connect</span></a
+							>
+						</div>
+					</div>
+
+					<div class="bottom">
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li class="copyright">
+							&copy; 2025 CraftConnect. All Rights Reserved.
+						</li>
+					</div>
+				</div>
+			</div>
+	</footer>
 </body>
 </html>
