@@ -1,0 +1,238 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-width: 80%;
+  max-height: 90%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+label {
+  margin-bottom: 0px;
+  text-align: left;
+  display: block;
+}
+
+input {
+  position: relative;
+  width: auto;
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#signup-form {
+  position: relative;
+  width: 100%;
+  max-width: 85%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.signup-input {
+  display: grid;
+  grid-template-columns: auto;
+  width: 100%;
+}
+
+.signup-input input#email,
+.signup-input input#username {
+  width: 97%;
+}
+
+.fullname-group {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  gap: 10px;
+}
+
+.password-group {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  gap: 10px;
+}
+.stylecraft {
+  color:#8638e5;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.signup-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.google-btn {
+  display: flex;
+  background-color: #e9f8ec;
+  color: black;
+  padding: 12px 50px;
+  width: fit-content;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0px;
+}
+.google-btn:hover {
+  background-color: #e9f8ec;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: 20px 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e9f8ec;
+  margin: 0 10px;
+}
+
+.signup-btn {
+  background-color: #8638e5;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.signup-btn:hover {
+  background-color: #8638e5;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.signup-footer {
+  padding: 0 16px;
+}
+
+.note {
+  text-align: left;
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 10px;
+  }
+
+  #signup-form {
+    max-width: 100%;
+  }
+
+  .fullname-group {
+    grid-template-columns: auto;
+    gap: 2px;
+  }
+
+  .password-group {
+    grid-template-columns: auto;
+    gap: 2px;
+  }
+
+  .signup-input input#email,
+  .signup-input input#username {
+    width: 93%;
+  }
+
+  .image-section img {
+    width: 100%;
+  }
+
+  .signup-section {
+    flex: none;
+    width: 100%;
+  }
+
+  .signup-header {
+    max-width: 100%;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.Eye-toggle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 15px;
+}
