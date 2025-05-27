@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 :root{
     --header-color: #FFFFFF;
     --button-color: #FDFDFD;
@@ -6,9 +7,6 @@
     --nav-link-color: black;
     --first-body-color: #F9F9F9;
     --category-items-color: #FDFDFD;
-    --product-cont-color: #FFFFFF;
-    --testimonial-color: #FDFDFD;
-    --font-color: black;
 }
 *{
     box-sizing: border-box;
