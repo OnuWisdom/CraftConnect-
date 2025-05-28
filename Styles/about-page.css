@@ -488,7 +488,7 @@ button {
 
 /* Responsive Design / Media Queries */
 
-/* Media Queries */
+/* Header Media Queries */
 @media (max-width: 900px) {
 	.navbar {
 		display: none;
