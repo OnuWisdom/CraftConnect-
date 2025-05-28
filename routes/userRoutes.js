@@ -11,7 +11,7 @@ const { getUserProfile, getAllUsers, uploadUserPhoto } = require('../controllers
 
 router.get('/profile/:id', authenticateToken, getUserProfile);
 router.get('/', authenticateToken, getAllUsers);
-router.put('/:id/photo', authenticateToken, upload.single('any'),
+router.put('/:id/photo', authenticateToken, upload.single('photo'),
 uploadUserPhoto
 );
 

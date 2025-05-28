@@ -1,0 +1,41 @@
+<!-- The Header -->
+<header class="header">
+    <div class="logo">
+        <h2>
+            <a href="/">
+                <span class="sp1">Craft</span><span class="sp2">Connect</span>
+            </a>
+        </h2>
+    </div>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/" class="<%= currentPage === 'index' ? 'active' : '' %>">Home</a></li>
+            <li><a href="/explore-artisans" class="<%= currentPage === 'explore-artisans' ? 'active' : '' %>">Explore Artisans</a></li>
+            <li><a href="/become-an-artisan" class="<%= currentPage === 'become-an-artisan' ? 'active' : '' %>">Become an Artisan</a></li>
+            <li><a href="/about" class="<%= currentPage === 'about' ? 'active' : '' %>">About</a></li>
+            <li><a href="/contact" class="<%= currentPage === 'contact' ? 'active' : '' %>">Contacts</a></li>
+        </ul>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-info" onclick="toggleDropdown()">
+            <div class="profile-icon">
+                <img src="images/icons and favicon/user.png" alt="Profile" />
+            </div>
+            <span class="profile-name">Hi, John</span>
+            <span class="dropdown-arrow" id="arrow">&#9660;</span>
+            <!-- Down arrow -->
+        </div>
+        <div class="dropdown-menu" id="dropdown">
+            <ul>
+                <li><a href="dashboard">Dashboard</a></li>
+                <li><a href="settings">Settings</a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="menu-toggle" onclick="toggleNavbar()">☰</button>
+</header>

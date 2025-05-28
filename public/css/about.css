@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
 @import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css');
 
 * {
@@ -190,7 +189,7 @@ li {
 .hero-container {
 	min-height: 700px;
 	/* min-height: 80vh; */
-	background-image: url('/images/about-hero-image.png');
+	background-image: url('images/about-hero-image.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
