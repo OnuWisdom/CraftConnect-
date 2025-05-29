@@ -1,0 +1,170 @@
+
+<div class="profile-container">
+				<div class="profile-info" onclick="toggleDropdown()">
+					<div class="profile-icon">
+						<img src="/public/images/user.png" alt="Profile" />
+					</div>
+					<span class="profile-name">Hi, John</span>
+					<span class="dropdown-arrow" id="arrow">&#9660;</span>
+					<!-- Down arrow -->
+				</div>
+				<div class="dropdown-menu" id="dropdown">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+            <span class="icon" onclick="toggleNav()">&#9776;</span>
+		</header>
+
+<!-- Hero section -->
+		 <div class="Hero-container">
+        <div class="Hero-content">
+            <div class="content">
+                <h1>Get in Touch with Us</h1>
+                <p>Have questions or need support? We’re here to help! Our team typically responds within 24 hours.</p>
+                <a href="#contact-form" class="btn">Send a Message<span class="arrow-icon">➜</span></a>
+                </button>
+            </div>
+            <div class="image-section">
+                <img src="images/contact-image.png" alt="Contact Image">
+            </div>
+        </div>
+    </div>
+
+	<div class="form-container">
+        <h2>Contact Form</h2>
+        <div class="form-content">
+            <h1>Get in touch</h1>
+            <p>Feel free to contact with us, we love to make new partners & friends</p>
+            <div class="form-wrapper">
+				<form id="contact-form" action="https://reqres.in/api/users" method="post">
+                <div class="form-group">
+                    <label for="full-name">Full name</label>
+                    <input type="text" id="full-name" placeholder="Enter full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail/username</label>
+                    <input type="email" id="email" placeholder="Enter mail address" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" placeholder="Input phone number">
+                </div>
+				
+				
+                <div class="form-group">
+                    <label for="subject">Subject/Inquiry type</label>
+                    <select id="subject" class="subject" required>
+                        <option class="val" value="" disabled selected>Select</option>
+                        <option class="val" value="partnership">Partnership</option>
+                        <option class="valu" value="support">Support</option>
+                        <option class="val" value="general">General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Message Subject" required></textarea>
+                </div>
+                <button type="submit" class="btn">
+                    Submit message <span class="Arrow-icon">➤</span>
+                </button>
+				</form>
+            </div>
+        </div>
+    </div>
+	<!-- Custom Alert -->
+	<div id="custom-alert" class="custom-alert" style="display:none;">
+  <span id="custom-alert-icon" class="custom-alert-icon-bg">
+    <span class="custom-alert-icon">✅</span>
+  </span>
+  <div id="custom-alert-message" class="custom-alert-message"></div>
+  <button onclick="closeCustomAlert()">OK</button>
+</div>
+
+
+<!-- FAQ section -->
+ <div class="faq-container">
+    <div class="faq-header">
+      <h1>FREQUENTLY ASKED QUESTIONS</h1>
+      <p>Here's everything you need to know before booking or joining as an artisan.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I know these artisans are real and verified?</div>
+        <div class="faq-answer">
+          All artisans must verify with a school ID or educational mail before being listed and allow to offer services.
+        </div>
+      </div>
+    </div>
+  </div>	<!-- The Call To Action section -->
+		<section class="CTA-section">
+			<div class="image-carousal">
+				<img
+					src="/images/About-2.png"
+					alt="tradeImg"
+					width="300px"
+					class="carousal"
+				/>
+				<img
+					src="/images/About-2.png"
+					alt="tradeImg"
+					width="300px"
+					class="carousal"
+				/>
+				<img
+					src="/images/About-2.png"
+					alt="tradeImg"
+					width="300px"
+					class="carousal"
+				/>
+			</div>
+
+			<div class="cta-content">
+				<h2>Join the CraftConnect Community</h2>
+				<p>
+					Become a student artisan today and showcase your craft!
+					<br />Over <strong>20,000+</strong> student professionals
+				</p>
+			</div>
+
+			<button
+				class="btn community"
+				type="button"
+				onclick="location.href='become-an-artisan.html'"
+			>
+				Become an Artisan
+			</button>
+		</section>

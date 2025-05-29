@@ -67,12 +67,12 @@ app.get('/exploreartisans', (req,res) =>{
 })
 
 
-app.get('/login', (req,res) =>{
+app.get('/sign-up', (req,res) =>{
 
     res.render('login',{
 
-         title: ' - CraftConnect',
-        currentPage: 'signup'
+         title: ' Login - CraftConnect',
+        currentPage: 'login'
     })
 })
 
@@ -80,7 +80,7 @@ app.get('/contact', (req,res) =>{
 
     res.render('contact',{
 
-         title: ' - CraftConnect',
+         title: 'contact CraftConnect',
         currentPage: 'contact'
     })
 })
