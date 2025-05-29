@@ -76,6 +76,17 @@ app.get('/login', (req,res) =>{
     })
 })
 
+app.get('/contact', (req,res) =>{
+
+    res.render('contact',{
+
+         title: ' - CraftConnect',
+        currentPage: 'contact'
+    })
+})
+
+
+
 
 app.use('/', indexRoutes);
 
