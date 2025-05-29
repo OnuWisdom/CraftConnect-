@@ -71,7 +71,7 @@ app.get('/sign-up', (req,res) =>{
 
     res.render('login',{
 
-         title: ' Login - CraftConnect',
+         title: ' Login- CraftConnect',
         currentPage: 'login'
     })
 })
@@ -82,6 +82,15 @@ app.get('/contact', (req,res) =>{
 
          title: 'contact CraftConnect',
         currentPage: 'contact'
+    })
+})
+
+app.get('/become-an-artisan', (req,res) =>{
+
+    res.render('become-an-artisan',{
+
+         title: 'Become an artisan - CraftConnect',
+        currentPage: 'become-an-artisan'
     })
 })
 

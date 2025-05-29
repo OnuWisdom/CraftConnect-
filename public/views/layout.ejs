@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/<%= currentPage %>.css" />
+ <link rel="stylesheet" href="/css/<%= currentPage %>.css" />
+ <link rel="stylesheet" href="/css/global.css"></link>
+
    <%- typeof styles !== 'undefined' ? styles : '' %>
 
 </head>
@@ -86,7 +88,7 @@
                         <li class="unik"><a href="#">Product</a></li>
                         <li><a href="/exploreartisans">Explore Artisan</a></li>
                         <li><a href="#">Top-Rated Artisan</a></li>
-                        <li><a href="/become-an-artisan">Become an Artisan</a></li>
+                        <li><a href="/becomeanartisan">Become an Artisan</a></li>
                         <li><a href="/about">How it Works</a></li>
                     </ul>
                 </div>
