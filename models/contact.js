@@ -29,7 +29,8 @@ mongoose.Schema({
     subject: {
 
         type: String,
-        enum: [ 'Partnership', 'Support', 'General Inquiry']
+        // enum: [ 'Partnership', 'Support', 'General Inquiry']
+         required: true
     }
 
 }, {timestamps: true });
