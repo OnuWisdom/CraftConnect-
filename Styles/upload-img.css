@@ -105,3 +105,13 @@ body {
 .select-image:hover {
 	background: var(--dark-blue);
 }
+
+@media (max-width: 520px) {
+    .upload-area h3{
+		font-size: 10px;
+	}
+
+    .upload-area h6{
+		font-size: 10px;
+	}
+}
