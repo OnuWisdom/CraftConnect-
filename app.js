@@ -41,12 +41,12 @@ app.use(expressLayouts)
 
 
 // Routes
-app.get('', (req,res) =>{
+app.get('/home', (req,res) =>{
 
-    res.render('index',{
+    res.render('home',{
 
           title: 'CraftConnect - Your Artisan Hub', 
-           currentPage: 'index'
+           currentPage: 'home'
     })
 })
 

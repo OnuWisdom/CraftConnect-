@@ -22,6 +22,13 @@ router.get('/', (req, res) => {
     });
 });
 
+
+router.get('/home-page', (req, res) => {
+    res.render('home-page', {
+        title: 'Home - CraftConnect',
+        currentPage: 'home-page'
+    });
+});
 // You'll also want to add your other main website routes here
 // For example:
 router.get('/about', (req, res) => {
