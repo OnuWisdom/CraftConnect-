@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CraftConnect Signup</title>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+      
+        <h2>
+          <a href="http://home.html"
+            ><span class="sp1">Craft</span><span class="sp2">Connect</span></a
+          >
+        </h2>
+      </div>
+
+      <nav class="navbar">
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+
+        <ul class="nav-links">
+          <button class="close-toggle" id="close-toggle">X</button>
+          
+          <li><a href="about.html">Home</a></li>
+          <li><a href="about.html">Explore Artisans</a></li>
+          <li><a href="about.html">Become an Artisan</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="about.html">Contacts</a></li>
+          <li><a href="about.html">Login</a></li>
+          <div class="sign1">
+          <li><a href="about.html">Sign up</a></li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="image-section">
+        <img src="images/login-page.png" alt="Artisan working" />
+      </div>
+      <div class="signup-section">
+        <div class="signup-header">
+          <h1>Turn your passion into purpose start your journey with <span class="stylecraft">Craft</span>Connect.</h1>
+          <button class="google-btn">
+            <img src="/icons and favicon/google.png" alt="Google logo" />
+            Sign up with Google
+          </button>
+          <div class="divider">
+            <span>Or use Email</span>
+          </div>
+        </div>
+
+        <form id="signup-form">
+          <div class="signup-input">
+            <!-- Full Name -->
+            <div>
+              <label for="fullname">Full Name</label>
+              <div class="fullname-group">
+                <input
+                  type="text"
+                  id="fullname"
+                  placeholder="First Name"
+                  required
+                />
+                <input
+                  type="text"
+                  id="fullname"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Username -->
+            <div>
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Create a Username"
+                required
+              />
+            </div>
+            <!-- Email -->
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="Email address"
+                required
+              />
+            </div>
+            <!-- Password Group -->
+            <div class="password-group">
+              <div class="Eye-toggle">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  id="toggle-password"
+                  class="toggle-password"
+                  onclick="togglePassword()"
+                  >👁️</span
+                >
+              </div>
+              <div class="Eye-toggle">
+                <label for="password">Confirm Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  id="toggle-password"
+                  class="toggle-password"
+                  onclick="togglePassword()"
+                  >👁️</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="remember-me">
+            <input type="checkbox" />
+            <label>User username as display name </label>
+          </div>
+
+          <div class="signup-footer">
+            <p class="note">
+              By signing up to CraftConnect, you agree to our
+              <a href="#">Privacy Policy</a> and
+              <a href="#">Terms of Service</a>
+            </p>
+            <button type="submit" class="signup-btn">Create Account</button>
+            <p>
+              Already have an account?
+              <a href="login.html">Login</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="signup.js"></script>
+  </body>
+</html>
