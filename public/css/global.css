@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css');
+
+:root {
+	--primary-color: #8000dc;
+	--secondary-color: #145a32;
+	--alternate-color: #4caf50;
+	--background-color: #f9f9f9;
+	--text-color: #333333;
+	--second-color: #ffffff;
+	--font-family: 'poppins', sans-serif;
+}
+
+/* Header Section */
+.header {
+	display: flex;
+	background-color: var(--background-color);
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	height: 94px;
+	width: 100%;
+	font-weight: bolder;
+	padding: 0% 60px;
+	position: fixed;
+	z-index: 1000;
+}
+
+.logo a {
+	font-size: 28px;
+	line-height: 100%;
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+.logo .sp1 {
+	color: var(--primary-color);
+}
+
+.logo .sp2 {
+	color: var(--alternate-color);
+}
+
+.nav-links {
+	display: flex;
+	list-style: none;
+}
+
+.nav-links li {
+	margin: 0 15px;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: var(--text-color);
+}
+
+a:hover {
+	color: var(--secondary-color);
+}
+
+.nav-links a.active {
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 3px;
+	border-bottom: 3px solid var(--primary-color);
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 12px;
+}
+
+.profile-container {
+	position: relative;
+}
+
+.profile-info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.profile-icon {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 50px;
+}
+
+.profile-icon img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.profile-name {
+	font-size: 16px;
+	color: #333;
+}
+
+.dropdown-arrow {
+	font-size: 12px;
+	transition: transform 0.3s;
+}
+
+.dropdown-arrow.active {
+	transform: rotate(180deg);
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: none;
+	width: 150px;
+}
+
+.dropdown-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.dropdown-menu li {
+	padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: background-color 0.2s;
+}
+
+.dropdown-menu li:hover a {
+	background-color: #f4f4f4;
+}
+
+.menu-toggle {
+	display: none;
+	font-size: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Footer Section */
+.footer {
+	display: flex;
+	gap: 40px;
+	justify-content: space-around;
+	padding: 40px 65px;
+	background: #232429;
+}
+
+.cta {
+	width: 50%;
+	max-width: 460px;
+	height: 380px;
+	background-color: #353639;
+	color: var(--second-color);
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+.cta h2 {
+	padding: 40px;
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 100%;
+	letter-spacing: 0%;
+}
+
+.cta p {
+	color: #e4dbdb;
+	font-family: Inter;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 145%;
+	letter-spacing: 0%;
+	padding: 0 40px;
+}
+
+.cta-btn {
+	margin: 80px 40px 0 40px;
+}
+
+.prd {
+	display: flex;
+	gap: 20px;
+	font-size: 10px;
+	padding: 40px;
+	margin-bottom: 60px;
+}
+
+.footer-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.footer-list a {
+	text-decoration: none;
+	color: #3e3838;
+}
+
+.footer-logo {
+	width: 30%;
+	margin-right: 20px;
+}
+
+.unik {
+	margin-bottom: 15px;
+}
+
+.unique {
+	display: flex;
+	flex-direction: column;
+	background: #f2e6fc;
+	border-radius: 20px;
+}
+
+.bottom {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	font-size: 10px;
+	padding-left: 40px;
+}
+
+.bottom a {
+	text-decoration: none;
+	color: #3e3838;
+}
+
+.copyright {
+	margin-right: 55px;
+}
+
+/* Responsive Design / Media Queries */
+@media (max-width: 900px) {
+	.navbar {
+		display: none;
+		flex-direction: column;
+		gap: 10px;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		background-color: var(--background-color);
+		width: 100%;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.nav-links a.active {
+		border: none;
+	}
+
+	.navbar.show {
+		display: flex;
+	}
+
+	.menu-toggle {
+		display: block;
+	}
+
+	.nav-links {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.profile-container {
+		display: flex;
+		margin-left: 320px;
+	}
+}

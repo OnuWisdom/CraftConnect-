@@ -18,29 +18,29 @@
 	--font-family: 'poppins', sans-serif;
 }
 
-.logo a {
+/* .logo a {
 	font-size: 28px;
 	line-height: 100%;
-	/* font-style: italic; */
+	
 	text-decoration: none;
 	color: #333;
 	font-weight: bold;
-	/* transition: transform 0.5s ease-in-out; */
-}
+	
+} */
 
-.logo .sp1,
+/* .logo .sp1,
 .logo .sp2{
 	font-weight: bold;
 	font-style: italic;
 	font-size: large;
-}
-.logo .sp1{
+} */
+/* .logo .sp1{
 	color: var(--primary-color);
 }
 
 .logo .sp2 {
 	color: var(--alternate-color);
-}
+} */
 
 html,
 body {
@@ -54,9 +54,9 @@ body {
 }
 
 
-.nav-container{
+/* .nav-container{
     padding: 20px;
-    /* background-color: blue; */
+   
     display: flex;
     justify-content: space-between;
 }
@@ -80,24 +80,21 @@ a:hover {
 }
 
 .links-cont a.active {
-	/* text-decoration: underline;
-	text-decoration-thickness: 3px;
-	text-underline-offset: 15px;
-	color: var(--primary-color); */
+	
 
 	color: var(--primary-color);
 	text-decoration: none;
 	border-radius: 3px;
 	border-bottom: 3px solid var(--primary-color);
-	padding-left: 10px; /* Extends underline left */
-	padding-right: 10px; /* Extends underline right */
-	padding-bottom: 12px; /* Adjusts the space between text and underline */
+	padding-left: 10px; 
+	padding-right: 10px;
+	
 }
 
 
 
 .active{
-	color: white;
+	color: rgb(185, 57, 57);
 }
 
 .profile-cont{
@@ -107,7 +104,7 @@ a:hover {
 	font-weight: bold;
 	padding-top: 5px;
 	margin-right: 50px;
-	/* align-items: center; */
+	
 } 
 
 .profile-pic img{
@@ -124,18 +121,173 @@ a:hover {
 
 .dropdown{
 	font-size: small;
+} */
+
+header {
+	display: flex;
+	background-color: var(--background-color);
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	height: 94px;
+	width: 100%;
+	font-weight: bolder;
+	padding: 0% 60px;
+	position: fixed;
+	z-index: 1000;
+	/* position: sticky; */
+	/* top: 0; */
+}
+
+.logo a {
+	font-size: 28px;
+	line-height: 100%;
+	/* font-style: italic; */
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+	/* transition: transform 0.5s ease-in-out; */
+}
+
+.logo .sp1 {
+	color: var(--primary-color);
+}
+
+.logo .sp2 {
+	color: var(--alternate-color);
+}
+
+.nav-links {
+	display: flex;
+	list-style: none;
+}
+
+.nav-links li {
+	margin: 0 15px;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: var(--text-color);
+}
+
+a:hover {
+	color: var(--secondary-color);
+}
+
+.nav-links a.active {
+	/* text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-underline-offset: 15px;
+	color: var(--primary-color); */
+
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 3px;
+	border-bottom: 3px solid var(--primary-color);
+	padding-left: 10px; /* Extends underline left */
+	padding-right: 10px; /* Extends underline right */
+	padding-bottom: 12px; /* Adjusts the space between text and underline */
+}
+
+li {
+	text-decoration: none;
+}
+
+.profile-container {
+	position: relative;
+}
+
+.profile-info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 10px;
+}
+
+.profile-icon {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 50px;
+}
+
+.profile-icon img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+/* Profile Name */
+.profile-name {
+	font-size: 16px;
+	color: #333;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+	font-size: 12px;
+	transition: transform 0.3s;
+}
+
+/* Rotate arrow when active */
+.dropdown-arrow.active {
+	transform: rotate(180deg); /* Point the arrow up */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: none;
+	width: 150px;
+}
+
+.dropdown-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.dropdown-menu li {
+	padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	transition: background-color 0.2s;
+}
+
+.dropdown-menu li:hover a {
+	background-color: #f4f4f4;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+	display: none;
+	font-size: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .main-cont{
     background-color: rgb(252, 252, 252);
 }
 
-header{
+.header-section{
     display: flex;
     justify-content: center;
 }
 
-.header{
+.section{
     display: flex;
     flex-direction: column;
     align-items: center;

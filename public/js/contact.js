@@ -31,7 +31,9 @@ document.addEventListener('click', (event) => {
 
 // form validation
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", ()=>{
+
+    document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -82,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+})
 // close custom alert
 function closeCustomAlert() {
 	document.getElementById('custom-alert').style.display = 'none';
