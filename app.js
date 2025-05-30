@@ -98,6 +98,16 @@ app.get('/become-an-artisan', (req,res) =>{
 })
 
 
+app.get('/sign-in', (req,res) =>{
+
+    res.render('sign-up',{
+
+         title: ' Sign-in - CraftConnect',
+        currentPage: 'signup'
+    })
+})
+
+
 
 
 app.use('/', indexRoutes);
