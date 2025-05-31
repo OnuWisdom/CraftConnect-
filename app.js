@@ -112,7 +112,7 @@ app.use('/university', universityRoutes);
 
 
 
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
 app.use('/', indexRoutes);
