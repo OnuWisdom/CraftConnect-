@@ -115,4 +115,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 - Felix kingsley / Front-End - [GitHub](https://github.com/kingsleyfelix) | [Twitter / X](https://x.com/kingsley_d_coda?s=21)
 
-- Ajubua Victor / Back-End - [GitHub](https://github.com/Zaynee16) | [Twitter / X](https://x.com/zainaby86032772?s=21) | [GMail](zayneeyusuf16@gmail.com)
+- Ajubua Victor / Back-End - [GitHub](https://github.com/ace-g-ops) | [Twitter / X](https://x.com/heis_ace07) | [GMail](victorajibua14@gmail.com)
