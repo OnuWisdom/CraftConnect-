@@ -3,8 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
-const expressLayouts = require('express-ejs-layouts');
 const Artisan =require('./models/artisan');
+// const session = require('express-session');
+// const flash = require('connect-flash')
 
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/userRoutes');
@@ -12,7 +13,7 @@ const testRoutes = require('./routes/test');
 const indexRoutes = require('./routes/index');
 const artisansRoutes = require('./routes/artisans');
 const contactRoutes = require('./routes/contact')
-
+const universityRoutes = require('./routes/university')
 
 const app = express();
 
@@ -95,8 +96,8 @@ app.get('/sign-up', (req,res) =>{
 
     res.render('login',{
 
-         title: ' login - CraftConnect',
-        currentPage: 'login'
+         title: ' Sign-in - CraftConnect',
+        currentPage: 'sign-in'
     })
 })
 
@@ -105,47 +106,14 @@ app.get('/sign-up', (req,res) =>{
 
 app.use('/', indexRoutes);
 app.use('/contact', contactRoutes);
-
-// app.post('/api/seed', async (req, res) => {
-//   const sampleArtisans = [
-//     {
-//       name: "John Adebayo",
-//       craft: "Wood Carving",
-//       address: "Lagos Island, Lagos",
-//       lat: 6.4541,
-//       lng: 3.3947,
-//       phone: "08012345678"
-//     },
-//     {
-//       name: "Fatima Hassan", 
-//       craft: "Pottery",
-//       address: "Ikeja, Lagos",
-//       lat: 6.5952,
-//       lng: 3.3374,
-//       phone: "08087654321"
-//     },
-//     {
-//       name: "Ahmed Ibrahim",
-//       craft: "Leather Work",
-//       address: "Victoria Island, Lagos", 
-//       lat: 6.4281,
-//       lng: 3.4219,
-//       phone: "08098765432"
-//     }
-//   ];
-
-//   try {
-//     await Artisan.insertMany(sampleArtisans);
-//     res.json({ message: 'Sample data added successfully!' });
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
+app.use('/university', universityRoutes);
 
 
 
 
-app.use('/auth', authRoutes);
+
+
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
 app.use('/', indexRoutes);

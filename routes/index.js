@@ -16,9 +16,9 @@ const router = express.Router();
 // Route for the homepage
 router.get('/', (req, res) => {
     // Instead of res.send(), use res.render() to render your EJS view
-    res.render('index', {
+    res.render('home', {
         title: 'CraftConnect - Your Artisan Hub',
-        currentPage: 'index' // Used for active class in navbar and CSS
+        currentPage: 'home' // Used for active class in navbar and CSS
     });
 });
 

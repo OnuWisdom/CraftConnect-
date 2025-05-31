@@ -18,7 +18,7 @@
             <i class="fa fa-square-xmark"></i>
         </label>
         <div class="mobile-sidebar">
-       <li><a href="/home">Home</a></li>
+       <li><a href="/">Home</a></li>
 				<li><a href="/exploreartisans">Explore Artisans</a></li>
 				<li><a href="/become-an-artisan">Become an Artisan</a></li>
 				<li><a href="/about" class="active">About</a></li>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="links-cont flex">
-                <li><a href="/home">Home</a></li>
+                <li><a href="/">Home</a></li>
 					<li><a href="/exploreartisans">Explore Artisans</a></li>
 					<li><a href="/become-an-artisan">Become an Artisan</a></li>
 					<li><a href="/about" class="active">About</a></li>
@@ -89,10 +89,11 @@
                                 <p>Step 1 :</p>
                                 <div class="flex-right">
                                     <div class="step-header padding-bottom">Signup now on craft connect</div>
-                                    <button class="btn1">sign up</button>
+                                    <button class="btn1" onclick="location.href='/sign-in'">sign up</button>
                                 </div>
                             </div>
                         </div>
+                        
 
                         <div class="step-cont">
                             <div class="step">
@@ -101,15 +102,21 @@
                                     <div class="step-header">Tell us about your business</div>
                                     <h4 class="sub-heading">Choose institution you belong to and input category your craft falls in</h4>
                                     <p>Institution Name</p>
-                                    <input type="text" class="input" placeholder="Select Institution">
+                                    
+                                    <form action="/university" method="POST">
+                                     <input type="text" class="input" placeholder="Select Institution" name="institutionname">
                                     <p>Service category</p>
-                                    <input type="text" class="input" placeholder="Taioring & Fasion">
+                                    <input type="text" class="input" placeholder="Taioring & Fasion" name="servicecategory">
                                     <p>Enter Service name</p>
-                                    <input type="text" class="input" placeholder="Fasion Designer">
+                                    <input type="text" class="input" placeholder="Fasion Designer" name="servicename"><br><br>
                                     <button class="btn2">Next</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+
+
+                    
 
                         <div class="step-cont">
                             <div class="step">
@@ -128,8 +135,10 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="upload-area">
-                                        <input type="file" id="file" accept="image/*" hidden>
+                                    <form>
+
+                                    <div class="upload-area" action="/upload" method="POST" enctype="multipart/form-data">
+                                        <input type="file" id="file" accept="image/*" name="photo" hidden>
                                         <i class="fa-solid fa-file-arrow-up"></i>
                                         <h3>Drag & drop files or <span class="browse">Browse</span> </h3>
                                         <h6>Supported formats JPEG, PNG, PDF</h6>
@@ -138,6 +147,8 @@
                                     <div class="btn-cont">
                                         <button class="btn3">Upload file</button>
                                     </div>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +170,7 @@
                         <button
                             class="btn cta-btn"
                             type="button"
-                            onclick="location.href='sign-up.html'"
+                            onclick="location.href='/sign-up'"
                         >
                             Get Started Today.
                         </button>
@@ -170,19 +181,19 @@
                                 
                                 <ul class="footer-list">
                                     <li class="unik"><a href="#">Product</a></li>
-                                    <li><a href="explore-artisans">Explore Artisan</a></li>
+                                    <li><a href="/exploreartisans">Explore Artisan</a></li>
                                     <li><a href="#">Top-Rated Artisan</a></li>
-                                    <li><a href="becone-an-artisan">Become an Artisan</a></li>
+                                    <li><a href="/becone-an-artisan">Become an Artisan</a></li>
                                     <li><a href="#target">How it Works</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <ul class="footer-list">
                                     <li class="unik"><a href="#">Community</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">FAQs</a></li>
-                                    <li><a href="contact.html">Trust & Safety</a></li>
-                                    <li><a href="contact.html">Report a Problem</a></li>
+                                    <li><a href="/about">About Us</a></li>
+                                    <li><a href="/contact">FAQs</a></li>
+                                    <li><a href="/contact">Trust & Safety</a></li>
+                                    <li><a href="/contact">Report a Problem</a></li>
                                 </ul>
                             </div>
                             <div>

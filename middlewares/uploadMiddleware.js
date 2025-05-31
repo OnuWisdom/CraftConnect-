@@ -39,7 +39,7 @@ if(ext && mime){
 const upload = multer({
 
     storage, 
-    limits: {fullSize: 5 * 1024 * 1024},
+    limits: {fileSize: 5 * 1024 * 1024},
 
     fileFilter
 });

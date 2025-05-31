@@ -12,7 +12,7 @@
 			<header class="header">
 				<div class="logo">
 					<h2>
-						<a href="./home-page.html">
+						<a href="/">
 							<span class="sp1">Craft</span><span class="sp2">Connect</span>
 						</a>
 					</h2>
@@ -24,13 +24,14 @@
 						<li><a href="/exploreartisans">Explore Artisans</a></li>
 						<li><a href="/become-an-artisan">Become an Artisan</a></li>
 						<li><a href="/about">About</a></li>
-						<li><a href="/about">Contact</a></li>
+						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</nav>
 
 				<div class="auth-buttons">
-					<button type="button" class="login-butt">Login</button>
-					<button type="button" class="signUp-butt">Sign up</button>
+					<button type="button" class="login-butt" onclick="location.href='/sign-up'" >Login</button>
+			
+					<button type="button" class="signUp-butt"  onclick="location.href='/sign-in'">Sign up</button>
 				</div>
 			</header>
 
@@ -70,7 +71,7 @@
 					Find <span class="highlight">Verified Student Artisans</span> Near You
 				</h1>
 				<p class="service-text">Get affordable, reliable services by skilled students</p>
-				<button class="hero-btn" type="submit">Explore Artisans</button>
+				<button class="hero-btn" type="submit"  onclick="location.href='/exploreartisans'">Explore Artisans</button>
 
 				<div class="ellipse-image-container">
 					<div class="avatars">
@@ -790,7 +791,13 @@
 				</p>
 			</div>
 
-			<button class="btn community" type="submit">Become an Artisan</button>
+	<button
+				class="btn community"
+				type="button"
+				onclick="location.href='/become-an-artisan'"
+			>
+				Become an Artisan
+			</button>
 		</section>
 
 		<!-- The Footer Section  -->
@@ -803,7 +810,14 @@
 						connect to craft men and women, while getting opportunity to
 						showcase your own craft.
 					</p>
-					<button class="btn cta-btn" type="submit">
+					
+			<button
+				class="btn community"
+				type="button"
+				onclick="location.href='/become-an-artisan'"
+			>
+				Become an Artisan
+			</button>
 						Become an Artisan
 						<img src="/images/button-icon.svg" alt="button-icon">
 					</button>

@@ -17,11 +17,11 @@ router.post('/', async (req, res) => {
     try {
         await Contact.create(req.body); // Use Contact, not contact.Model
         
-        res.redirect('/contact?success=Your message has been sent successfully!');
+        res.redirect('/contact');
         
     } catch (error) {
         console.error(error);
-        res.redirect('/contact?error=There was an error. Please try again');
+        res.redirect('/contac');
     }
 });
 
