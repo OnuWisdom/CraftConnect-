@@ -1,6 +1,12 @@
-
-
-<section class="">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CraftConnect Login</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
     <div class="container">
       <div class="image-section">
         <img src="images/imagecraftkonnect.jpg" alt="Artisan working" />
@@ -9,25 +15,26 @@
         <div class="login-header">
           <h1>Welcome back, your next masterpiece starts here.</h1>
           <button class="google-btn">
-            <img src="images/google.png" alt="Google logo" />
+            <img src="/images/google.png" alt="Google logo" />
             Sign up with Google
           </button>
           <div class="divider">
-            <!-- <span>Or use Email</span> -->
+            <span>Or use Email</span>
           </div>
         </div>
 
-        <form id="login-form">
+        <form id="login-form" action="/auth/login" method="POST">
           <div class="login-input">
             <label for="email"><strong>E-mail/Username</strong></label>
             <input
               type="text"
               id="email"
               placeholder="Email address"
+              name="email"
               required
             />
             <label for="password"><strong>Password</strong></label>
-            <input type="password" placeholder="Password" required />
+            <input type="password" placeholder="Password" name="password" required />
           </div>
 
           <div class="options">
@@ -46,10 +53,11 @@
           </p>
           <p>
             Don&apos;t have an account?
-            <a href="signup.html">Create an account</a>
+            <a href="/sign-in">Create an account</a>
           </p>
         </div>
       </div>
     </div>
-    <script>src="login.js"</script>
-
+    <script>src="/js/login.js"</script>
+  </body>
+</html>

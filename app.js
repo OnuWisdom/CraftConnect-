@@ -37,7 +37,7 @@ app.use(express.static('public'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(expressLayouts)
+
 
 
 // Routes
@@ -71,12 +71,12 @@ app.get('/exploreartisans', (req,res) =>{
 })
 
 
-app.get('/sign-up', (req,res) =>{
+app.get('/sign-in', (req,res) =>{
 
-    res.render('login',{
+    res.render('sign-up',{
 
-         title: ' Login- CraftConnect',
-        currentPage: 'login'
+         title: ' Sign-up CraftConnect',
+        currentPage: 'sign-up'
     })
 })
 
@@ -91,12 +91,12 @@ app.get('/become-an-artisan', (req,res) =>{
 })
 
 
-app.get('/sign-in', (req,res) =>{
+app.get('/sign-up', (req,res) =>{
 
-    res.render('sign-up',{
+    res.render('login',{
 
-         title: ' Sign-in - CraftConnect',
-        currentPage: 'signup'
+         title: ' login - CraftConnect',
+        currentPage: 'login'
     })
 })
 
@@ -145,7 +145,7 @@ app.use('/contact', contactRoutes);
 
 
 
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
 app.use('/', indexRoutes);

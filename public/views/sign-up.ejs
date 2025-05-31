@@ -1,5 +1,12 @@
-
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CraftConnect</title>
+    <link rel="stylesheet" href="/css/signup.css" />
+</head>
+<body>
     <div class="container">
       <div class="image-section">
         <img src="/images/login-page.png" alt="Artisan working" />
@@ -16,47 +23,45 @@
           </div>
         </div>
 
-        <form id="signup-form">
+        <form id="signup-form" action="/auth/register" method="POST">
           <div class="signup-input">
-            <!-- Full Name -->
+            <!-- Full Name - FIXED: Combined into single field -->
             <div>
               <label for="fullname">Full Name</label>
-              <div class="fullname-group">
-                <input
-                  type="text"
-                  id="fullname"
-                  placeholder="First Name"
-                  required
-                />
-                <input
-                  type="text"
-                  id="fullname"
-                  placeholder="Last Name"
-                  required
-                />
-              </div>
+              <input
+                type="text"
+                id="fullname"
+                placeholder="Enter your full name"
+                name="fullname"
+                required
+              />
             </div>
-            <!-- Username -->
+            
+            <!-- Username - FIXED: Added missing quote -->
             <div>
               <label for="username">Username</label>
               <input
                 type="text"
                 id="username"
                 placeholder="Create a Username"
+                name="username"
                 required
               />
             </div>
+            
             <!-- Email -->
             <div>
               <label for="email">Email</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 placeholder="Email address"
+                name="email"
                 required
               />
             </div>
-            <!-- Password Group -->
+            
+            <!-- Password Group - FIXED: Added name attribute to confirm password -->
             <div class="password-group">
               <div class="Eye-toggle">
                 <label for="password">Password</label>
@@ -64,27 +69,29 @@
                   type="password"
                   id="password"
                   placeholder="Password"
+                  name="password"
                   required
                 />
                 <span
                   id="toggle-password"
                   class="toggle-password"
-                  onclick="togglePassword()"
+                  onclick="togglePassword('password')"
                   >👁️</span
                 >
               </div>
               <div class="Eye-toggle">
-                <label for="password">Confirm Password</label>
+                <label for="confirmPassword">Confirm Password</label>
                 <input
                   type="password"
-                  id="password"
-                  placeholder="Password"
+                  id="confirmPassword"
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
                   required
                 />
                 <span
-                  id="toggle-password"
+                  id="toggle-confirm-password"
                   class="toggle-password"
-                  onclick="togglePassword()"
+                  onclick="togglePassword('confirmPassword')"
                   >👁️</span
                 >
               </div>
@@ -92,21 +99,26 @@
           </div>
 
           <div class="remember-me">
-            <input type="checkbox" />
-            <label>User username as display name </label>
+            <input type="checkbox" name="useUsername" />
+            <label>Use username as display name</label>
           </div>
+
+          <button type="submit" class="login-btn">Sign up to CraftConnect</button>
 
           <div class="signup-footer">
             <p class="note">
               By signing up to CraftConnect, you agree to our
-              <a href="#">Privacy Policy</a> and
-              <a href="#">Terms of Service</a>
+              <a href="/about">Privacy Policy</a> and
+              <a href="/about">Terms of Service</a>
             </p>
-            <button type="submit" class="signup-btn">Create Account</button>
             <p>
               Already have an account?
-              <a href="login.html">Login</a>
+              <a href="/login">Login</a>
             </p>
           </div>
         </form>
-   
+      </div>
+    </div>
+    <script src="/js/signup.js"></script>
+</body>
+</html>

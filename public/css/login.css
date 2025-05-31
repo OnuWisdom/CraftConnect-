@@ -235,6 +235,8 @@ input {
   align-items: center;
   justify-content: center;
   gap: 5px;
+  position:relative;
+  left: 145px;
 }
 .google-btn img {
   width: 20px;

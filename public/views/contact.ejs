@@ -1,8 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact US</title>
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    		<header class="header">
+			<div class="logo">
+				<h2>
+					<a href="http://home.html"
+						><span class="sp1">Craft</span><span class="sp2">Connect</span></a
+					>
+				</h2>
+			</div>
 
+			<nav class="navbar">
+			<ul class="nav-links" id="navLinks">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/exploreartisans">Explore Artisans</a></li>
+    <li><a href="/become-an-artisan">Become an Artisan</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+</ul>
+
+</nav>
 <div class="profile-container">
 				<div class="profile-info" onclick="toggleDropdown()">
 					<div class="profile-icon">
-						<img src="/public/images/user.png" alt="Profile" />
+						<img src="/images/user.png" alt="Profile" />
 					</div>
 					<span class="profile-name">Hi, John</span>
 					<span class="dropdown-arrow" id="arrow">&#9660;</span>
@@ -12,12 +40,12 @@
                     <ul>
                         <li><a href="#">Dashboard</a></li>
 						<li><a href="#">Settings</a></li>
-						<li><a href="#">Logout</a></li>
+						<li><a href="/login">Logout</a></li>
 					</ul>
 				</div>
 			</div>
             <span class="icon" onclick="toggleNav()">&#9776;</span>
-		
+		</header>
 
 <!-- Hero section -->
 		 <div class="Hero-container">
@@ -25,7 +53,7 @@
             <div class="content">
                 <h1>Get in Touch with Us</h1>
                 <p>Have questions or need support? We’re here to help! Our team typically responds within 24 hours.</p>
-                <a href="#contact-form" class="btn">Send a Message<span class="arrow-icon">➜</span></a>
+                <a href="/contact" class="btn">Send a Message<span class="arrow-icon">➜</span></a>
                 </button>
             </div>
             <div class="image-section">
@@ -40,11 +68,6 @@
             <h1>Get in touch</h1>
             <p>Feel free to contact with us, we love to make new partners & friends</p>
             <div class="form-wrapper">
-
-           
-
-            
-
 				<form id="contact-form" action="/contact" method="POST">
                 <div class="form-group">
                     <label for="full-name">Full name</label>
@@ -168,8 +191,82 @@
 			<button
 				class="btn community"
 				type="button"
-				onclick="location.href='become-an-artisan'"
+				onclick="location.href='become-an-artisan.html'"
 			>
 				Become an Artisan
 			</button>
 		</section>
+
+	
+		<!-- The Footer Section  -->
+		<footer>
+			<div class="footer">
+				<div class="cta">
+					<h2>Sign in as an Artisan</h2>
+					<p>
+						sign in now to get the best from this service and enjoy premium
+						connect to craft men and women, while getting opportunity to
+						showcase your own craft.
+					</p>
+					<button
+						class="btn cta-btn"
+						type="button"
+						onclick="location.href='sign-up.html'"
+					>
+						Get Started Today.
+					</button>
+				</div>
+				<div class="unique">
+					<div class="prd">
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Product</a></li>
+								<li><a href="explore-artisans">Explore Artisan</a></li>
+								<li><a href="#">Top-Rated Artisan</a></li>
+								<li><a href="becone-an-artisan">Become an Artisan</a></li>
+								<li><a href="#target">How it Works</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Community</a></li>
+								<li><a href="/about">About Us</a></li>
+								<li><a href="contact.html">FAQs</a></li>
+								<li><a href="contact.html">Trust & Safety</a></li>
+								<li><a href="contact.html">Report a Problem</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Learn</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Codes of Conduct</a></li>
+								<li><a href="#">Community Guideline</a></li>
+							</ul>
+						</div>
+						<div class="footer-logo logo">
+							<a href="http://home.html"
+								><span class="sp1">Craft</span
+								><span class="sp2">Connect</span></a
+							>
+						</div>
+					</div>
+
+					<div class="bottom">
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li class="copyright">
+							&copy; 2025 CraftConnect. All Rights Reserved.
+						</li>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+
+
+        <script src="/js/contact.js"></script>
+</body>
+</html>

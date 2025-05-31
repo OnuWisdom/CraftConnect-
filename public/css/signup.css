@@ -279,6 +279,24 @@ input {
   background-color: #e9f8ec;
 }
 
+
+.login-btn {
+  background-color: #8638e5;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background-color: #8638e5;
+}
+
+
 .divider {
   display: flex;
   align-items: center;
