@@ -16,6 +16,7 @@ const contactRoutes = require('./routes/contact')
 const universityRoutes = require('./routes/university')
 
 const app = express();
+const artisansRoutes = require('./routes/artisanRoutes')
 
 
 

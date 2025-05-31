@@ -197,3 +197,158 @@ function handleSearch() {
         noResult.style.display = "block";
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class ArtisanSearch {
+    constructor() {
+        this.artisans = [];
+        this.currentPage = 1;
+        this.totalPages = 1;
+        this.loading = false;
+        
+        this.initializeElements();
+        this.attachEventListeners();
+        this.loadArtisans();
+    }
+    
+    initializeElements() {
+        this.searchBox = document.getElementById('searchBox');
+        this.skillFilter = document.getElementById('skillFilter');
+        this.locationFilter = document.getElementById('locationFilter');
+        this.artisansGrid = document.getElementById('artisansGrid');
+        this.loadingDiv = document.getElementById('loading');
+        this.noResults = document.getElementById('noResults');
+        this.pagination = document.getElementById('pagination');
+    }
+    
+    attachEventListeners() {
+        // Debounced search
+        let searchTimeout;
+        this.searchBox.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => this.loadArtisans(), 300);
+        });
+        
+        this.skillFilter.addEventListener('change', () => this.loadArtisans());
+        this.locationFilter.addEventListener('change', () => this.loadArtisans());
+    }
+    
+    async loadArtisans(page = 1) {
+        if (this.loading) return;
+        
+        this.loading = true;
+        this.showLoading();
+        
+        const params = new URLSearchParams({
+            search: this.searchBox.value,
+            skill: this.skillFilter.value,
+            location: this.locationFilter.value,
+            page: page,
+            limit: 12
+        });
+        
+        try {
+            const response = await fetch(`/artisan?${params}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                this.artisans = data.data;
+                this.currentPage = data.pagination.current;
+                this.totalPages = data.pagination.total;
+                this.renderArtisans();
+                this.renderPagination();
+            } else {
+                this.showError('Failed to load artisans');
+            }
+        } catch (error) {
+            console.error('Error loading artisans:', error);
+            this.showError('Error connecting to server');
+        } finally {
+            this.loading = false;
+            this.hideLoading();
+        }
+    }
+    
+    renderArtisans() {
+        if (this.artisans.length === 0) {
+            this.showNoResults();
+            return;
+        }
+        
+        this.hideNoResults();
+        this.artisansGrid.innerHTML = this.artisans.map(artisan => this.createArtisanCard(artisan)).join('');
+    }
+    
+    createArtisanCard(artisan) {
+        const initials = artisan.name.split(' ').map(n => n[0]).join('').slice(0, 2);
+        const stars = '★'.repeat(Math.floor(artisan.rating)) + '☆'.repeat(5 - Math.floor(artisan.rating));
+        
+        return `
+            <div class="artisan-card" data-id="${artisan._id}">
+                <div class="artisan-image">${initials}</div>
+                <div class="artisan-name">${artisan.name}</div>
+                <div class="artisan-skill">${this.capitalizeFirst(artisan.skill)}</div>
+                <div class="artisan-location">📍 ${artisan.location}</div>
+                <div class="artisan-rating">
+                    <span class="stars">${stars}</span>
+                    <span>${artisan.rating.toFixed(1)} (${artisan.reviews} reviews)</span>
+                </div>
+                <div class="artisan-experience">${artisan.experience}</div>
+                <button class="contact-btn" onclick="contactArtisan('${artisan._id}')">
+                    Contact Artisan
+                </button>
+            </div>
+        `;
+    }
+    
+    showLoading() {
+        this.loadingDiv.style.display = 'block';
+        this.artisansGrid.style.opacity = '0.5';
+    }
+    
+    hideLoading() {
+        this.loadingDiv.style.display = 'none';
+        this.artisansGrid.style.opacity = '1';
+    }
+    
+    showNoResults() {
+        this.artisansGrid.style.display = 'none';
+        this.noResults.style.display = 'block';
+    }
+    
+    hideNoResults() {
+        this.artisansGrid.style.display = 'grid';
+        this.noResults.style.display = 'none';
+    }
+    
+    capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new ArtisanSearch();
+});
+
+function contactArtisan(id) {
+    // Implement your contact functionality
+    alert(`Contacting artisan ${id}. In a real app, this would open a contact form.`);
+}
