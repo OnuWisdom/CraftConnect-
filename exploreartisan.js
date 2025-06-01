@@ -34,9 +34,9 @@ function toggleNavbar() {
 
 const artisans = [
 	{name: "Priya Sharma", skill: "Hair and Beauty", location: "Lagos"},
-	{name: "Jephthah", skill: "Coding", location: "Lagos"},
-	{name: "Samuel", skill: "Programming", location: "Rivers"},
-	{name: "Thelma", skill: "Nails", location: "Rivers"},
+	{name: "Jephthah", skill: "Coding", location: "Rivers"},
+	{name: "Samuel", skill: "Coding", location: "Lagos"},
+	{name: "Thelma", skill: "Nails and Hair", location: "Rivers"},
 	{name: "Favour", skill: "Bead Work", location: "Abuja"}
 ]
 function renderArtisans(list, containerId) {
