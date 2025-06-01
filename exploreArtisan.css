@@ -1184,26 +1184,6 @@ svg{
     padding: 10px;
     overflow-y: auto;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-:root{
-    --header-color: #FFFFFF;
-    --button-color: #FDFDFD;
-    --primary-color1: #27B43E;
-    --primary-color2: #8000DC;
-    --nav-link-color: black;
-    --first-body-color: #F9F9F9;
-    --category-items-color: #FDFDFD;
-    --font-family: 'Poppins', sans-serif;
-}
-*{
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
 @media screen and (max-width: 900px){
 #container{
     width: 100%;
