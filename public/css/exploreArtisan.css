@@ -1175,7 +1175,7 @@ svg{
     }
 }
 #filteredResults{
-    width: 1000px;
+    width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: row;
