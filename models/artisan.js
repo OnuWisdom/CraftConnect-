@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 
-const ArtisanShema = new ({
-
+const ArtisanSchema = new mongoose.Schema({
     name: String,
     craft: String,
     location: String,
-     phone: String,
+    phone: String,
     image: String,
-})
+});
 
-
-
-module.exports = 
-mongoose.model("Artisan", ArtisanSchema );
+module.exports = mongoose.model("Artisan", ArtisanSchema);

@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
-const Artisan =require('./models/artisan');
+
 // const session = require('express-session');
 // const flash = require('connect-flash')
 
@@ -11,12 +11,11 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/userRoutes');
 const testRoutes = require('./routes/test');
 const indexRoutes = require('./routes/index');
-const artisansRoutes = require('./routes/artisans');
+
 const contactRoutes = require('./routes/contact')
 const universityRoutes = require('./routes/university')
 
 const app = express();
-const artisansRoutes = require('./routes/artisanRoutes')
 
 
 
@@ -114,11 +113,10 @@ app.use('/university', universityRoutes);
 
 
 
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
 app.use('/', indexRoutes);
-app.use('/api/', artisansRoutes),
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
