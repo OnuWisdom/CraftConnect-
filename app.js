@@ -3,7 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a325d622f68439acbdd4cf3133b03add211ab46
 // const session = require('express-session');
 // const flash = require('connect-flash')
 
@@ -11,11 +14,18 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/userRoutes');
 const testRoutes = require('./routes/test');
 const indexRoutes = require('./routes/index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a325d622f68439acbdd4cf3133b03add211ab46
 const contactRoutes = require('./routes/contact')
 const universityRoutes = require('./routes/university')
 
 const app = express();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a325d622f68439acbdd4cf3133b03add211ab46
 
 
 

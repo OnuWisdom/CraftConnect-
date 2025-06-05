@@ -1,52 +1,52 @@
 // ------------------- About Page Script ------------------- //
 // Function For the Profile Dropdown
 function toggleDropdown() {
-    let dropdown = document.getElementById("dropdown");
-    let arrow = document.getElementById("arrow");
+	let dropdown = document.getElementById("dropdown");
+	let arrow = document.getElementById("arrow");
 
-    // Toggle dropdown visibility
-    dropdown.classList.toggle("dropdown");
+	// Toggle dropdown visibility
+	dropdown.classList.toggle("dropdown");
 
-    // Toggle arrow rotation
-    arrow.classList.toggle("active");
+	// Toggle arrow rotation
+	arrow.classList.toggle("active");
 }
 
 // Close the dropdown when clicking outside
 document.addEventListener('click', (event) => {
-    let dropdown = document.getElementById ('dropdown');
-    let profileInfo = document.querySelector ('.profile-info');
+	let dropdown = document.getElementById ('dropdown');
+	let profileInfo = document.querySelector ('.profile-info');
 
-    if (!profileInfo.contains(event.target)) {
-        dropdown.style.display = 'none';
-        document.getElementById('arrow').classList.remove('active');
-    }
+	if (!profileInfo.contains(event.target)) {
+		dropdown.style.display = 'none';
+		document.getElementById('arrow').classList.remove('active');
+	}
 });
 
 // ---Mobile Navbar Toggle--- //
 
 // Navbar toggle function for mobile
 function toggleNavbar() {
-    let navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('show');
+	let navbar = document.querySelector('.navbar');
+	navbar.classList.toggle('show');
 }
 
 // Function for the search
 
 const artisans = [
-    {name: "Priya Sharma", skill: "Hair and Beauty", location: "Lagos"},
-    {name: "Jephthah", skill: "Coding", location: "Lagos"},
-    {name: "Samuel", skill: "Programming", location: "Rivers"},
-    {name: "Thelma", skill: "Nails", location: "Rivers"},
-    {name: "Favour", skill: "Bead Work", location: "Abuja"}
+	{name: "Priya Sharma", skill: "Hair and Beauty", location: "Lagos"},
+	{name: "Jephthah", skill: "Coding", location: "Rivers"},
+	{name: "Samuel", skill: "Coding", location: "Lagos"},
+	{name: "Thelma", skill: "Nails and Hair", location: "Rivers"},
+	{name: "Favour", skill: "Bead Work", location: "Abuja"}
 ]
 function renderArtisans(list, containerId) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = "";
-    list.forEach(artisans => {
-        const card = document.createElement("div");
-        card.className = "testimonials";
-        card.innerHTML = `
-        <div class="user">
+	const container = document.getElementById(containerId);
+	container.innerHTML = "";
+	list.forEach(artisans => {
+		const card = document.createElement("div");
+		card.className = "testimonials";
+		card.innerHTML = `
+		<div class="user">
                         <div class="userImg">
                             <img src="images/face1.jpg" alt="userimg">
                         </div>
@@ -167,21 +167,22 @@ function renderArtisans(list, containerId) {
 
                         <button type="button" id="book">Book  now</button>
                     </div>`
-                container.appendChild(card)
-    });
+				container.appendChild(card)
+	});
 }
 function handleSearch() {
-    const input = document.getElementById("searchInput").value.trim().toLowerCase();
-    const explore = document.getElementById("explore");
-    const search = document.getElementById("search");
-    const noResult = document.getElementById("error");
+	const input = document.getElementById("searchInput").value.trim().toLowerCase();
+	const explore = document.getElementById("explore");
+	const search = document.getElementById("search");
+	const noResult = document.getElementById("error");
 
-    const results = artisans.filter(artisans => 
-        artisans.name.toLowerCase().includes(input)||
-        artisans.skill.toLowerCase().includes(input)||
-        artisans.location.toLowerCase().includes(input)
-    );
+	const results = artisans.filter(artisans => 
+		artisans.name.toLowerCase().includes(input)||
+		artisans.skill.toLowerCase().includes(input)||
+		artisans.location.toLowerCase().includes(input)
+	);
 
+<<<<<<< HEAD
     if (input === "") {
         explore.style.display = "block";
         search.style.display = "none";
@@ -211,3 +212,20 @@ function handleSearch() {
 
 
 
+=======
+	if (input === "") {
+		explore.style.display = "block";
+		search.style.display = "none";
+		noResult.style.display = "none";
+	} else if (results.length > 0) {
+		renderArtisans(results, "filteredResults");
+		explore.style.display = "none";
+		search.style.display = "block";
+		noResult.style.display = "none";
+	}else{
+		explore.style.display = "none";
+		search.style.display = "none";
+		noResult.style.display = "block";
+	}
+};
+>>>>>>> 1a325d622f68439acbdd4cf3133b03add211ab46
