@@ -569,7 +569,7 @@ li {
 }
 .CTA-section {
     width: 100%;
-    height: 220px;
+    height: fit-content;
 	display: flex;
 	gap: 40px;
     flex-direction: row;
@@ -579,8 +579,8 @@ li {
 
 }
 .cta-info{
-    width: 705px;
-    height: 94px;
+    width: 40%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -600,8 +600,8 @@ li {
     }
 }
 .image-carousal{
-    width: 316px;
-    height: 100px;
+    width: 40%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -615,8 +615,8 @@ li {
 }
 
 .btn {
-    width: 179px;
-    height: 56px;
+    width: fit-content;
+    height: fit-content;
 	background: linear-gradient(295deg, #3771c8, #8000dc);
 	color: var(--second-color);
 	border: none;
