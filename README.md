@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🤝 CraftConnect: Bridging Artisans & Clients 🎨
 
 CraftConnect is a platform designed to connect students and the general public with verified student artisans, providing reliable and accessible services. Find skilled artisans, support student talents, and get quality services all in one place! ✨
@@ -116,3 +117,11 @@ This project is licensed under the [MIT License](LICENSE).
 - Felix kingsley / Front-End - [GitHub](https://github.com/kingsleyfelix) | [Twitter / X](https://x.com/kingsley_d_coda?s=21)
 
 - Ajubua Victor / Back-End - [GitHub](https://github.com/ace-g-ops) | [Twitter / X](https://x.com/heis_ace07) | [GMail](victorajibua14@gmail.com)
+=======
+# CraftConnect-
+A platform that seamlessly connects students and the general public with verified student artisans, to provide reliable and accessible 
+Jephthah Ordu
+Email- jephthahordu@gmail.com 
+Facebook - https://www.facebook.com/share/1EgYGPKqoa/
+LinkedIn - www.linkedin.com/in/jephthah-ordu-4618b7345
+>>>>>>> 793d339f044b58b4f2c62b6de13e91303d9abee2
