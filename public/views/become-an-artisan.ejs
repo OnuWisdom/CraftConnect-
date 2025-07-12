@@ -12,19 +12,7 @@
     <link rel="stylesheet" href="/css/upload-img.css">
 </head>
 <body>
-    <input type="checkbox" id="check" class="check">
-   <div class="sidebar-cont display">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-square-xmark"></i>
-        </label>
-        <div class="mobile-sidebar">
-       <li><a href="/">Home</a></li>
-				<li><a href="/exploreartisans">Explore Artisans</a></li>
-				<li><a href="/become-an-artisan">Become an Artisan</a></li>
-				<li><a href="/about" class="active">About</a></li>
-				<li><a href="/contact">Contacts</a></li>
-        </div>
-   </div>
+
 
    <div class="body" id="car">
         <div class="nav-container flex">
@@ -36,12 +24,33 @@
             <div class="links-cont flex">
                 <li><a href="/">Home</a></li>
 					<li><a href="/exploreartisans">Explore Artisans</a></li>
-					<li><a href="/become-an-artisan">Become an Artisan</a></li>
-					<li><a href="/about" class="active">About</a></li>
+					<li><a href="/become-an-artisan" class="active">Become an Artisan</a></li>
+					<li><a href="/about" >About</a></li>
 					<li><a href="/contact">Contacts</a></li>
             </div>
 
-            <div class="profile-cont">
+
+            
+			<div class="profile-container">
+				<div class="profile-info" onclick="toggleDropdown()">
+					<div class="profile-icon">
+						<img src="images/user.png" alt="Profile" />
+					</div>
+					<span class="profile-name">Hi, John</span>
+					<span class="dropdown-arrow" id="arrow">&#9660;</span>
+					<!-- Down arrow -->
+				</div>
+				<div class="dropdown-menu" id="dropdown">
+					<ul>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="settings.html">Settings</a></li>
+						<li><a href="/login">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+            <!-- <div class="profile-cont">
                 <div class="profile-pic">
                     <img src="images/user.png" alt="Profile" />
                 </div>
@@ -51,7 +60,7 @@
 
             <label for="check" class="checkbtn">
                 <i class="fa fa-bars"></i>
-            </label>
+            </label> -->
 
         </div>
 
@@ -229,6 +238,6 @@
             </footer>
         </div>
    </div>
-    <script src="/js/become-an-artisan.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
