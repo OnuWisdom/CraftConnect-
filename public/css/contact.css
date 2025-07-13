@@ -13,7 +13,7 @@
 	--alternate-color: #4caf50;
 	--background-color: #f9f9f9;
 	--text-color: #333333;
-	--second-color: #ffffff;
+	--second-color: #fff;
 	--font-family: 'poppins', sans-serif;
 }
 
@@ -30,6 +30,7 @@ body {
 /* Header Section */
 
 .header {
+    
     display: flex;
     background-color: var(--second-color);
     align-items: center;
@@ -75,29 +76,30 @@ body {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-family: 'Inter'; 
-    font-size: clamp(0.9rem, 2.5vw, 1rem); 
+    	text-decoration: none;
+	color: var(--text-color);
+	font-weight: 500;
+	position: relative;
+	padding-bottom: 4px; 
 }
-
+.nav-links a.active {
+   
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 3px;
+	border-bottom: 3px solid var(--primary-color);
+	padding-left: 10px; /* Extends underline left */
+	padding-right: 10px; /* Extends underline right */
+	padding-bottom: 5px;
+}
 a:hover {
     color: var(--secondary-color);
 }
 
-a:active {
-    color: var(--primary-color);
-    text-decoration: none;
-    border-radius: 3px;
-    border-bottom: 3px solid var(--primary-color);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-bottom: 0.75rem;
-}
 
-li:active {
-    text-decoration: none;
-}
+/* li:active { */
+    /* text-decoration: none; */
+/* } */
 
 .icon {
     display: none; /* Hidden by default, shown on mobile */
@@ -727,8 +729,8 @@ select:focus,
 
 .faq-container {
     width: 100%;
-    min-height: clamp(500px, 70vh, 870px); /* Responsive height */
-    padding: clamp(2rem, 5vw, 3.75rem) clamp(1rem, 5vw, 5rem); /* Responsive padding */
+    min-height: clamp(500px, 70vh, 870px); /*Responsive height */
+    padding: clamp(2rem, 5vw, 3.75rem) clamp(1rem, 5vw, 5rem); /*Responsive padding */
     gap: clamp(2rem, 5vw, 3.5rem);
     background: linear-gradient(90.22deg, #8000DC 26.26%, #3771C8 97.55%);
     box-sizing: border-box;
@@ -825,7 +827,8 @@ select:focus,
     background: #ffffffec;
     box-shadow: 0px 30.7px 40.93px -18.42px #95959540;
     position: relative;
-    margin-top: clamp(0.5rem, 1vw, 0.75rem);
+    /* margin-top: clamp(0.5rem, 1vw, 0.75rem); */
+    margin-top: 0;
 }
 
 .faq-answer::before {
@@ -861,6 +864,9 @@ select:focus,
     .faq-answer {
         max-width: 100%;
     }
+    .fag-answer{
+        margin: -10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -885,13 +891,15 @@ select:focus,
     .faq-answer {
         padding: clamp(1rem, 2vw, 1.5rem) clamp(0.5rem, 1.5vw, 1rem);
         min-height: clamp(80px, 12vh, 100px);
-        margin-top: clamp(0.25rem, 1vw, 0.5rem);
+        /* margin-top: clamp(0.25rem, 1vw, 0.5rem); */
+        margin-top:0;
     }
 
     .faq-question::before,
     .faq-answer::before {
         font-size: clamp(0.875rem, 2vw, 1rem);
     }
+
 }
 
 
