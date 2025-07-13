@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CraftConnect Notifications</title>
+    <link href="/css/notification.css" rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  </head>
+
+  <body>
+    <div class="container">
+          <!-- Sidebar -->
+    <div class="sidebar hidden">
+        <div class="logo">
+            <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars"></i></div>
+            <div class="logo-text">
+                <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+            </div>
+            
+        </div>
+
+        <nav class="nav">
+            <a href="/dashboard" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+                <span>Dashboard</span>
+            </a>
+            <a href="/messages" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+                <span>Message</span>
+                <div class="notification-dot"></div>
+            </a>
+            <a href="/booking" class="nav-item active">
+                <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+                <span>Booking</span>
+            </a>
+            <a href="/portfolio" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <span>Portfolio</span>
+            </a>
+            <a href="/reviews" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+                <span>Review</span>
+            </a>
+            <a href="/insights" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <span>Insight</span>
+            </a>
+        </nav>
+
+        <div class="bottom-nav">
+            <a href="/profile" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+                <span>Profile</span>
+            </a>
+            <a href="/notification" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+                <span>Notifications</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="icon-sidebar ">
+        
+            <div class="icon top-icon">
+                <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars"></i></div>
+                <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+            <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+            <a href="/booking" class="nav-item active nav-item"><i class="fa-solid fa-book"></i></a>
+            <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+            <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+            </div>
+
+            <div class="icon lower-icon">
+                <a href="/profile" class="nav-item"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+            </div>
+        </div>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h1>Notification</h1>
+            <p>Stay updated with your latest notifications</p>
+          </div>
+          <div class="icons">
+            <div class="icons">
+               <span class="icon-search">🔍</span>
+              <span class="icon-bell">🔔</span>
+              <span class="icon-settings">⚙️</span>
+               <span class="icon-date">19th May 2022</span>
+               <img src="images/profile.jpeg" alt="User" class="profile-pic" />
+</div>
+          </div>
+        </header>
+
+        <section class="notifications">
+          <div class="tabs">
+            <span>Sort: </span>
+            <button class="tab active" onclick="filterNotifications('all')">
+              All
+            </button>
+            <button class="tab" onclick="filterNotifications('read')">
+              Read
+            </button>
+            <button class="tab" onclick="filterNotifications('unread')">
+              Unread
+            </button>
+          
+          </div>
+
+          <ul id="notificationList">
+            <!-- Notifications will be injected here -->
+          </ul>
+      
+        </section>
+      </main>
+    </div>
+
+    <script src="js/notification.js"></script>
+  </body>
+</html>

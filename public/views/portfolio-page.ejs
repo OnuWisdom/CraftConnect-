@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Page</title>
+    <link rel="stylesheet" href="/css/portfoilio-2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar hidden">
+      <div class="logo">
+        <div class="logo-text">
+            <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+        </div>
+        <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars"></i></div>
+      </div>
+
+      <nav class="nav">
+        <a href="/dashboard/artisan" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+            <span>Dashboard</span>
+        </a>
+        <a href="/message" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+            <span>Message</span>
+            <div class="notification-dot"></div>
+        </a>
+        <a href="/booking" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+            <span>Booking</span>
+        </a>
+        <a href="/portfolio" class="nav-item active">
+            <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <span>Portfolio</span>
+        </a>
+        <a href="reviews" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+            <span>Review</span>
+        </a>
+        <a href="/insights" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <span>Insight</span>
+        </a>
+      </nav>
+
+      <div class="bottom-nav">
+        <a href="/profile" class="nav-item">
+            <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+            <span>Profile</span>
+        </a>
+        <a href="/notification" class="nav-item">
+            <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+            <span>Notifications</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="icon-sidebar">
+        
+      <div class="icon top-icon">
+        <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars"></i></div>
+        <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+        <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+        <a href="/booking" class="nav-item"><i class="fa-solid fa-book"></i></a>
+        <a href="/portfolio" class="nav-item active"><i class="fa-solid fa-briefcase "></i></a>
+        <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+        <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+      </div>
+
+      <div class="icon lower-icon">
+        <a href="/profile" class="nav-item"><i class="fa-regular fa-circle-user"></i></a>
+        <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-content">
+          <h1 class="header-title">Portfolio</h1>
+          <p>Manage your work and best samples to attract more bookings</p>
+        </div>
+        <div class="header-right">
+          <i class="fas fa-search"></i>
+          <div class="bell-group">
+            <i class="far fa-bell"></i>
+            <div class="circle"></div>
+          </div>
+          <i class="far fa-calendar"></i>
+          <span class="date">19 May 2022</span>
+          <div class="avatar">U</div>
+        </div>
+      </header>
+        
+      <!-- Add New Project -->
+      <div class="add-project">
+        <a href="/portfolio/add">
+          <button class="add-button"><i class="fas fa-plus add"></i>Add new project</button>
+        </a>
+      </div>
+
+      <!-- <!-- Cards grid -->
+      <section class="cards">
+          <!-- Card 1 -->
+       <!-- If using EJS -->
+<% portfolioItems.forEach(item => { %>
+<div class="card">
+    <div class="info">
+        <img class="image-sample" src="/uploads/<%= item.image %>" alt="<%= item.portfolioname %>" loading="eager"/>
+    </div>
+    <div class="group">
+        <div class="card-text">
+            <h2><%= item.portfolioname %></h2>
+            <p><%= item.servicecategory %></p>
+        </div>
+        <div class="three-container">
+            <button class="three-dot"><i class="dot fas fa-ellipsis-vertical"></i></button>
+        </div>
+        <div class="display-popup"></div>
+    </div>
+</div>
+<% }); %>
+          
+        </div>
+
+   
+      </section> 
+    </main>
+  </div>
+    <script src="js/portfolio-2.js"></script>
+</body>
+</html>

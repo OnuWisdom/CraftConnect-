@@ -15,20 +15,24 @@ const router = express.Router();
 
 // Route for the homepage
 router.get('/', (req, res) => {
+    const welcome = req.flash('welcome');
+    // console.log('Flash message:',welcome);
     // Instead of res.send(), use res.render() to render your EJS view
-    res.render('home', {
-        title: 'CraftConnect - Your Artisan Hub',
-        currentPage: 'home' // Used for active class in navbar and CSS
-    });
+    // res.render('home', {
+    //     title: 'CraftConnect - Your Artisan Hub',
+    //     currentPage: 'home' // Used for active class in navbar and CSS
+    // });
+
+    res.render('home', {welcome});
 });
 
 
-router.get('/home-page', (req, res) => {
-    res.render('home-page', {
-        title: 'Home - CraftConnect',
-        currentPage: 'home-page'
-    });
-});
+// router.get('/home-page', (req, res) => {
+//     res.render('home-page', {
+//         title: 'Home - CraftConnect',
+//         currentPage: 'home-page'
+//     });
+// });
 // You'll also want to add your other main website routes here
 // For example:
 router.get('/about', (req, res) => {
@@ -65,6 +69,26 @@ router.get('/login', (req, res) => {
         currentPage: 'login'
     });
 });
+
+
+
+// app.get('/notification', (req,res) =>{
+
+//     res.render('notification',{
+
+//          title: 'Notification - CraftConnect',
+//         currentPage: 'Notification'
+//     })
+// });
+
+// router.get('/booking', (req, res) => {
+//     res.render('booking', {
+//         title: 'Booking - CraftConnect',
+//         currentPage: 'login'
+//     });
+// });
+
+
 
 // If you have a separate API endpoint for just checking if the API is running,
 // you might put it on a different path, e.g., '/api/status' or move it to a different route file.

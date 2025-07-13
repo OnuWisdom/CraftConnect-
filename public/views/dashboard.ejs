@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/laptop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+    <div class="house">
+        <div class="container">
+        <!-- Sidebar -->
+    <div class="sidebar hidden">
+        <div class="logo">
+            <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars"></i></div>
+            <div class="logo-text">
+                <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+            </div>
+            
+        </div>
+
+        <nav class="nav">
+            <a href="/dashboard" class="nav-item active">
+                <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+                <span>Dashboard</span>
+            </a>
+            <a href="/messages" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+                <span>Message</span>
+                <div class="notification-dot"></div>
+            </a>
+            <a href="/booking" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+                <span>Booking</span>
+            </a>
+            <a href="/portfolio" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <span>Portfolio</span>
+            </a>
+            <a href="/review" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+                <span>Review</span>
+            </a>
+            <a href="/insights" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <span>Insight</span>
+            </a>
+        </nav>
+
+        <div class="bottom-nav">
+            <a href="/profile" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+                <span>Profile</span>
+            </a>
+            <a href="/notification" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+                <span>Notifications</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="icon-sidebar ">
+        
+            <div class="icon top-icon">
+                <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars"></i></div>
+                <a href="#" class="nav-item active"><i class="fa-solid fa-grip"></i></a>
+            <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+            <a href="/booking" class="nav-item "><i class="fa-solid fa-book"></i></a>
+            <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+            <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+            </div>
+
+            <div class="icon lower-icon">
+                <a href="/profile" class="nav-item"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+    <header class="main-header">
+          <div class="header-right">
+            <i class="fas fa-search"></i>
+           <a href="/notification"> <i class="fas fa-bell"></i></a>
+            <i><svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.31035 0.833252C7.89696 0.833252 8.37249 1.24366 8.37249 1.74992V2.66659H12.6211V1.74992C12.6211 1.24366 13.0966 0.833252 13.6832 0.833252C14.2698 0.833252 14.7453 1.24366 14.7453 1.74992V2.66659H17.9318C19.105 2.66659 20.0561 3.4874 20.0561 4.49992V16.4166C20.0561 17.4291 19.105 18.2499 17.9318 18.2499H3.06178C1.88857 18.2499 0.9375 17.4291 0.9375 16.4166V4.49992C0.9375 3.4874 1.88857 2.66659 3.06178 2.66659H6.24821V1.74992C6.24821 1.24366 6.72375 0.833252 7.31035 0.833252ZM6.24821 4.49992H3.06178V7.24992H17.9318V4.49992H14.7453V5.41659C14.7453 5.92285 14.2698 6.33325 13.6832 6.33325C13.0966 6.33325 12.6211 5.92285 12.6211 5.41659V4.49992H8.37249V5.41659C8.37249 5.92285 7.89696 6.33325 7.31035 6.33325C6.72375 6.33325 6.24821 5.92285 6.24821 5.41659V4.49992ZM17.9318 9.08325H3.06178V16.4166H17.9318V9.08325Z" fill="#1C1D22"/>
+</svg>
+</i>
+            <span class="date">19 May 2022</span>
+            <div class="avatar"><img src="/images/user.jpg" alt="user-image"></div>
+          </div>
+    </header>
+
+    <div class="greet-rectangle">
+        <div class="greet-box">
+            <div class="greet"><h4>Welcome back, Bisi</h4></div>
+            <div class="view"><a href="/booking">View booking history</a></div>
+        </div>
+
+        <div class="rate">
+            <div class="rate-line">
+                <div class="prof">
+                    <p>Profile completion rate</p>
+                    <p>35%</p>
+                </div>
+                <div class="grey"><div class="green"></div></div>
+            </div>
+            <div class="boxes">
+                <div class="box">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 4C9.73478 4 9.48043 4.10536 9.29289 4.29289C9.10536 4.48043 9 4.73478 9 5V10C9.00006 10.2652 9.10545 10.5195 9.293 10.707L12.293 13.707C12.4816 13.8892 12.7342 13.99 12.9964 13.9877C13.2586 13.9854 13.5094 13.8802 13.6948 13.6948C13.8802 13.5094 13.9854 13.2586 13.9877 12.9964C13.99 12.7342 13.8892 12.4816 13.707 12.293L11 9.586V5C11 4.73478 10.8946 4.48043 10.7071 4.29289C10.5196 4.10536 10.2652 4 10 4Z" fill="white"/></svg>
+                    <p>Set availability</p>
+                </div>
+                <div class="box">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="9" fill="#F9F9F9"/>
+                    <g opacity="0.4">
+                    <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round"/>
+                    </g></svg>
+                   <a href="/portfolio"> <p>Manage portfolio</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checklist">
+        <div class="check" id="checkNum">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_1724_4536" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22">
+            <path d="M12 22C13.3135 22.0016 14.6143 21.7437 15.8278 21.2411C17.0412 20.7384 18.1434 20.0009 19.071 19.071C20.0009 18.1434 20.7384 17.0412 21.2411 15.8278C21.7437 14.6143 22.0016 13.3135 22 12C22.0016 10.6866 21.7437 9.38572 21.2411 8.17225C20.7384 6.95878 20.0009 5.85659 19.071 4.92901C18.1434 3.99909 17.0412 3.26162 15.8278 2.75897C14.6143 2.25631 13.3135 1.99839 12 2.00001C10.6866 1.99839 9.38572 2.25631 8.17225 2.75897C6.95878 3.26162 5.85659 3.99909 4.92901 4.92901C3.99909 5.85659 3.26162 6.95878 2.75897 8.17225C2.25631 9.38572 1.99839 10.6866 2.00001 12C1.99839 13.3135 2.25631 14.6143 2.75897 15.8278C3.26162 17.0412 3.99909 18.1434 4.92901 19.071C5.85659 20.0009 6.95878 20.7384 8.17225 21.2411C9.38572 21.7437 10.6866 22.0016 12 22Z" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M8 12L11 15L17 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+            <g mask="url(#mask0_1724_4536)">
+            <path d="M0 0H24V24H0V0Z" fill="#51C264"/>
+            </g></svg>
+            <p>Checklist</p>
+            <p><span id="checked">0</span>/3</p>
+        </div>
+
+        <div class="checkboxes">
+            <div class="checkbox">
+                <input type="checkbox" class="checkboxx" id="checkbox1">
+                <label for="checkbox1">Add bio</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" class="checkboxx" id="checkbox2">
+                <label for="checkbox2">Add 3 portfolio projects</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" class="checkboxx" id="checkbox3">
+                <label for="checkbox3">Set availability</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="frame">
+        <div class="book-frame">
+            <div class="title">
+                <p>Booking requests</p>
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="9.5" cy="9.5" r="9.5" fill="#FF3D00"/>
+                <path d="M9.2777 13.0994C8.7474 13.0994 8.27509 13.0083 7.8608 12.826C7.44886 12.6413 7.12334 12.388 6.88423 12.0661C6.64749 11.7417 6.52557 11.3677 6.51847 10.9439H8.06676C8.07623 11.1214 8.13423 11.2777 8.24077 11.4126C8.34967 11.5452 8.49408 11.6482 8.67401 11.7216C8.85393 11.795 9.05634 11.8317 9.28125 11.8317C9.51562 11.8317 9.72277 11.7902 9.9027 11.7074C10.0826 11.6245 10.2235 11.5097 10.3253 11.3629C10.4271 11.2161 10.478 11.0469 10.478 10.8551C10.478 10.661 10.4235 10.4893 10.3146 10.3402C10.2081 10.1887 10.0542 10.0703 9.85298 9.98509C9.65412 9.89986 9.41738 9.85724 9.14276 9.85724H8.46449V8.72798H9.14276C9.37476 8.72798 9.57955 8.68774 9.7571 8.60724C9.93703 8.52675 10.0767 8.41548 10.1761 8.27344C10.2756 8.12902 10.3253 7.96094 10.3253 7.76918C10.3253 7.58688 10.2815 7.42708 10.1939 7.28977C10.1087 7.15009 9.98793 7.04119 9.83168 6.96307C9.67779 6.88494 9.49787 6.84588 9.2919 6.84588C9.08357 6.84588 8.89299 6.88376 8.72017 6.95952C8.54735 7.03291 8.40885 7.13826 8.30469 7.27557C8.20052 7.41288 8.14489 7.57386 8.13778 7.75852H6.66406C6.67116 7.33949 6.79072 6.97017 7.02273 6.65057C7.25473 6.33097 7.56723 6.0812 7.96023 5.90128C8.35559 5.71899 8.80185 5.62784 9.29901 5.62784C9.8009 5.62784 10.2401 5.71899 10.6165 5.90128C10.9929 6.08357 11.2853 6.32978 11.4936 6.63991C11.7043 6.94768 11.8085 7.29332 11.8061 7.67685C11.8085 8.08404 11.6818 8.42377 11.4261 8.69602C11.1728 8.96828 10.8426 9.1411 10.4354 9.21449V9.27131C10.9704 9.33996 11.3776 9.5258 11.657 9.82884C11.9387 10.1295 12.0784 10.5059 12.076 10.9581C12.0784 11.3724 11.9588 11.7405 11.7173 12.0625C11.4782 12.3845 11.148 12.6378 10.7266 12.8224C10.3052 13.0071 9.82221 13.0994 9.2777 13.0994Z" fill="white"/></svg>
+            </div>
+            <div class="info">
+                <p>You have 3 booking requests pending. Respond quickly to secure your spot</p>
+
+             <a href="/booking"><button type="button">See all</button></a>
+            </div>
+        </div>
+
+        <div class="book-frame">
+            <div class="title">
+                <p>Your active jobs</p>
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="9.5" cy="9.5" r="9.5" fill="#FF3D00"/>
+                <path d="M9.2777 13.0994C8.7474 13.0994 8.27509 13.0083 7.8608 12.826C7.44886 12.6413 7.12334 12.388 6.88423 12.0661C6.64749 11.7417 6.52557 11.3677 6.51847 10.9439H8.06676C8.07623 11.1214 8.13423 11.2777 8.24077 11.4126C8.34967 11.5452 8.49408 11.6482 8.67401 11.7216C8.85393 11.795 9.05634 11.8317 9.28125 11.8317C9.51562 11.8317 9.72277 11.7902 9.9027 11.7074C10.0826 11.6245 10.2235 11.5097 10.3253 11.3629C10.4271 11.2161 10.478 11.0469 10.478 10.8551C10.478 10.661 10.4235 10.4893 10.3146 10.3402C10.2081 10.1887 10.0542 10.0703 9.85298 9.98509C9.65412 9.89986 9.41738 9.85724 9.14276 9.85724H8.46449V8.72798H9.14276C9.37476 8.72798 9.57955 8.68774 9.7571 8.60724C9.93703 8.52675 10.0767 8.41548 10.1761 8.27344C10.2756 8.12902 10.3253 7.96094 10.3253 7.76918C10.3253 7.58688 10.2815 7.42708 10.1939 7.28977C10.1087 7.15009 9.98793 7.04119 9.83168 6.96307C9.67779 6.88494 9.49787 6.84588 9.2919 6.84588C9.08357 6.84588 8.89299 6.88376 8.72017 6.95952C8.54735 7.03291 8.40885 7.13826 8.30469 7.27557C8.20052 7.41288 8.14489 7.57386 8.13778 7.75852H6.66406C6.67116 7.33949 6.79072 6.97017 7.02273 6.65057C7.25473 6.33097 7.56723 6.0812 7.96023 5.90128C8.35559 5.71899 8.80185 5.62784 9.29901 5.62784C9.8009 5.62784 10.2401 5.71899 10.6165 5.90128C10.9929 6.08357 11.2853 6.32978 11.4936 6.63991C11.7043 6.94768 11.8085 7.29332 11.8061 7.67685C11.8085 8.08404 11.6818 8.42377 11.4261 8.69602C11.1728 8.96828 10.8426 9.1411 10.4354 9.21449V9.27131C10.9704 9.33996 11.3776 9.5258 11.657 9.82884C11.9387 10.1295 12.0784 10.5059 12.076 10.9581C12.0784 11.3724 11.9588 11.7405 11.7173 12.0625C11.4782 12.3845 11.148 12.6378 10.7266 12.8224C10.3052 13.0071 9.82221 13.0994 9.2777 13.0994Z" fill="white"/></svg>
+            </div>
+            <div class="info">
+                <p>You have 2 jobs in progress, keep track of your job and stay on top of your schedule.</p>
+
+                <button type="button" id="btn">See all</button>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+
+</div>
+    
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

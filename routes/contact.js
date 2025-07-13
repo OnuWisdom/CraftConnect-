@@ -21,38 +21,8 @@ router.post('/', async (req, res) => {
         
     } catch (error) {
         console.error(error);
-        res.redirect('/contac');
+        res.redirect('/contact');
     }
 });
 
 module.exports = router;
-
-
-
-
-
- // const {fullname, email, phone, subject, message} = req.body
-
-    // try{
-
-    //     const newContact = new 
-        
-    //     Contact({ fullname, email, phone, subject, message});
-
-    //     await newContact.save();
-
-    //     res.status(200).json({
-
-    //         success: true,
-    //         message: 'Message Sent'
-    //     });
-
-        
-    // }catch(error){
-
-    //       res.status(500).json({
-
-    //         success: false,
-    //         message: 'Server Error'
-    //     });
-    // }

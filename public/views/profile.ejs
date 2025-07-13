@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=frame_person" />
+
+   <title>CraftConnect - Artisan Profile</title>
+  <link rel="stylesheet" href="/css/profile.css"/>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="container">
+ <!-- Sidebar -->
+    <aside class="sidebar hidden" id="sidebar">
+        <div class="logo">
+            <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars menu2"></i></div>
+            <div class="logo-text">
+                <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+            </div>
+            
+        </div>
+
+        <nav class="nav">
+            <a href="/dashboard/artisan" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+                <span>Dashboard</span>
+            </a>
+            <a href="/message" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+                <span>Message</span>
+                <div class="notification-dot"></div>
+            </a>
+            <a href="/booking" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+                <span>Booking</span>
+            </a>
+            <a href="/portfolio" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <span>Portfolio</span>
+            </a>
+            <a href="/reviews" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+                <span>Review</span>
+            </a>
+            <a href="/insights" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <span>Insight</span>
+            </a>
+        </nav>
+
+        <div class="bottom-nav">
+            <a href="/profile" class="nav-item active">
+                <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+                <span>Profile</span>
+            </a>
+            <a href="/notification" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+                <span>Notifications</span>
+            </a>
+        </div>
+    </aside>
+
+    <div class="icon-sidebar">
+        
+            <div class="icon top-icon">
+                <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars menu-toggle3"></i></div>
+                <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+            <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+            <a href="/booking" class="nav-item nav-item"><i class="fa-solid fa-book"></i></a>
+            <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+            <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+            </div>
+
+            <div class="icon lower-icon">
+                <a href="/profile" class="nav-item active"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+            </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="top-bar">
+        <div class="profile">
+          <h2>Profile</h2>
+        </div>
+        <div class="icons">
+            <i class="fa-solid fa-search"></i>
+           <a href="/notification"> <i class="fa-solid fa-bell"></i></a>
+            <i class="fa-solid fa-calendar"></i>
+            <div class="date">
+            19 May 2022
+            </div>
+            <img src="images/p (2).jpg" alt="profile">
+
+              <i class="fa-solid fa-bars menu-toggle" onclick="toggleSidebar()"></i>
+         </div>
+      </header>
+
+      <section class="profile-page">
+        <div class="left-panel">
+          <ul>
+            <li class="active">
+              <i class="fa-regular fa-user"></i>
+              <p class="label">
+                 Overview
+              </p>
+            </li>
+            <li>
+              <i class="fa-solid fa-user-pen"></i>
+              <p class="label">
+              Edit Profile Information
+              </p>
+            </li>
+            <li>
+                <i class="fa-solid fa-comment"></i>
+              <p class="label">
+              Chat Settings
+              </p>
+            </li>
+            <li>
+              <i class="fa-solid fa-user-shield"></i>
+              <p class="label">
+                Account & Security
+              </p>
+            </li>
+            <li>
+                <span class="material-symbols-outlined frame_person">
+                   frame_person
+                </span>
+                <p class="label">
+                Verification & Visibility
+                </p>
+            </li>
+            <li>
+              <i class="fa-solid fa-headset"></i>
+                <p class="label">
+              Support & Feedback
+                </p>
+            </li>
+            <li class="danger">
+                <i class="fa-solid fa-trash-can"></i>
+                <p class="label">
+                   Deactivate Account
+                </p>
+            </li>
+          </ul> 
+        </div>
+
+       <div class="right-panel">
+          <div class="profile-card">
+            <div class="header">
+              <p>Profile Overview</p>
+              <a href="#" class="preview">
+                <i class="fa-solid fa-eye"></i> 
+                Preview Public Profile
+              </a>
+            </div>
+            <div class="profile-info">
+              <img src="images/p (1).png" alt="Profile" />
+              <div>
+                <h4>
+                  Sarah Johnson  
+                    
+                    <div class="verified">
+                      <div class="circle">
+                         <i class="fa-solid fa-check"></i>
+                       </div>
+                        <p class="verified-text">verified</p>
+                    </div>
+                </h4>
+                 <p class="txt-style">Sarah_J@gmail.com</p>
+                <p class="des">
+                  Professional tailor with 4+ years experience specializing in traditional and modern designs for all occasions.
+
+                </p>
+                <div class="details">
+                  <div class="details-row">
+                    <div class="details-cont">
+                      <p class="txt-style" >Service Categories:</p>
+                      <p class="txt-style2"> Tailoring, Fashion Design</p>
+                    </div>
+                    <div class="details-cont">
+                      <p class="txt-style" >Pricing Tier</p>
+                      <p class="txt-style2"> $1,000 - $20,000</p>
+                    </div>
+                  </div>
+
+                  <div class="details-row"> 
+                    <div class="details-cont">
+                      <p class="txt-style" >Experience</p>
+                      <p class="txt-style2"> 8 years</p>
+                    </div>
+                    <div class="details-cont">
+                      <p class="txt-style" >Location</p>
+                      <p class="txt-style2"> Yaba, Lagos</p>
+                    </div>
+                  </div>
+                </div>
+                  <p class="txt-style p-t">Rating:</p>
+                  <div>
+                    <i class="fa-solid fa-star star2"></i>
+                    <span class="txt-style2">5.0</span>   
+                    <span class="txt-style">(23 reviews)</span>
+                  </div>
+              </div>
+            </div> 
+            <div class="portfolio-status-cont">
+              <div class="portfolio-status-cont1">
+                <p class="portfolio-status">Portfolio Status:</p>
+                <p class="portfolio-status-text">
+                  7 Items uploaded <span class="green"> | ✔ Complete</span>
+                </p>
+              </div>
+            
+              <div class="portfolio-status-cont2">
+              <a href="/portfolio">  <button class="portfolio-btn">Manage Portfolio</button></a>
+              </div>
+            </div>
+        </div>
+       </div>
+      </section>
+
+    </main> 
+
+  </div>
+
+          <script src="js/profile.js"></script>
+</body>
+</html>
+

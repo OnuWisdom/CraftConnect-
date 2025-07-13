@@ -108,16 +108,28 @@
                                 <div class="flex-right">
                                     <div class="step-header">Tell us about your business</div>
                                     <h4 class="sub-heading">Choose institution you belong to and input category your craft falls in</h4>
-                                    <p>Institution Name</p>
                                     
                                     <form action="/university" method="POST">
+                                      <P>Fullname</P>
+                                     <input type="text" class="input" placeholder="Fullname" name="fullname">
+                                     <P>Email</P>
+                                     <input type="text" class="input" placeholder="Email" name="institutionname">
+                                     <P>Institution Name</P>
                                      <input type="text" class="input" placeholder="Select Institution" name="institutionname">
                                     <p>Service category</p>
                                     <input type="text" class="input" placeholder="Taioring & Fasion" name="servicecategory">
                                     <p>Enter Service name</p>
-                                    <input type="text" class="input" placeholder="Fasion Designer" name="servicename"><br><br>
-                                    <button class="btn2">Next</button>
-                                    </form>
+                                    <input type="text" class="input" placeholder="Fasion Designer" name="servicename"><br>
+                                     <p>Location</p>
+                                    <input type="text" class="input" placeholder="Lagos" name="location"><br>
+                                      <p>Pricing Tiers</p>
+                                    <input type="text" class="input" placeholder="Price Tiers" name="pricetier"><br>
+                                    <p>Experience</p>
+                                    <input type="text" class="input" placeholder="Experience" name="experience"><br>
+                                    <p>Rating</p>
+                                    <input type="text" class="input" placeholder="Rating" name="rating">  <br>                              
+                                 <button type="button" class="btn2" onclick="window.location.href='/profile'">Next</button>
+                                  </form>
                                 </div>
                             </div>
                         </div>

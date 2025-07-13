@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
         trim: true,
     },
 
+    // role: {
+    //     type: String,
+    //     enum: ['user', 'artisan', 'admin'],
+    //     default: 'user',
+    // },
+
 
     password: {
         type: String,
@@ -40,8 +46,13 @@ const userSchema = new mongoose.Schema({
     useUsername: {
         type: Boolean,
         default: false,
-    }
+    },
+    
+  
+       
+   
 }, {timestamps: true});
+
 
 // Hash password before saving
 userSchema.pre('save', async function(next) {
@@ -60,4 +71,6 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
     return await bcrypt.compare(candidatePassword, this.password);
 };
 
+// user.Schmea.index({ role: 1});
+// user.Schema.index({ email: 1});
 module.exports = mongoose.model('User', userSchema);

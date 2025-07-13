@@ -1,81 +1,3 @@
-// const User = require('../models/user');
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
-
-
-// // Fixed: Changed from exports.register to registerUser
-// const registerUser = async (req, res) => {
-//     try {
-//         const { fullname, username, email, password } = req.body;
-
-//         // Fixed: Changed salt rounds from 20 to 10 (20 is too high and slow)
-//         const hashedPassword = await bcrypt.hash(password, 10);
-
-//         const user = new User({
-//             fullname,
-//             username,
-//             email,
-//             password: hashedPassword,
-//         });
-
-//         await user.save();
-
-//         res.status(201).json({ 
-//             message: 'User Registered Successfully!'
-//         });
-
-//     } catch (err) {
-//         res.status(500).json({
-//             error: err.message
-//         });
-//     }
-// };
-
-// // Fixed: Moved outside the register function and renamed to loginUser
-// const loginUser = async (req, res) => {
-//     try {
-//         const { username, password } = req.body;
-
-//         const user = await User.findOne({ username });
-//         if (!user) {
-//             return res.status(400).json({ error: 'User not found' });
-//         }
-
-//         const isMatch = await bcrypt.compare(password, user.password);
-//         if (!isMatch) {
-//             return res.status(400).json({ error: 'Invalid Credentials' });
-//         }
-
-//         const token = jwt.sign(
-//             { id: user._id, username: user.username },
-//             process.env.JWT_SECRET,
-//             { expiresIn: '1h' }
-//         );
-
-//         return res.json({ message: 'Login Successful!', token });
-
-//     } catch (err) {
-//         return res.status(500).json({ error: err.message });
-//     }
-// };
-
-
-
-// // Fixed: Export functions with the correct names that match your routes
-// module.exports = {
-//     registerUser,
-//     loginUser,
-// };
-
-
-
-
-
-
-
-
-
-
 const User = require('../models/user');
 
 const bcrypt = require('bcryptjs');
@@ -84,30 +6,129 @@ const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
     try {
-        const { fullname, username, email, password, confirmPassword } = req.body;
+        const { name, fullname, username, email, password} = req.body;
         
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            return res.status(400).json({ error: 'Passwords do not match' });
+        const existingUser = await User.findOne({ email });
+        if( existingUser) {
+
+            return res.status(400).json({
+
+                message:  'User already exists'
+            });
         }
 
-        const user = new User({
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        //create new user
+
+        const User = new User({
+
+            name,
+            email,
+            password: hashedPassword,
+            role: 'user',
             fullname,
             username,
-            email,
-            password // Will be hashed by the pre('save') middleware
         });
 
         await user.save();
+      req.flash('welcome', `Welcome, ${username}!`)
+        console.log('Flash message:', req.flash('welcome'));
 
-      res.redirect('/home')
+        //Generate JWT Token
 
-    } catch (err) {
+        const token = jwt.sign(
+
+            {userId: user._id, role: user.role},
+            process.env.JWT_SECRET,
+            {expiresIn: '24h'}
+        );
+
+        res.status(201).json({
+
+              message: 'User registered successfully', token,
+            user: {
+
+                id:  user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+                
+            }
+        });
+        //    res.redirect('/')
+    }catch(error){
+
         res.status(500).json({
-            error: err.message
+
+            message: error.message
         });
     }
 };
+
+
+// register as artisan 
+
+// const registerArtisan = (req, res) => {
+
+//     try{
+
+//         const { name, email, password, craftType, experience, location,bio, skills} = req.body;
+
+//         const existingUser = await User.findOne({email});
+//         if(existingUser){
+
+//             return res.status(400).json({
+//                 messsage: 'User already exists'
+//             });
+//         }
+
+//         const hashedPassword = await bcrypt.hash(password, 10);
+
+//         const artisan = new User({
+
+//             name,
+//             email,
+//             password: hashedPassword,
+//             role: 'artisan',
+//             craftType,
+//             experience,
+//             location,
+//             bio,
+//             skills: skills ||  []
+//         });
+
+//         await artisan.save();
+
+//         //generate jwt token 
+
+//         const token = jwt.sign(
+
+//             {userId: artisan_id, role: artisan.role},
+//             process.env.JWT_SECRET,
+//             {expiresIn: '24hr'}
+//         );
+
+//         res.status(201).json({
+
+//             message: 'Artisan resgistered successfully', tokem,
+//             user: {
+//                 id: artisan._id,
+//                 name: artisan.name,
+//                 email: artisan.email,
+//                 role: artisan.role,
+//                 craftType: artisan.craftType
+//             }
+//         });
+
+//     }catch(eerror){
+
+//         res.status(500).json({
+
+//             message: error.message
+//         });
+//     }
+// };
 
 
 
@@ -115,9 +136,6 @@ const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        
-          
-        
 
             const user = await User.findOne({ 
             $or: [
@@ -148,7 +166,9 @@ const loginUser = async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        res.redirect('/home')
+         req.flash('welcome', `Welcome back!`)
+
+       w
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }
@@ -157,4 +177,49 @@ const loginUser = async (req, res) => {
 module.exports = {
     registerUser,
     loginUser,
+  
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Check if passwords match
+    //     if (password !== confirmPassword) {
+    //         return res.status(400).json({ error: 'Passwords do not match' });
+    //     }
+
+    //     const user = new User({
+    //         fullname,
+    //         username,
+    //         email,
+    //         password // Will be hashed by the pre('save') middleware
+    //     });
+
+    //     await user.save();
+
+    //     req.flash('welcome', `Welcome, ${username}!`)
+    //     // console.log('Flash message:', req.flash('welcome'));
+        
+
+    //   res.redirect('/')
+
+    // } catch (err) {
+    //     res.status(500).json({
+    //         error: err.message
+    //     });

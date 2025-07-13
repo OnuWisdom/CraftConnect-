@@ -1,3 +1,4 @@
+
  function toggleNav() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
@@ -17,6 +18,7 @@ document.querySelectorAll('.faq-question').forEach(item => {
         item.classList.toggle('active');
       });
     });
+
 
 
 
@@ -42,4 +44,24 @@ document.querySelectorAll('.circle-nav-container').forEach(container => {
     });
   });
 });
+
+
+
+setTimeout(() =>{
+
+  const flashMsg = document.getElementById('flashMessage');
+  if (flashMsg) {
+
+    flashMsg.style.opacity = '0',
+    flashMsg.style.transition = 'opacity 0.5s ease-out';
+    setTimeout(() =>{
+
+      flashMsg.style.display = 'none';
+    }, 500);
+
+  }
+
+
+}, 4000);
+
 

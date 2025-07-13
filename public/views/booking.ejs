@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="/css/booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+    <div class="sidebar hidden">
+        <div class="logo">
+            <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars"></i></div>
+            <div class="logo-text">
+                <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+            </div>
+            
+        </div>
+
+        <nav class="nav">
+            <a href="/dashboard/artisan" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+                <span>Dashboard</span>
+            </a>
+            <a href="/message" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+                <span>Message</span>
+                <div class="notification-dot"></div>
+            </a>
+            <a href="/booking" class="nav-item active">
+                <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+                <span>Booking</span>
+            </a>
+            <a href="/portfolio" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <span>Portfolio</span>
+            </a>
+            <a href="/reviews" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+                <span>Review</span>
+            </a>
+            <a href="/insights" class="nav-item">
+                <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <span>Insight</span>
+            </a>
+        </nav>
+
+        <div class="bottom-nav">
+            <a href="/profile" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+                <span>Profile</span>
+            </a>
+            <a href="/notification" class="nav-item">
+                <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+                <span>Notifications</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="icon-sidebar ">
+        
+            <div class="icon top-icon">
+             <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars"></i></div>
+           <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+            <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+            <a href="/booking" class="nav-item active nav-item"><i class="fa-solid fa-book"></i></a>
+            <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+            <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+            </div>
+
+            <div class="icon lower-icon">
+                <a href="/profile" class="nav-item"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+            </div>
+        </div>
+
+    <main class="main-content">
+        <header class="main-header">
+          <h1 class="header-title">Bookings</h1>
+          <div class="header-right">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-angle-down"></i>
+            <span class="date">19 May 2022</span>
+            <div class="fa-regular fa-circle-user"></div>
+          </div>
+        </header>
+        
+        <!-- Filters -->
+        <div class="filters">
+          <span><i class="fa-solid fa-filter"></i> Filter by:</span>
+          <button class="pill active">All</button>
+          <button class="pill">Pending</button>
+          <button class="pill">In progress</button>
+          <button class="pill">Completed</button>
+          <button class="pill">Declined</button>
+        </div>
+
+         <!-- Cards grid -->
+        <section class="cards">
+          
+<!-- Card 1 -->
+<% if (booking && booking._id) { %>
+    <!-- Single booking card -->
+    <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
+        <div class="card-header">
+            <div class="info">
+                <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %>" />
+                <div>
+                    <div class="name"><%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %></div>
+                    <div class="date"><%= booking.date || 'No date' %></div>
+                </div>
+            </div>
+            <span class="status-chip accept"><%= booking.status || 'Pending' %></span>
+        </div>
+        <div class="card-body">
+            <span>Service needed: <b><%= booking.serviceType || booking.service || 'Not specified' %></b></span>
+            <span>Location: <b><%= booking.location || 'Not specified' %></b></span>
+            <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
+        </div>
+        <div class="card-actions" id="card-actions">
+            <button data-action="accept" type="button" class="btn primary accept">Accept</button>
+            <button data-action="decline" type="button" class="btn decline">Decline</button>
+        </div>
+    </div>
+<% } else if (typeof bookings !== 'undefined' && bookings.length > 0) { %>
+    <!-- Multiple bookings -->
+    <% bookings.forEach(booking => { %>
+        <% if (booking && booking._id) { %>
+            <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
+                <div class="card-header">
+                    <div class="info">
+                        <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %>" />
+                        <div>
+                            <div class="name"><%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %></div>
+                            <div class="date"><%= booking.date || 'No date' %></div>
+                        </div>
+                    </div>
+                    <span class="status-chip accept"><%= booking.status || 'Pending' %></span>
+                </div>
+                <div class="card-body">
+                    <span>Service needed: <b><%= booking.serviceType || booking.service || 'Not specified' %></b></span>
+                    <span>Location: <b><%= booking.location || 'Not specified' %></b></span>
+                    <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
+                </div>
+                <div class="card-actions" id="card-actions">
+                    <button data-action="accept" type="button" class="btn primary accept">Accept</button>
+                    <button data-action="decline" type="button" class="btn decline">Decline</button>
+                </div>
+            </div>
+        <% } %>
+    <% }) %>
+<% } else { %>
+    <p>No bookings available</p>
+<% } %>
+
+        </section>
+    </main>
+    </div>
+
+    <script src="/js/booking.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -17,3 +17,4 @@ function togglePassword() {
         toggleIcon.textContent = "👁️"; 
     }
 }
+

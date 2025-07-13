@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Add New Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+</head>
+<body>
+  <div class="container-1">
+
+    <!-- Sidebar -->
+    <div class="sidebar hidden">
+      <div class="logo">
+        <div class="logo-text">
+          <span class="logo-craft">Craft</span><span class="logo-connect">Connect</span>
+        </div>
+        <div class="nav-icon logo-icon" id="logo-icon"><i class="fa-solid fa-bars"></i></div>
+      </div>
+
+      <nav class="nav-1">
+        <a href="/dashboard" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
+            <span>Dashboard</span>
+        </a>
+        <a href="/message" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
+            <span>Message</span>
+            <div class="notification-dot"></div>
+        </a>
+        <a href="/booking" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+            <span>Booking</span>
+        </a>
+        <a href="/portfolio" class="nav-item active">
+            <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <span>Portfolio</span>
+        </a>
+        <a href="/reviews" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
+            <span>Review</span>
+        </a>
+        <a href="/insights" class="nav-item">
+            <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <span>Insight</span>
+        </a>
+      </nav>
+
+      <div class="bottom-nav">
+        <a href="/profile" class="nav-item">
+            <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
+            <span>Profile</span>
+        </a>
+        <a href="/notification" class="nav-item">
+            <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
+            <span>Notifications</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="icon-sidebar ">
+        
+      <div class="icon top-icon">
+        <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars"></i></div>
+        <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+        <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
+        <a href="/booking" class="nav-item nav-item"><i class="fa-solid fa-book"></i></a>
+        <a href="/portfolio" class="nav-item active"><i class="fa-solid fa-briefcase "></i></a>
+        <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
+        <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
+      </div>
+
+      <div class="icon lower-icon">
+        <a href="/profile" class="nav-item"><i class="fa-regular fa-circle-user"></i></a>
+        <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-content">
+          <h1 class="header-title"><a class="portfolio-style" href="/">Portfolio ></a> Add new project</h1>
+          <p>Manage your work and best samples to attract more bookings</p>
+        </div>
+        <div class="header-right">
+          <i class="fas fa-search"></i>
+          <div class="bell-group">
+           <a href="/notification"><i class="far fa-bell"></i></a> 
+            <div class="circle"></div>
+          </div>
+          <i class="far fa-calendar"></i>
+          <span class="date">19 May 2022</span>
+          <div class="avatar">U</div>
+        </div>
+      </header>
+        
+      <section>
+        
+      <!-- Add New Project -->
+         
+      <!-- Add New Project -->
+    <form action="/portfolio/add" method="POST" enctype="multipart/form-data">
+
+  <div class="add-project">
+
+    <div class="group-container-1">
+
+      <div class="project">
+        <label for="">Project title</label>
+        <input class="input-projectTitle" type="text" name="portfolioname" placeholder="e.g Bridal Gown for Ada" required>
+      </div>
+     
+      <div class="project">
+        <label for="">Project description</label>
+        <input class="input-projectTitle" type="text" name="portfoliodescription" placeholder="Enter project description" required>
+      </div>
+
+      <div class="dropdown">
+        <label for="">Service category</label>
+        <select name="servicecategory" class="form-select" required>
+          <option value="">Select your service</option>
+          <option value="tailoring">Tailoring</option>
+          <option value="fashion-design">Fashion Design</option>
+          <option value="bridal-wear">Bridal Wear</option>
+          <option value="alterations">Alterations</option>
+          <!-- Add your actual service categories -->
+        </select>
+      </div>
+
+      <div class="toogle-container">
+        <p>Feature this on your profile? This allows client to see this project from your public profile page</p>
+        <div id="customToggle" class="toggle-switch">
+          <div class="switch-circle"></div>
+        </div>
+        <input type="hidden" name="featured" id="featuredInput" value="false">
+      </div>
+
+      <div class="button-container">
+        <div class="text-center">
+          <button type="submit" class="button-1">Upload project</button> 
+        </div>
+        <div class="text-center">
+          <button type="button" class="button-2" onclick="previewProject()">Preview project</button> 
+        </div>
+      </div>
+    </div>
+
+
+
+    
+
+    <div class="group-container-2">
+
+      <div class="add-file-container">
+        <img src="images/Upload-icon.svg" alt="">
+        <p>Drag & drop file or</p>
+        <input type="file" name="image" id="fileInput" style="display: none;" accept="image/jpeg, image/png" required>
+        <!-- <input type="file" name="image" id="fileInput" class="display" accept="image/jpeg, image/png" required> -->
+        <a class="custom-button" id="browserBtn">Browse</a>
+        <p>Supported formats JPEG, PNG</p>
+      </div>
+
+      <div class="grouped-1">
+        <div class="uploading-file-container upload">
+          <p>Uploading - <span>1</span> files</p>
+          <ul class="uploading"></ul>
+        </div>
+        <div class="loading-bar">
+          <div class="loading-fill" id="loadingFill"></div>
+        </div>
+      </div>
+      
+      <div class="uploaded-file-container upload">
+        <ul class="uploaded">
+          <p>Uploaded</p>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</form>
+
+      </section> 
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/portfolio.js"></script>
+</body>
+</html>

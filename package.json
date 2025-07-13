@@ -23,6 +23,8 @@
     "leaflet": "^1.9.4",
     "mongoose": "^8.15.1",
     "multer": "^2.0.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "resend": "^4.5.1"
   }
 }
