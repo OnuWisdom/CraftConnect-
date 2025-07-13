@@ -5,29 +5,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>About Page</title>
 		<link rel="stylesheet" href="/css/about.css" />
+		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	</head>
 	<body>
 		<!-- The Header -->
-		<header class="header">
+    		<header class="header">
 			<div class="logo">
 				<h2>
-					<a href="/"
-						><span class="sp1">Craft</span><span class="sp2">Connect</span>
-					</a>
+					<a href=""
+						><span class="sp1">Craft</span><span class="sp2">Connect</span></a
+					>
 				</h2>
 			</div>
 
 			<nav class="navbar">
-				<ul class="nav-links">
-					<li><a href="/">Home</a></li>
+			<ul class="nav-links" id="navLinks">
+  
+                    <li><a href="/">Home</a></li>
 					<li><a href="/exploreartisans">Explore Artisans</a></li>
 					<li><a href="/become-an-artisan">Become an Artisan</a></li>
 					<li><a href="/about" class="active">About</a></li>
 					<li><a href="/contact">Contacts</a></li>
-				</ul>
-			</nav>
+</ul>
 
-			<div class="profile-container">
+</nav>
+<div class="profile-container">
 				<div class="profile-info" onclick="toggleDropdown()">
 					<div class="profile-icon">
 						<img src="images/user.png" alt="Profile" />
@@ -37,27 +40,25 @@
 					<!-- Down arrow -->
 				</div>
 				<div class="dropdown-menu" id="dropdown">
-					<ul>
+                   <ul>
 						<li><a href="dashboard.html">Dashboard</a></li>
 						<li><a href="settings.html">Settings</a></li>
 						<li><a href="/login">Logout</a></li>
 					</ul>
 				</div>
 			</div>
-
-			<!-- Mobile Menu Toggle Button -->
-			<button class="menu-toggle" onclick="toggleNavbar()">☰</button>
+            <span class="icon" onclick="toggleNav()">&#9776;</span>
 		</header>
 
 		<!-- The Hero Section  -->
 		<section class="hero-section">
 			<div class="hero-container">
-				<h3 class="hero-h3">
+				<h3 class="about">
 					<strong
 						>We’re crafting opportunities. <br />One service at a time.
 					</strong>
 				</h3>
-				<p class="hero-p">
+				<p class="about">
 					CraftConnect is built to empower student artisans and make it easier
 					for people to find skilled, trustworthy help within their community.
 				</p>
@@ -98,7 +99,7 @@
 		</section>
 
 		<!-- The How It Works Section  -->
-		<section class="how-it-works" id="target">
+		<section class="how-it-works">
 			<div class="title-works">
 				<h1>How it Works</h1>
 				<p>
@@ -137,13 +138,7 @@
 			</div>
 
 			<div class="explore-btn">
-				<button
-					class="exp-btn"
-					type="button"
-					onclick="location.href='explore-artisans.html'"
-				>
-					Explore an Artisan
-				</button>
+				<button class="exp-btn" type="button">Explore an Artisan</button>
 			</div>
 		</section>
 
@@ -151,26 +146,26 @@
 		<section class="CTA-section">
 			<div class="image-carousal">
 				<img
-					src="images/About-2.png"
+					src="/images/About-2.png"
 					alt="tradeImg"
 					width="300px"
 					class="carousal"
 				/>
 				<img
-					src="images/About-2.png"
+					src="/images/About-2.png"
 					alt="tradeImg"
 					width="300px"
 					class="carousal"
 				/>
 				<img
-					src="images/About-2.png"
+					src="/images/About-2.png"
 					alt="tradeImg"
 					width="300px"
 					class="carousal"
 				/>
 			</div>
 
-			<div>
+			<div class="cta-content">
 				<h2>Join the CraftConnect Community</h2>
 				<p>
 					Become a student artisan today and showcase your craft!
@@ -181,7 +176,7 @@
 			<button
 				class="btn community"
 				type="button"
-				onclick="location.href='/become-an-artisan'"
+				onclick="location.href='become-an-artisan.html'"
 			>
 				Become an Artisan
 			</button>
@@ -200,7 +195,7 @@
 					<button
 						class="btn cta-btn"
 						type="button"
-						onclick="location.href='/sign-up'"
+						onclick="location.href='sign-up.html'"
 					>
 						Get Started Today.
 					</button>
@@ -252,6 +247,7 @@
 				</div>
 			</div>
 		</footer>
+
 
 		<script src="/js/script.js"></script>
 	</body>
