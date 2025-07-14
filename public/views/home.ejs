@@ -12,7 +12,6 @@
 <body>
 	<div class="container">
 
-
     <header class="header">
         <div class="logo">
             <h2>
@@ -21,24 +20,6 @@
                 </a>
             </h2>
         </div>
-
-			<header class="header">
-
-					<% if (typeof welcome !== 'undefined' && welcome && welcome.length > 0) { %>
- 					 <div id="flashMessage"  style="position: fixed; top: 20px; right: 20px; background: green; color: white; padding: 15px; z-index: 9999;">
-    					<%= welcome[0] %>
-   					 <button onclick="this.parentElement.style.display='none'">&times;</button>
- 					 </div>
-				<% } %>
-
-				<div class="logo">
-					<h2>
-						<a href="/">
-							<span class="sp1">Craft</span><span class="sp2">Connect</span>
-						</a>
-					</h2>
-				</div>
-
 
         <nav class="navbar">
             <ul class="nav-links" id="navLinks">
@@ -51,8 +32,11 @@
         </nav>
 
         <div class="auth-buttons">
-            <button type="button" class="login-butt" onclick="location.href='/sign-up'">Login</button>
-            <button type="button" class="signUp-butt" onclick="location.href='/sign-in'">Sign up</button>
+            <!-- <button type="button" class="login-butt" onclick="location.href='/sign-up'">Login</button> -->
+            <!-- <button type="button" class="signUp-butt" onclick="location.href='/sign-in'">Sign up</button> -->
+			             <button type="button" class="login-butt" onclick="location.href='login.html'">Login</button>
+
+			 <button type="button" class="signUp-butt" onclick="location.href='sign-up.html'">Sign up</button>
         </div>
 
         <span class="icon fa fa-bars" onclick="toggleNav()"></span>
@@ -64,7 +48,7 @@
 			<div class="search-container">
 				<div class="filter-container">
 					<button type="button" class="filter-button" >
-						<img src="/images/Vector.svg"  />
+						<img src="/images/Vector.svg" alt="filter" />
 						Filter
 					</button>
 				</div>
@@ -476,7 +460,7 @@
 				
 			<button class="see-all-button" type="submit"> 
 				See all
-				<img src="/images/images/arrow.svg" alt="button-icon">
+				<img src="/images/arrow.svg" alt="button-icon">
 			</button>
 		</div>
 
@@ -832,11 +816,14 @@
 
 
 
+
+
     <!-- </div> -->
 
 
-  <script src="/js/home-page"></script>
+<script src="/js/home-page.js" charset="UTF-8"></script>
 
  
  </body>
+
 </html>
