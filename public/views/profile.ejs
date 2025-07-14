@@ -165,7 +165,7 @@
                 Preview Public Profile
               </a>
             </div>
-            <div class="profile-info">
+            <!-- <div class="profile-info">
               <img src="images/p (1).png" alt="Profile" />
               <div>
                 <h4>
@@ -213,7 +213,66 @@
                     <span class="txt-style">(23 reviews)</span>
                   </div>
               </div>
-            </div> 
+            </div>  -->
+
+             <div class="profile-info">
+        <img src="<%= university.image || 'images/p (1).png' %>" alt="Profile" />
+        <div>
+            <h4>
+                <%= university.fullname %>
+                <div class="verified">
+                    <div class="circle">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p class="verified-text">verified</p>
+                </div>
+            </h4>
+            <p class="txt-style"><%= university.email %></p>
+            <p class="des">
+                Professional <%= university.servicename.toLowerCase() %> with <%= university.experience %> experience specializing in <%= university.servicecategory.toLowerCase() %> for all occasions.
+            </p>
+            <div class="details">
+                <div class="details-row">
+                    <div class="details-cont">
+                        <p class="txt-style">Service Categories:</p>
+                        <p class="txt-style2"><%= university.servicecategory %></p>
+                    </div>
+                    <div class="details-cont">
+                        <p class="txt-style">Pricing Tier</p>
+                        <p class="txt-style2"><%= university.pricetier %></p>
+                    </div>
+                </div>
+
+                <div class="details-row"> 
+                    <div class="details-cont">
+                        <p class="txt-style">Experience</p>
+                        <p class="txt-style2"><%= university.experience %></p>
+                    </div>
+                    <div class="details-cont">
+                        <p class="txt-style">Location</p>
+                        <p class="txt-style2"><%= university.location %></p>
+                    </div>
+                </div>
+                
+                <div class="details-row">
+                    <div class="details-cont">
+                        <p class="txt-style">Institution:</p>
+                        <p class="txt-style2"><%= university.institutionname %></p>
+                    </div>
+                    <div class="details-cont">
+                        <p class="txt-style">Service Name:</p>
+                        <p class="txt-style2"><%= university.servicename %></p>
+                    </div>
+                </div>
+            </div>
+            <p class="txt-style p-t">Rating:</p>
+            <div>
+                <i class="fa-solid fa-star star2"></i>
+                <span class="txt-style2"><%= university.rating || 0 %></span>   
+                <span class="txt-style">(0 reviews)</span>
+            </div>
+        </div>
+    </div>
             <div class="portfolio-status-cont">
               <div class="portfolio-status-cont1">
                 <p class="portfolio-status">Portfolio Status:</p>

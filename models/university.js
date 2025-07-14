@@ -1,70 +1,49 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const universitySchema = new 
-
-mongoose.Schema({
-
+const universitySchema = new mongoose.Schema({
     institutionname: {
-
         type: String,
         required: true
     },
-
-       fullname: {
-
+    fullname: {
         type: String,
         required: true
     },
-
-       email: {
-
+    email: {
         type: String,
         required: true
     },
-
     servicecategory: {
-
         type: String,
         required: true
     },
-
     servicename: {
-
         type: String,
-        required:true
+        required: true
     },
-
-     image: {  
+    image: {  
         type: String,
         required: false
     },
-
-     rating: {
-
+    rating: {
         type: Number,
         default: 0,
         min: 0,
         max: 5,
     },
-
-    
     location: {
-
         type: String,
         required: true
     },
-    
     pricetier: {
         type: String,
         required: true
     },
-    
     experience: {   
         type: String,
         required: true
     },
-})
+});
 
-
-module.exports =
-mongoose.model('University', universitySchema);
+// Check if model already exists before creating it
+module.exports = mongoose.models.University || mongoose.model('University', universitySchema);

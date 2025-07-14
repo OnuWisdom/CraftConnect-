@@ -14,16 +14,14 @@ const express = require('express');
 const router = express.Router();
 
 // Route for the homepage
+// Route for the homepage
 router.get('/', (req, res) => {
     const welcome = req.flash('welcome');
-    // console.log('Flash message:',welcome);
-    // Instead of res.send(), use res.render() to render your EJS view
-    // res.render('home', {
-    //     title: 'CraftConnect - Your Artisan Hub',
-    //     currentPage: 'home' // Used for active class in navbar and CSS
-    // });
-
-    res.render('home', {welcome});
+    res.render('home', {
+        welcome,
+        title: 'CraftConnect - Your Artisan Hub',
+        currentPage: 'home'
+    });
 });
 
 

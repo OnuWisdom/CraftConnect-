@@ -4,38 +4,34 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
 const session = require('express-session');
-const Booking = require('./models/booking');
 const flash = require('connect-flash');
-
 const passport = require('passport');
 require('./googleauth');
 
+// Import models
+const Booking = require('./models/booking');
+const University = require('./models/University');
+
+// Import routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/userRoutes');
 const testRoutes = require('./routes/test');
 const indexRoutes = require('./routes/index');
-const bookingRoutes = require('./routes/booking')
+const bookingRoutes = require('./routes/booking');
 const portfolioRoutes = require('./routes/portfolio');
 const dashboardRoutes = require('./routes/dashboard');
-
-
-
-const contactRoutes = require('./routes/contact')
-const universityRoutes = require('./routes/university')
+const contactRoutes = require('./routes/contact');
+const universityRoutes = require('./routes/university');
 
 const app = express();
 
-
-
-
-
-
-
+// Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(session( {
-
+// Session configuration (only once)
+app.use(session({
     secret: process.env.SESSION_SECRET || 'mysecret',
     resave: false,
     saveUninitialized: false,
@@ -43,127 +39,179 @@ app.use(session( {
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-
-
-
+app.use(flash());
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
 
 // Serve static files
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Basic routes
+app.get('/home', (req, res) => {
+    const welcome = req.flash('welcome') || []; // Provide default empty array
+    res.render('home', {
+        welcome,
+        title: 'CraftConnect - Your Artisan Hub', 
+        currentPage: 'home'
+    });
+});
 
-
-
-
-// Routes
-app.get('/home', (req,res) =>{
-
-    res.render('home',{
-
-          title: 'CraftConnect - Your Artisan Hub', 
-           currentPage: 'home'
-    })
-})
-
-
-
-app.get('/about', (req,res) =>{
-
-    res.render('about',{
+app.get('/about', (req, res) => {
+    res.render('about', {
         title: 'About Us - CraftConnect',
         currentPage: 'about'
-    })
-    
-})
+    });
+});
 
-app.get('/exploreartisans', (req,res) =>{
+app.get('/exploreartisans', (req, res) => {
+    res.render('exploreartisans', {
+        title: 'Explore Artisans - CraftConnect',
+        currentPage: 'explore-artisan'
+    });
+});
 
-    res.render('exploreartisans',{
-
-      title: 'Explore Artisans - CraftConnect',
-     currentPage: 'explore-artisan'
-    })
-})
-
-
-app.get('/sign-in', (req,res) =>{
-
-    res.render('sign-up',{
-
-         title: ' Sign-up CraftConnect',
+app.get('/sign-in', (req, res) => {
+    res.render('sign-up', {
+        title: ' Sign-up CraftConnect',
         currentPage: 'sign-up'
-    })
-})
+    });
+});
 
-
-app.get('/become-an-artisan', (req,res) =>{
-
-    res.render('become-an-artisan',{
-
-         title: 'Become an artisan - CraftConnect',
+app.get('/become-an-artisan', (req, res) => {
+    res.render('become-an-artisan', {
+        title: 'Become an artisan - CraftConnect',
         currentPage: 'become-an-artisan'
-    })
-})
+    });
+});
 
-app.get('/notification', (req,res) =>{
-
-    res.render('notification',{
-
-         title: 'Notification - CraftConnect',
+app.get('/notification', (req, res) => {
+    res.render('notification', {
+        title: 'Notification - CraftConnect',
         currentPage: 'Notification'
-    })
-})
+    });
+});
 
+app.get('/dashboard/artisan', async (req, res) => {
+  
+   const artisanId = req.session.artisanId;
+    if (!artisanId) {
+        return res.redirect('/become-an-artisan');
+    }
 
-app.get('/dashboard/artisan', (req,res) =>{
+    try {
+        const artisan = await University.findById(artisanId);   
+        if (!artisan) {
+            return res.redirect('/become-an-artisan');
+        }
+        res.render('dashboard', {
+            title: 'Dashboard - CraftConnect',
+            currentPage: 'dashboard',
+            university: artisan
+        });
+    } catch (error) {
+        console.error('Error fetching artisan for dashboard:', error);
+        res.status(500).send('Error fetching artisan for dashboard: ' + error.message);
+    }
+});
 
-    res.render('dashboard',{
+// Profile route
+    app.get('/profile', async (req, res) => {
+    try {
+        const artisanId = req.session.artisanId;
+        
+        if (!artisanId) {
+            return res.redirect('/become-an-artisan');
+        }
+        
+        const artisan = await University.findById(artisanId);
+        
+        if (!artisan) {
+            return res.redirect('/become-an-artisan');
+        }
+        
+        // Pass as 'university' to match your EJS template
+        res.render('profile', { 
+            university: artisan,
+            title: 'Profile - CraftConnect',
+            currentPage: 'Profile'
+        });
+        
+    } catch (error) {
+        console.error('Error fetching artisan:', error);
+        res.status(500).send('Error fetching artisan profile: ' + error.message);
+    }
+});
 
-         title: 'Dashboard - CraftConnect',
-        currentPage: 'Dashboard'
-    })
-})
+//Profile route with ID parameter
+app.get('/profile/:id', async (req, res) => {
+    try {
+        const artisanId = req.params.id;
+        const artisan = await University.findById(artisanId);
+        
+        if (!artisan) {
+            return res.status(404).send('Artisan not found');
+        }
+        
+        // Store in session for future use
+        req.session.artisanId = artisanId;
+        
+        res.render('profile', { 
+            university: artisan,
+            title: 'Profile - CraftConnect',
+            currentPage: 'Profile'
+        });
+        
+    } catch (error) {
+        console.error('Error fetching artisan:', error);
+        res.status(500).send('Error fetching artisan profile: ' + error.message);
+    }
+});
+// University form submission
+app.post('/university', async (req, res) => {
+    try {
+        console.log('Form data received:', req.body);
 
+        // Helper function to extract string value from potential array
+        const extractValue = (value) => {
+            if (Array.isArray(value)) {
+                return value[0];
+            }
+            return value;
+        };
 
+        const artisanData = {
+            fullname: extractValue(req.body.fullname),
+            email: extractValue(req.body.email),
+            institutionname: extractValue(req.body.institutionname),
+            servicecategory: extractValue(req.body.servicecategory),
+            servicename: extractValue(req.body.servicename),
+            location: extractValue(req.body.location),
+            pricetier: extractValue(req.body.pricetier),
+            experience: extractValue(req.body.experience),
+            rating: req.body.rating || 0
+        };
 
+        // Save to database
+        const newArtisan = new University(artisanData);
+        await newArtisan.save();
 
-app.get('/profile', (req,res) =>{
+        console.log('Artisan saved:', newArtisan);
 
-    res.render('profile',{
+        // Store ID in session and redirect to profile
+        req.session.artisanId = newArtisan._id;
+        res.redirect('/profile');
+        
+    } catch (error) {
+        console.error('Error creating artisan:', error);
+        res.status(500).send('Error creating artisan profile: ' + error.message);
+    }
+});;
 
-         title: 'Profile - CraftConnect',
-        currentPage: 'Profile'
-    })
-})
-
-
-
-
-// app.get('/profile', (req,res) =>{
-
-//     res.render('profile',{
-
-//          title: 'Profile - CraftConnect',
-//         currentPage: 'Profile'
-//     })
-// })
-
-
-app.use('/portfolio', portfolioRoutes);
-
-
-
-
-
-
-
+// Booking route
 app.get('/booking', async (req, res) => {
     try {
         const bookings = await Booking.find().populate('userId');
@@ -171,92 +219,51 @@ app.get('/booking', async (req, res) => {
             title: 'Booking - CraftConnect',
             currentPage: 'become-an-artisan',
             bookings: bookings,
-             booking: null
+            booking: null
         });
     } catch (err) {
         console.log('Error fetching bookings:', err);
         res.render('booking', {
             title: 'Booking - CraftConnect',
             currentPage: 'become-an-artisan',
-              bookings: [],
-             booking: { userId: { name: '' }, date: '', service: '', location: '', price: '', status: '', _id: '' }
-
+            bookings: [],
+            booking: { userId: { name: '' }, date: '', service: '', location: '', price: '', status: '', _id: '' }
         });
     }
 });
 
-
-       
-app.use('/', bookingRoutes);
-
-
-app.get('/sign-up', (req,res) =>{
-
-    res.render('login',{
-
-         title: ' Sign-in - CraftConnect',
+app.get('/sign-up', (req, res) => {
+    res.render('login', {
+        title: ' Sign-in - CraftConnect',
         currentPage: 'sign-in'
-    })
-})
+    });
+});
 
-//Google Login/Sign-Up Routes
+// Google Auth routes
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile','email']
+    scope: ['profile', 'email']
 }));
 
 app.get('/auth/google/callback', 
-
     passport.authenticate('google', {
-
         failureRedirect: '/'
     }),
-
     (req, res) => res.redirect('/')
 );
 
-
-
-app.use(session({
-
-    secret:'replace-this-with-env-secret',
-    resave:false,
-    saveUninitialized:false,
-}));
-app.use(flash());
-
-
-
-
+// Route middleware
 app.use('/', indexRoutes);
 app.use('/contact', contactRoutes);
 app.use('/university', universityRoutes);
-
-
-app.use('/', dashboardRoutes)
+app.use('/portfolio', portfolioRoutes);
+app.use('/', dashboardRoutes);
 app.use('/booking', bookingRoutes);
-
-
-
 app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
-app.use('/', indexRoutes);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-
-
-
-
 
 const PORT = process.env.PORT || 5001;
 
 connectDB().then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
-
-
-
-
-
-
-
