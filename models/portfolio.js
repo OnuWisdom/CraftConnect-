@@ -20,11 +20,11 @@ const portfolioSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // userId: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     // required: true // Uncomment if you want to associate with users
-    // }
+    artisanId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true // Uncomment if you want to associate with users
+    }
 }, {
     timestamps: true // This will add createdAt and updatedAt automatically
 });

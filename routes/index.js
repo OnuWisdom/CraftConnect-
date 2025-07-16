@@ -69,25 +69,6 @@ router.get('/login', (req, res) => {
 });
 
 
-
-// app.get('/notification', (req,res) =>{
-
-//     res.render('notification',{
-
-//          title: 'Notification - CraftConnect',
-//         currentPage: 'Notification'
-//     })
-// });
-
-// router.get('/booking', (req, res) => {
-//     res.render('booking', {
-//         title: 'Booking - CraftConnect',
-//         currentPage: 'login'
-//     });
-// });
-
-
-
 // If you have a separate API endpoint for just checking if the API is running,
 // you might put it on a different path, e.g., '/api/status' or move it to a different route file.
 //  router.get('/api/status', (req, res) => {

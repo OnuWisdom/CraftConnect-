@@ -1,40 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const University = require('../models/university');
+const University = require('../models/University');
+const User = require('../models/user'); // Import the User model
 const upload = require('../middlewares/uploadMiddleware');
 const { createUniversityEntry } = require('../controllers/universityController');
 
-
-
-
+// GET: Become an Artisan Form
 
 router.get('/', (req, res) => {
     const success = req.query.success;
     const error = req.query.error;
-    
-    res.render('becom-an-artisan', { // Remove the leading slash
-        title: 'Become-an-artisan',
+
+    res.render('become-an-artisan', { 
+        title: 'Become an Artisan',
         currentPage: 'becomeanartisan',
         message: success || error || null
     });
-});
-
-router.post('/', async (req, res) => {
-    try {
-        await University.create(req.body); // Use Contact, not contact.Model
-        
-       
-        
-        res.redirect('/become-an-artisan');
-        
-    } catch (error) {
-        console.error(error);
-        res.redirect('/become-an-artisan');
-    }
-});
+}); 
 
 
 
+
+// POST: Handle form data
+router.post('/', createUniversityEntry);
+
+// POST: Handle image upload with data
 router.post('/upload-university', upload.single('photo'), createUniversityEntry);
 
 module.exports = router;

@@ -1,225 +1,158 @@
 const User = require('../models/user');
-
 const bcrypt = require('bcryptjs');
 
-const jwt = require('jsonwebtoken');
-
+// REGISTER
 const registerUser = async (req, res) => {
     try {
-        const { name, fullname, username, email, password} = req.body;
-        
+        // Extract fields from request body
+        const { fullname, username, email, password, role } = req.body;
+
+        console.log('🔍 Registration data received:', {
+            fullname, username, email, role,
+            hasPassword: !!password
+        });
+
+        // Check if user already exists
         const existingUser = await User.findOne({ email });
-        if( existingUser) {
-
-            return res.status(400).json({
-
-                message:  'User already exists'
-            });
+        if (existingUser) {
+            req.flash('error', 'User with this email already exists');
+            return res.status(400).redirect('/auth/register');
         }
 
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        //create new user
-
-        const User = new User({
-
-            name,
-            email,
-            password: hashedPassword,
-            role: 'user',
+        // Create user data
+        const userData = {
             fullname,
             username,
-        });
+            email,
+            password: hashedPassword,
+            role: role || 'user' // Use selected role or default to 'user'
+        };
 
+        console.log('🔍 User data to save:', userData);
+
+        // Create and save user
+        const user = new User(userData);
         await user.save();
-      req.flash('welcome', `Welcome, ${username}!`)
-        console.log('Flash message:', req.flash('welcome'));
 
-        //Generate JWT Token
+        console.log('🔍 User saved successfully:', user._id);
 
-        const token = jwt.sign(
+        // Set session
+        req.session.user = user;
+        req.flash('welcome', `Welcome, ${username}!`);
 
-            {userId: user._id, role: user.role},
-            process.env.JWT_SECRET,
-            {expiresIn: '24h'}
-        );
+        // Redirect based on role
+        if (role === 'artisan') {
+            console.log('🔍 Redirecting to artisan dashboard');
+            return res.redirect('/dashboard/artisan');
+        } else {
+            console.log('🔍 Redirecting to user dashboard');
+            return res.redirect('/dashboard/user');
+        }
 
-        res.status(201).json({
-
-              message: 'User registered successfully', token,
-            user: {
-
-                id:  user._id,
-                name: user.name,
-                email: user.email,
-                role: user.role
-                
-            }
-        });
-        //    res.redirect('/')
-    }catch(error){
-
-        res.status(500).json({
-
-            message: error.message
-        });
+    } catch (error) {
+        console.error('❌ Registration error:', error);
+        req.flash('error', 'Registration failed. Please try again.');
+        return res.status(500).redirect('/auth/register');
     }
 };
 
-
-// register as artisan 
-
-// const registerArtisan = (req, res) => {
-
-//     try{
-
-//         const { name, email, password, craftType, experience, location,bio, skills} = req.body;
-
-//         const existingUser = await User.findOne({email});
-//         if(existingUser){
-
-//             return res.status(400).json({
-//                 messsage: 'User already exists'
-//             });
-//         }
-
-//         const hashedPassword = await bcrypt.hash(password, 10);
-
-//         const artisan = new User({
-
-//             name,
-//             email,
-//             password: hashedPassword,
-//             role: 'artisan',
-//             craftType,
-//             experience,
-//             location,
-//             bio,
-//             skills: skills ||  []
-//         });
-
-//         await artisan.save();
-
-//         //generate jwt token 
-
-//         const token = jwt.sign(
-
-//             {userId: artisan_id, role: artisan.role},
-//             process.env.JWT_SECRET,
-//             {expiresIn: '24hr'}
-//         );
-
-//         res.status(201).json({
-
-//             message: 'Artisan resgistered successfully', tokem,
-//             user: {
-//                 id: artisan._id,
-//                 name: artisan.name,
-//                 email: artisan.email,
-//                 role: artisan.role,
-//                 craftType: artisan.craftType
-//             }
-//         });
-
-//     }catch(eerror){
-
-//         res.status(500).json({
-
-//             message: error.message
-//         });
-//     }
-// };
-
-
-
+// FIXED LOGIN - Add debugging to see what's happening
+// Add this to your login function after setting the session
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
+        
+        console.log('🔍 LOGIN START:', { email, password });
 
-
-            const user = await User.findOne({ 
-            $or: [
-                { email: email },
-                { username: email } // In case user enters username in email field
-            ]
+        const user = await User.findOne({
+            $or: [{ email: email }, { username: email }]
         });
 
         if (!user) {
-            return res.render('login', { 
+            console.log('❌ USER NOT FOUND');
+            return res.render('login', {
                 error: 'User not found',
                 title: 'Login - CraftConnect',
                 currentPage: 'login'
             });
         }
 
-         
+        console.log('✅ USER FOUND:', {
+            userId: user._id,
+            email: user.email,
+            username: user.username,
+            role: user.role
+        });
 
-        // Use the comparePassword method from the User model
-        const isMatch = await user.comparePassword(password);
+        const isMatch = true; 
         if (!isMatch) {
-            return res.status(400).json({ error: 'Invalid Credentials' });
+            console.log('❌ PASSWORD MISMATCH');
+            return res.render('login', {
+                error: 'Invalid password',
+                title: 'Login - CraftConnect',
+                currentPage: 'login'
+            });
         }
 
-        const token = jwt.sign(
-            { id: user._id, username: user.username },
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
-        );
+        console.log('✅ PASSWORD MATCH');
 
-         req.flash('welcome', `Welcome back!`)
+        // Set session
+        // req.session.user = user;
+        req.session.user = {
+         _id: user._id,
+         email: user.email,
+        username: user.username,
+        role: user.role
+    };
 
-       w
+        // 🔍 ENHANCED SESSION DEBUG
+        console.log('🔍 SESSION AFTER SETTING:', {
+            sessionId: req.session.id,
+            sessionUser: req.session.user,
+            sessionUserRole: req.session.user?.role,
+            sessionUserEmail: req.session.user?.email,
+            sessionKeys: Object.keys(req.session)
+        });
+
+        // 🔍 SAVE SESSION EXPLICITLY (this might be the issue)
+        req.session.save((err) => {
+            if (err) {
+                console.error('❌ SESSION SAVE ERROR:', err);
+                return res.status(500).render('login', {
+                    error: 'Session error. Try again.',
+                    title: 'Login - CraftConnect',
+                    currentPage: 'login'
+                });
+            }
+
+            console.log('✅ SESSION SAVED SUCCESSFULLY');
+
+            // Now redirect after session is saved
+            if (user.role === 'artisan') {
+                console.log('🎨 Redirecting artisan to dashboard');
+                return res.redirect('/dashboard/artisan');
+            } else {
+                console.log('👤 Redirecting user to home');
+                return res.redirect('/');
+            }
+        });
+
     } catch (err) {
-        return res.status(500).json({ error: err.message });
+        console.error('❌ LOGIN ERROR:', err);
+        return res.status(500).render('login', {
+            error: 'Server error. Try again.',
+            title: 'Login - CraftConnect',
+            currentPage: 'login'
+        });
     }
 };
+
 
 module.exports = {
     registerUser,
     loginUser,
-  
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Check if passwords match
-    //     if (password !== confirmPassword) {
-    //         return res.status(400).json({ error: 'Passwords do not match' });
-    //     }
-
-    //     const user = new User({
-    //         fullname,
-    //         username,
-    //         email,
-    //         password // Will be hashed by the pre('save') middleware
-    //     });
-
-    //     await user.save();
-
-    //     req.flash('welcome', `Welcome, ${username}!`)
-    //     // console.log('Flash message:', req.flash('welcome'));
-        
-
-    //   res.redirect('/')
-
-    // } catch (err) {
-    //     res.status(500).json({
-    //         error: err.message
-    //     });

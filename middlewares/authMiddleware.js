@@ -1,39 +1,51 @@
-const jwt = require('jsonwebtoken');
 
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'] || req.cookies?.token;
-    const token = authHeader && authHeader.split(' ')[1] || authHeader;
-
-    if (!token) {
-        return res.status(401).json({
-            error: 'Access denied, no token provided'
-        });
-    }
-
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({
-                error: 'Invalid token'
-            });
-        }
-
-        req.user = user;
-        next();
+function isLoggedIn(req, res, next) {
+    console.log('🔍 isLoggedIn check:', {
+        hasSession: !!req.session,
+        hasUser: !!req.session?.user,
+        userRole: req.session?.user?.role
     });
-};
+    
+    if (req.session && req.session.user) {
+        return next();
+    }
+    
+    console.log('❌ Not logged in, redirecting to /auth/login');
+    return res.redirect('/auth/sign-up');
+}
 
-const checkRole = (expectedRole) => {
-    return (req, res, next) => {
-        if (!req.user || req.user.role !== expectedRole) {
-            return res.status(403).json({
-                error: 'Access denied'
-            });
-        }
-        next();
-    };
-};
+function isArtisan(req, res, next) {
+    console.log('🔍 isArtisan check:', {
+        hasSession: !!req.session,
+        hasUser: !!req.session?.user,
+        userRole: req.session?.user?.role,
+        isArtisan: req.session?.user?.role === 'artisan'
+    });
+    
+    if (req.session && req.session.user && req.session.user.role === 'artisan') {
+        return next();
+    }
+    
+    console.log('❌ Not artisan, redirecting to home');
+    return res.redirect('/'); // Redirect to home since no user dashboard
+}
 
-module.exports = {
-    authenticateToken,
-    checkRole
-};
+// ✅ ADD THIS: isUser function (even though you don't have user dashboard yet)
+function isUser(req, res, next) {
+    console.log('🔍 isUser check:', {
+        hasSession: !!req.session,
+        hasUser: !!req.session?.user,
+        userRole: req.session?.user?.role,
+        isUser: req.session?.user?.role === 'user'
+    });
+    
+    if (req.session && req.session.user && req.session.user.role === 'user') {
+        return next();
+    }
+    
+    console.log('❌ Not user, redirecting to home');
+    return res.redirect('/'); // Redirect to home
+}
+
+// ✅ CRITICAL: Export all functions
+module.exports = { isLoggedIn, isArtisan, isUser };

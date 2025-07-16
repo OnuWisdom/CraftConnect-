@@ -10,7 +10,11 @@ exports.createBooking = async(req, res) => {
 
         const newBooking = 
 
-        await Booking.create(req.body);
+        await Booking.create({
+
+            artisanId: req.body.artisanId,
+            userId: req.session.user._id, // Assuming req.user is set after authentication
+        });
 
         res.status(201).json(newBooking);
         
@@ -122,30 +126,14 @@ exports.acceptBooking = async (req, res) => {
 
 
 // exports.getBooking = async (req, res) => {
-
 //     try{
 
 //         const booking = await Booking.find({
 
-//             userId: req.user
-//         }).exec();
+//             artisanId: req.user._id
 
-//         return booking;
-//     }catch(err){
-
-//         console.error('Error fetching bookings:', err);
-//         res.status(500).send('Server error');
-//     }
-// };
-
-
-// exports.getBooking = async (req, res) => {
-//     try{
-//         const booking = await Booking.find({
-
-//             userId: req.user
-
-//         }).exec();
+//         });
+//         .populate('userId')
 
 //         res.json(booking);  // ✅ Send the response!
 
@@ -160,20 +148,19 @@ exports.acceptBooking = async (req, res) => {
 
 
 exports.getBooking = async (req, res) => {
-    try{
+    try {
+        const bookings = await Booking.find({ artisanId: req.user._id })
+            .populate('userId') // Optional: to see who booked
+            .sort({ createdAt: -1 });
 
-        const booking = await Booking.find();
+        res.json(bookings);
 
-        res.json(booking);  // ✅ Send the response!
-
-    }catch(err){
-
+    } catch (err) {
         console.error('Error fetching bookings:', err);
-
         res.status(500).send('Server error');
-
     }
 };
+
         
 
 

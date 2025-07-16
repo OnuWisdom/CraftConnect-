@@ -2,8 +2,8 @@ const Portfolio = require('../models/portfolio');
 
 const getPortfolio = async (req, res) => {
     try {
-        // Changed from findAll to find (MongoDB/Mongoose method)
-        const portfolioItems = await Portfolio.find({})
+
+        const portfolioItems = await Portfolio.find({artisanId: req.session.user._id}) // Assuming req.user is set after authentication
             .sort({ createdAt: -1 }); // Sort by newest first
 
         res.render('portfolio-page', {
@@ -14,7 +14,7 @@ const getPortfolio = async (req, res) => {
 
     } catch (error) {
         console.error('Error Loading Portfolio:', error);
-        res.status(500).send('Error Loading Portfolio');
+        res.status(500).send('Error Loading Portfolio')
     }
 };
 
@@ -45,7 +45,8 @@ const postAddPortfolio = async (req, res) => {
             portfolioname: portfolioname,
             portfoliodescription: portfoliodescription,
             servicecategory: servicecategory,
-            image: `/upload/${req.file.filename}` // Simplified path
+            image: req.file.filename, // Simplified path
+            artisanId: req.user._id // Assuming req.user is set after authentication
         });
 
 
