@@ -1,4 +1,5 @@
 
+const User = require('../models/user'); // Make sure this is at the top
 function isLoggedIn(req, res, next) {
     console.log('🔍 isLoggedIn check:', {
         hasSession: !!req.session,
@@ -10,7 +11,7 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     
-    console.log('❌ Not logged in, redirecting to /auth/login');
+    console.log('❌ Not logged in, redirecting to /auth/sign-up');
     return res.redirect('/auth/sign-up');
 }
 
@@ -44,7 +45,7 @@ function isUser(req, res, next) {
     }
     
     console.log('❌ Not user, redirecting to home');
-    return res.redirect('/'); // Redirect to home
+    return res.redirect('/user-dashboard'); // Redirect to home
 }
 
 // ✅ CRITICAL: Export all functions

@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
         }
 
         // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 12);
 
         // Create user data
         const userData = {
@@ -49,7 +49,7 @@ const registerUser = async (req, res) => {
             return res.redirect('/dashboard/artisan');
         } else {
             console.log('🔍 Redirecting to user dashboard');
-            return res.redirect('/dashboard/user');
+            return res.redirect('/user-dashboard');
         }
 
     } catch (error) {
@@ -60,7 +60,6 @@ const registerUser = async (req, res) => {
 };
 
 // FIXED LOGIN - Add debugging to see what's happening
-// Add this to your login function after setting the session
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -84,21 +83,17 @@ const loginUser = async (req, res) => {
             userId: user._id,
             email: user.email,
             username: user.username,
-            role: user.role
+            role: user.role,
+            hasPassword: !!user.password,
         });
 
-        const isMatch = true; 
-        if (!isMatch) {
-            console.log('❌ PASSWORD MISMATCH');
-            return res.render('login', {
-                error: 'Invalid password',
-                title: 'Login - CraftConnect',
-                currentPage: 'login'
-            });
-        }
+const isMatch = await bcrypt.compare(password, user.password);
+if (!isMatch) {
+   console.log('❌ PASSWORD MISMATCH');
+}
 
-        console.log('✅ PASSWORD MATCH');
-
+console.log('✅ PASSWORD MATCH - Continuing with login');
+        
         // Set session
         // req.session.user = user;
         req.session.user = {
@@ -136,7 +131,7 @@ const loginUser = async (req, res) => {
                 return res.redirect('/dashboard/artisan');
             } else {
                 console.log('👤 Redirecting user to home');
-                return res.redirect('/');
+                return res.redirect('/user-dashboard');
             }
         });
 

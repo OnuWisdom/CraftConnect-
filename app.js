@@ -148,10 +148,17 @@ app.get('/notification', isLoggedIn, (req, res) => {
     });
 });
 
+
+app.get('/user-dashboard', isLoggedIn, (req, res) => {
+    res.render('user-dashboard', { user: req.session.user });
+});
+
+
+
 // Artisan dashboard (protected)
 app.get('/dashboard/artisan', isLoggedIn, isArtisan, async (req, res) => {
     const artisanId = req.session.artisanId;
-    if (!artisanId) return res.redirect('/become-an-artisan');
+    if (!artisanId) return res.redirect('/sign-in');
 
     try {
         const artisan = await University.findById(artisanId);
