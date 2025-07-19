@@ -48,13 +48,13 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URL, // Make sure this env var is set
-        touchAfter: 24 * 3600 // lazy session update
+        mongoUrl: process.env.MONGO_URL, // ✅ Changed to MONGO_URL
+        touchAfter: 24 * 3600
     }),
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // true in production
+        secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+        maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }));
 // app.use((req, res, next) => {
