@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking  An Artisan</title>
+    <link rel="stylesheet" href="/css/user-bookingform.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>
+          <a href="/"
+            ><span class="sp1">Craft</span><span class="sp2">Connect</span></a
+          >
+        </h2>
+      </div>
+      <nav class="navbar">
+        <button class="menu-toggle"onclick="toggleMenu()">☰</button>
+
+        <ul class="nav-links" id="nav-links">
+          <button class="close-toggle" id="close-toggle"></button>
+
+          <li><a href="/">Home</a></li>
+          <li><a href="/explore-artisan">Explore Artisans</a></li>
+          <li><a href="/become-an-artisan">Become an Artisan</a></li>
+          <li><a href="/about" class="active">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-profile">
+        <img
+          src="/images/profile.jpeg"
+          alt="John's Profile Picture"
+          class="profile-pic"
+        />
+        <span class="status-indicator"></span>
+        <span class="greeting">Hi, John</span>
+        <span class="dropdown-arrow">&#9662;</span>
+
+        <ul class="profile-dropdown">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="/sign-up">Log Out</a></li>
+        </ul>
+      </div>
+    </header>
+    <main class="content-section">
+      <!-- <nav class="breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/search">Search</a> &gt;
+        <a href="/tailors/lagos">Tailors in Lagos</a> &gt;
+        <a href="/profile/bisi-samuel">Bisi Samuel</a> &gt;
+        <span>Profile</span>
+      </nav> -->
+      <!-- Left side: Breadcrumb + Booking Form -->
+      <div class="form-section">
+        <section class="booking-form">
+          <h1>Booking An Artisan</h1>
+          <br>
+          <!-- Fixed booking form with all required fields -->
+<form id="bookingForm" method="POST" action="/booking/create">
+    <!-- Hidden fields for required data -->
+    <input type="hidden" name="userId" value="<%= userId || '' %>" />
+    <input type="hidden" name="artisanId" value="66a123b456c789d012e34567">
+
+    
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required />
+    
+    <label for="email">E-mail / Username</label>
+    <input type="email" id="email" name="email" placeholder="Enter email address" required />
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required/>
+    
+    <label for="price">Expected Price (₦)</label>
+    <input type="text" id="price" name="price" placeholder="Enter expected price" required/>
+    
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="Enter your location" required/>
+    
+    <label for="serviceType">Service Type</label>
+    <select id="serviceType" name="serviceType" required>
+        <option value="">Select Service Type</option>
+        <option value="Tailoring">Tailoring</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Carpentry">Carpentry</option>
+    </select>
+    
+    <label for="bookingDate">Preferred Date</label>
+    <input type="date" id="bookingDate" name="bookingDate" required />
+    
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Message Subject" required></textarea>
+    
+    <button type="submit">Submit Booking</button>
+</form>
+          <!-- <p id="formStatus"></p> -->
+        </section>
+
+        <div class="vertical-line"></div>
+
+        <!-- Right side: Profile Card -->
+        <aside class="profile-card">
+          <img
+            src="/images/profile.jpeg"
+            alt="CraftConnect Logo"
+            class="profile-logo"
+          />
+          <h2>Bisi Samuel</h2>
+          <p>Professional Tailor</p>
+          <p>⭐ 4.0 (32 reviews)</p>
+          <p>📍 Alimosho, Lagos</p>
+          <a href="/profile/bisi-samuel" class="visit-profile-btn"
+            >Visit Profile</a
+          >
+        </aside>
+      </div>
+      <footer>
+			<div class="footer">
+				<div class="cta">
+					<h2>Sign in as an Artisan</h2>
+					<p>
+						Sign in now to get the best from this service and enjoy premium
+						connect to craft men and women, while getting opportunity to
+						showcase your own craft.
+					</p>
+					<button
+						class="btn cta-btn"
+						type="button"
+						onclick="location.href='sign-up.html'"
+					>
+						Get Started Today.
+					</button>
+				</div>
+				<div class="unique">
+					<div class="prd">
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Product</a></li>
+								<li><a href="explore-artisans">Explore Artisan</a></li>
+								<li><a href="#">Top-Rated Artisan</a></li>
+								<li><a href="becone-an-artisan">Become an Artisan</a></li>
+								<li><a href="#target">How it Works</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Community</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">FAQs</a></li>
+								<li><a href="contact.html">Trust & Safety</a></li>
+								<li><a href="contact.html">Report a Problem</a></li>
+							</ul>
+						</div>
+						<div>
+							<ul class="footer-list">
+								<li class="unik"><a href="#">Learn</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Codes of Conduct</a></li>
+								<li><a href="#">Community Guideline</a></li>
+							</ul>
+						</div>
+						<div class="footer-logo logo">
+							<a href="/"
+								><span class="sp1">Craft</span
+								><span class="sp2">Connect</span></a>
+						</div>
+					</div>
+
+					<div class="bottom">
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li class="copyright">
+							&copy; 2025 CraftConnect. All Rights Reserved.
+						</li>
+					</div>
+				</div>
+			</div>
+		</footer>
+    </main>
+
+  <script src="/js/user-bookingform.js"></script>
+  </body>
+</html>

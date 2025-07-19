@@ -4,7 +4,8 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo');
+
 const flash = require('connect-flash');
 const passport = require('passport');
 require('./googleauth');
@@ -148,6 +149,61 @@ app.get('/notification', isLoggedIn, (req, res) => {
     });
 });
 
+app.get('/user-profile', isLoggedIn, async (req, res) => {
+    try {
+        const universities = await University.find(); // Fetch all artisans
+        res.render('user-profile', {
+            title: 'User-profile - CraftConnect',
+            currentPage: 'User Profile',
+            universities: universities  // Pass artisans to template
+        });
+    } catch (error) {
+        console.error(error);
+        res.render('user-profile', {
+            title: 'User-profile - CraftConnect',
+            currentPage: 'User Profile',
+            universities: []
+        });
+    }
+});
+
+app.get('/exploreartisan2', isLoggedIn, (req, res) => {
+    res.render('exploreartisan2', {
+        title: 'Explore Artisan - CraftConnect',
+        currentPage: 'Explore Artisan'
+    });
+});
+
+app.get('/user-bookingform', (req, res) => {
+    console.log('🔍 Booking form access:');
+    console.log('Session user:', req.session?.user);
+    console.log('Query artisanId:', req.query.artisanId);
+    console.log('User ID being passed:', req.session?.user?._id);
+    
+    res.render('user-bookingform', {
+        title: 'User Booking Form - CraftConnect',
+        currentPage: 'User Booking Form',
+        error: null,
+        formData: {},
+        userId: req.session?.user?._id || null,
+        artisanId: req.query.artisanId || null
+    });
+});
+
+
+
+
+
+
+app.get('/user-booking', isLoggedIn, (req, res) => {
+    res.render('user-booking', {
+        title: 'User Booking - CraftConnect',
+        currentPage: 'User Booking'
+    });
+});
+
+
+
 
 app.get('/user-dashboard', isLoggedIn, (req, res) => {
     res.render('user-dashboard', { user: req.session.user });
@@ -288,9 +344,11 @@ app.use('/university', universityRoutes);
 app.use('/portfolio', isLoggedIn, isArtisan, portfolioRoutes);
 app.use('/', dashboardRoutes);
 app.use('/booking', bookingRoutes);
+app.use('/create', bookingRoutes)
 app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/test', testRoutes);
+
 
 // Start Server
 const PORT = process.env.PORT || 5001;

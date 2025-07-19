@@ -21,11 +21,19 @@ router.get('/bookings', getBooking);
 
 router.post('/create', createBooking);
 
-router.put('/:id/accept', acceptBooking);
 
-router.put('/:id/decline', declineBooking);
+// In your routes file
+router.put('/booking/accept/:id', acceptBooking);
+router.put('/booking/decline/:id', declineBooking);
 
 router.put('/:id/reaccept', reacceptBooking);
+
+
+
+
+
+
+
 
 
 

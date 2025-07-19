@@ -13,6 +13,10 @@ const universitySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+      artisanId: {
+         type: String, 
+      
+        },
     servicecategory: {
         type: String,
         required: true

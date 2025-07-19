@@ -23,22 +23,22 @@ const logoIcon = document.querySelectorAll('.logo-icon');
 
 // Function to toggle Sidebar
 function toggleSidebar2() {
-  if (sideBar.classList.contains('hidden')) {
-    sideBar.classList.remove('hidden');
-  } else {
-    sideBar.classList.add('hidden');
-  }
+	if (sideBar.classList.contains('hidden')) {
+		sideBar.classList.remove('hidden');
+	} else {
+		sideBar.classList.add('hidden');
+	}
 
-  if (iconSideBar.classList.contains('hidden')) {
-    iconSideBar.classList.remove('hidden');
-  } else {
-    iconSideBar.classList.add('hidden');
-  }
+	if (iconSideBar.classList.contains('hidden')) {
+		iconSideBar.classList.remove('hidden');
+	} else {
+		iconSideBar.classList.add('hidden');
+	}
 }
 
 // It's event listener
 logoIcon.forEach((logo) => {
-  logo.addEventListener('click', toggleSidebar2);
+	logo.addEventListener('click', toggleSidebar2);
 });
 
 // // Auto-fill today's date

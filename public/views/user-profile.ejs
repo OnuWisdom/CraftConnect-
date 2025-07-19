@@ -12,8 +12,9 @@
   />
 
 
+
    <title>CraftConnect Dashboard</title>
-  <link rel="stylesheet" href="/css/profile.css"/>
+  <link rel="stylesheet" href="/css/user-profile.css"/>
 </head>
 <body>
 
@@ -30,24 +31,24 @@
             
         </div>
 
-         <nav class="nav">
-            <a href="/dashboard/artisan" class="nav-item">
+        <nav class="nav">
+            <a href="/user-dashboard" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-grip"></i></div>
                 <span>Dashboard</span>
             </a>
-            <a href="/message" class="nav-item">
+            <a href="/messages" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-message"></i></div>
                 <span>Message</span>
                 <div class="notification-dot"></div>
             </a>
-            <a href="/booking" class="nav-item">
+            <a href="/user-booking" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
                 <span>Booking</span>
             </a>
-            <a href="/portfolio" class="nav-item">
+            <!-- <a href="#" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
                 <span>Portfolio</span>
-            </a>
+            </a> -->
             <a href="/reviews" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
                 <span>Review</span>
@@ -59,33 +60,34 @@
         </nav>
 
         <div class="bottom-nav">
-            <a href="#" class="nav-item active">
+            <a href="/user-profile" class="nav-item active">
                 <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
                 <span>Profile</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="/notification" class="nav-item">
                 <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
                 <span>Notifications</span>
             </a>
         </div>
     </aside>
-   <div class="icon-sidebar">
+
+    <div class="icon-sidebar">
         
             <div class="icon top-icon">
                 <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars menu-toggle3"></i></div>
-                <a href="/" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-grip"></i></a>
             <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
-            <a href="/booking" class="nav-item nav-item"><i class="fa-solid fa-book"></i></a>
-            <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="/user-booking" class="nav-item nav-item"><i class="fa-solid fa-book"></i></a>
+            <!-- <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a> -->
             <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
             <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
             </div>
 
             <div class="icon lower-icon">
-                <a href="/profile" class="nav-item active"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/user-profile" class="nav-item active"><i class="fa-regular fa-circle-user"></i></a>
                 <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
             </div>
-    </div>>
+    </div>
 
     <!-- Main Content -->
     <main class="main">
@@ -94,7 +96,7 @@
           <h2>Profile</h2>
         </div>
         <div class="icons">
-            <i class="fa-solid fa-search"></i>
+            <i class="fa-solid fa-search search2"></i>
             <i class="fa-solid fa-bell"></i>
             <i class="fa-solid fa-calendar"></i>
             <div class="date">
@@ -109,16 +111,16 @@
       <section class="profile-page">
         <div class="left-panel">
           <ul>
-            <li class="active">
+            <li>
               <i class="fa-regular fa-user"></i>
               <p class="label">
                  Overview
               </p>
             </li>
-            <li>
-              <i class="fa-solid fa-user-pen"></i>
+            <li class="active">
+              <i class="fa-solid fa-bookmark"></i>
               <p class="label">
-              Edit Profile Information
+              Saved Artisan
               </p>
             </li>
             <li>
@@ -157,86 +159,80 @@
         </div>
 
        <div class="right-panel">
-          <div class="profile-card">
-            <div class="header">
-              <p>Profile Overview</p>
-              <a href="#" class="preview">
-                <i class="fa-solid fa-eye"></i> 
-                Preview Public Profile
-              </a>
-            </div>
-           
-       <div class="profile-info">
-        <img src="<%= university.image || 'images/p (1).png' %>" alt="Profile" />
-        <div>
-            <h4>
-                <%= university.fullname %>
-                <div class="verified">
-                    <div class="circle">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p class="verified-text">verified</p>
-                </div>
-            </h4>
-            <p class="txt-style"><%= university.email %></p>
-            <p class="des">
-                Professional <%= university.servicename.toLowerCase() %> with <%= university.experience %> experience specializing in <%= university.servicecategory.toLowerCase() %> for all occasions.
-            </p>
-            <div class="details">
-                <div class="details-row">
-                    <div class="details-cont">
-                        <p class="txt-style">Service Categories:</p>
-                        <p class="txt-style2"><%= university.servicecategory %></p>
-                    </div>
-                    <div class="details-cont">
-                        <p class="txt-style">Pricing Tier</p>
-                        <p class="txt-style2"><%= university.pricetier %></p>
-                    </div>
-                </div>
 
-                <div class="details-row"> 
-                    <div class="details-cont">
-                        <p class="txt-style">Experience</p>
-                        <p class="txt-style2"><%= university.experience %></p>
-                    </div>
-                    <div class="details-cont">
-                        <p class="txt-style">Location</p>
-                        <p class="txt-style2"><%= university.location %></p>
-                    </div>
-                </div>
-                
-                <div class="details-row">
-                    <div class="details-cont">
-                        <p class="txt-style">Institution:</p>
-                        <p class="txt-style2"><%= university.institutionname %></p>
-                    </div>
-                    <div class="details-cont">
-                        <p class="txt-style">Service Name:</p>
-                        <p class="txt-style2"><%= university.servicename %></p>
-                    </div>
-                </div>
-            </div>
-            <p class="txt-style p-t">Rating:</p>
-            <div>
-                <i class="fa-solid fa-star star2"></i>
-                <span class="txt-style2"><%= university.rating || 0 %></span>   
-                <span class="txt-style">(0 reviews)</span>
-            </div>
+        <div class="tools">
+          <div class="search hidden2">
+            <input type="text" placeholder="Search by Name, Category">
+            <i class="fa-solid fa-search"></i>
+          </div>
+
+          <div class="menu-icons">
+            <img src="—Pngtree—vector apps icon_4184691.png" alt="">
+            <i class="fa-solid fa-list-ul"></i>
+          </div>
+
+          <div class="sort">
+            <img src="Sort-alt-02.png" alt="">
+            <span>Sort</span>
+          </div>
+          
         </div>
+
+        <div class="tools2">
+           <div class="search">
+            <input type="text" placeholder="Search by Name, Category">
+            <i class="fa-solid fa-search"></i>
+          </div>
+        </div>
+
+        <div class="artisan-mainContainer">
+
+         <div class="artisan-container position">
+          <span class="badge">Previously Booked</span>
+          
+            <% universities.forEach(artisan => { %>
+         <div class="artisan-image">
+            <img src="/images/Rectangle.svg" alt="">
+         <div>
+           <h5><%= artisan.fullname %></h5>
+           <h6><%= artisan.servicecategory %></h6>
+         </div>
+         <div class="bookmark">
+          <i class="fa-solid fa-bookmark"></i>
+          </div>
+       </div>
+
+  <div class="artisan-rating-container">
+    <div class="artisan-rating">
+      <!-- Display rating stars based on artisan.rating -->
+      <% for(let i = 0; i < parseInt(artisan.rating); i++) { %>
+        <img src="/images/Vector (9).svg" alt="">
+      <% } %>
     </div>
-            <div class="portfolio-status-cont">
-              <div class="portfolio-status-cont1">
-                <p class="portfolio-status">Portfolio Status:</p>
-                <p class="portfolio-status-text">
-                  7 Items uploaded <span class="green"> | ✔ Complete</span>
-                </p>
-              </div>
-            
-              <div class="portfolio-status-cont2">
-              <a href="/portfolio">  <button class="portfolio-btn">Manage Portfolio</button></a>
-              </div>
-            </div>
+    <p><span><%= artisan.rating %></span> Of 5</p>
+  </div>
+  
+  <p><%= artisan.experience %></p>
+
+  <div class="artisan-location">
+    <img src="/images/mynaui_location.svg" alt=""> 
+    <p><%= artisan.location %></p>
+  </div>
+
+  <div class="artisan-button-container">
+    <button class="view-profile" type="button">View profile</button>
+    <a href="/user-bookingform?artisanId=<%= artisan.artisanId %>">
+      <button class="book-now" type="button">Book now</button>
+    </a>
+  </div>
+<% }); %>
+          </div>
+
         </div>
+
+       
+
+       </div>
        </div>
       </section>
 
@@ -244,7 +240,7 @@
 
   </div>
 
-          <script src="/js/profile.js"></script>
+          <script src="/js/user-profile.js"></script>
 </body>
 </html>
 

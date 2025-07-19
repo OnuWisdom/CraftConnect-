@@ -112,9 +112,9 @@
     <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
         <div class="card-header">
             <div class="info">
-                <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %>" />
+                <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.fullname ? booking.artisanId.fullname : 'Unknown Artisan' %>" />
                 <div>
-                    <div class="name"><%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %></div>
+                    <div class="name"><%= booking.userId && (booking.userId.fullname || booking.userId.username) ? (booking.userId.fullname || booking.userId.username) : 'Unknown User' %></div>
                     <div class="date"><%= booking.date || 'No date' %></div>
                 </div>
             </div>
@@ -126,8 +126,8 @@
             <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
         </div>
         <div class="card-actions" id="card-actions">
-            <button data-action="accept" type="button" class="btn primary accept">Accept</button>
-            <button data-action="decline" type="button" class="btn decline">Decline</button>
+       <button data-action="accept" data-booking-id="<%= booking._id %>" type="button" class="btn primary accept">Accept</button>
+<button data-action="decline" data-booking-id="<%= booking._id %>" type="button" class="btn decline">Decline</button>
         </div>
     </div>
 <% } else if (typeof bookings !== 'undefined' && bookings.length > 0) { %>
@@ -137,9 +137,9 @@
             <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
                 <div class="card-header">
                     <div class="info">
-                        <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %>" />
+                        <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.fullname ? booking.artisanId.fullname : 'Unknown Artisan' %>" />
                         <div>
-                            <div class="name"><%= booking.artisanId && booking.artisanId.name ? booking.artisanId.name : 'Unknown Artisan' %></div>
+                            <div class="name"><%= booking.userId && (booking.userId.fullname || booking.userId.username) ? (booking.userId.fullname || booking.userId.username) : 'Unknown User' %></div>
                             <div class="date"><%= booking.date || 'No date' %></div>
                         </div>
                     </div>

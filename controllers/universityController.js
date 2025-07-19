@@ -1,5 +1,6 @@
 const University = require('../models/University')
 const User = require('../models/user'); // ✅ Needed to update user role
+const { v4: uuidv4 } = require('uuid');
 
 
 exports.createUniversityEntry = async (req, res) => {
@@ -9,12 +10,12 @@ exports.createUniversityEntry = async (req, res) => {
             console.log('❌ No session user found');
             return res.redirect('/auth/login');
         }
+// Add this right after getting sessionUser
+console.log('🔍 SESSION USER ID:', sessionUser._id);
+console.log('🔍 FULL SESSION USER:', sessionUser);
 
-        console.log('🔍 SESSION USER BEFORE:', {
-            id: sessionUser._id,
-            role: sessionUser.role,
-            email: sessionUser.email
-        });
+// Add this right before saving
+console.log('🔍 ARTISAN ID BEING SAVED:', newEntry.artisanId);
 
         const {
             institutionname,
@@ -25,7 +26,7 @@ exports.createUniversityEntry = async (req, res) => {
             fullname,
             location,
             pricetier,
-            experience
+            experience,
         } = req.body;
 
         // Validate required fields
@@ -48,7 +49,7 @@ exports.createUniversityEntry = async (req, res) => {
             pricetier,
             experience,
             image: photo,
-            artisanId: sessionUser._id
+           artisanId: uuidv4()
         });
 
         await newEntry.save();
