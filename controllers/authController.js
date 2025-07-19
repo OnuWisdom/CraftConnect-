@@ -33,13 +33,13 @@ const registerUser = async (req, res) => {
         await newUser.save();
         console.log('✅ User saved:', newUser._id);
 
-        // Set session
-     req.session.user = {
-            _id: newUser._id.toString(),  // 🔥 Convert ObjectId to string
-            username: newUser.username,
-             email: newUser.email,
-             role: 'user'
-            };
+     // In your registration route
+        req.session.user = {
+        _id: user._id.toString(), // Ensure _id is a string
+        username: user.username,
+        email: user.email.toLowerCase(),
+        role: user.role
+        };
 
         console.log('🔐 Session set:', req.session.user);
 

@@ -59,6 +59,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
    store: new RedisStore({
     client: redisClient,
+
+      serializer: {
+      stringify: JSON.stringify,
+      parse: JSON.parse,
+    },
    }),
     secret: process.env.SESSION_SECRET,
     resave: false,
