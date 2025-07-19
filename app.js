@@ -9,10 +9,11 @@ const redis = require('redis');
 const RedisStore = require('connect-redis').default;
 
 const redisClient = redis.createClient({
-    url: process.env.REDIS_URL
+    url: process.env.REDIS_URL,
+         password: process.env.REDIS_PASSWORD,
 });
 
-redisClient.on('error', (err) => {g
+redisClient.on('error', (err) => {
     console.error('Redis Client Error', err);
 });
 
