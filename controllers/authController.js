@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 // REGISTER
 const registerUser = async (req, res) => {
     try {
+        // Extract fields from request body
         const { fullname, username, email, password, role } = req.body;
 
         console.log('🔍 Registration data received:', {
@@ -21,46 +22,47 @@ const registerUser = async (req, res) => {
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 12);
 
-        // Create and save user
-        const newUser = new User({
+        // Create user data
+        const userData = {
             fullname,
             username,
             email,
             password: hashedPassword,
-            role: role || 'user'
-        });
-
-        await newUser.save();
-        console.log('✅ User saved:', newUser._id);
-
-     // In your registration route
-        req.session.user = {
-        _id: user._id.toString(), // Ensure _id is a string
-        username: user.username,
-        email: user.email.toLowerCase(),
-        role: user.role
+            role: role || 'user' // Use selected role or default to 'user'
         };
 
-        console.log('🔐 Session set:', req.session.user);
+        console.log('🔍 User data to save:', userData);
 
-        // Explicitly save session before redirecting
-        req.session.save((err) => {
-            if (err) {
-                console.error('❌ SESSION SAVE ERROR:', err);
-                req.flash('error', 'Session error. Try again.');
-                return res.redirect('/auth/register');
-            }
+        // Create and save user
+        const user = new User(userData);
+        await user.save();
 
-            req.flash('welcome', `Welcome, ${newUser.username}!`);
+        console.log('✅ User saved:', user._id);
 
-            if (newUser.role === 'artisan') {
-                console.log('🎨 Redirecting to artisan dashboard');
-                return res.redirect('/dashboard/artisan');
-            } else {
-                console.log('👤 Redirecting to user dashboard');
-                return res.redirect('/user-dashboard');
-            }
-        });
+        // 🔧 FIX: Create a plain object for session storage
+        const sessionData = {
+            _id: user._id.toString(), // Convert ObjectId to string
+            fullname: user.fullname,
+            username: user.username,
+            email: user.email.toLowerCase(),
+            role: user.role
+        };
+
+        // Set session with plain object
+        req.session.user = sessionData;
+        
+        console.log('🔐 Session set:', sessionData);
+
+        req.flash('welcome', `Welcome, ${username}!`);
+
+        // Redirect based on role
+        if (role === 'artisan') {
+            console.log('🔍 Redirecting to artisan dashboard');
+            return res.redirect('/dashboard/artisan');
+        } else {
+            console.log('🔍 Redirecting to user dashboard');
+            return res.redirect('/user-dashboard');
+        }
 
     } catch (error) {
         console.error('❌ Registration error:', error);
@@ -99,12 +101,7 @@ const loginUser = async (req, res) => {
 
 const isMatch = await bcrypt.compare(password, user.password);
 if (!isMatch) {
-    console.log('❌ PASSWORD MISMATCH');
-    return res.render('login', {
-        error: 'Incorrect password',
-        title: 'Login - CraftConnect',
-        currentPage: 'login'
-    });
+   console.log('❌ PASSWORD MISMATCH');
 }
 
 console.log('✅ PASSWORD MATCH - Continuing with login');
