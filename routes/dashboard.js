@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { isLoggedIn, isArtisan, isUser } = require('../middlewares/authMiddleware');
-const University = require('../models/University');
+const University = require('../models/university');
 
 router.get('/dashboard/user', isLoggedIn, isUser, (req, res) => {
     res.render('home', {
