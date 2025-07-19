@@ -34,12 +34,12 @@ const registerUser = async (req, res) => {
         console.log('✅ User saved:', newUser._id);
 
         // Set session
-        req.session.user = {
-            _id: newUser._id,
-            email: newUser.email,
+     req.session.user = {
+            _id: newUser._id.toString(),  // 🔥 Convert ObjectId to string
             username: newUser.username,
-            role: newUser.role
-        };
+             email: newUser.email,
+             role: 'user'
+            };
 
         console.log('🔐 Session set:', req.session.user);
 
