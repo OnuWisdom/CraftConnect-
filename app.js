@@ -44,18 +44,18 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(session({
-    store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URL,
-  }),
-
+    secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URL, // Make sure this env var is set
+        touchAfter: 24 * 3600 // lazy session update
+    }),
     cookie: {
-        secure: false, 
-        httpOnly: true, 
-        maxAge: 24 * 60 * 60 * 1000 
+        secure: process.env.NODE_ENV === 'production', // true in production
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
     }
-    
 }));
 // app.use((req, res, next) => {
 //     console.log('🔍 SESSION MIDDLEWARE CHECK:', {
