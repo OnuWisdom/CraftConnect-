@@ -22,12 +22,12 @@
 
 	<header class="header">
 
-					<% if (typeof welcome !== 'undefined' && welcome && welcome.length > 0) { %>
+					<!-- <% if (typeof welcome !== 'undefined' && welcome && welcome.length > 0) { %>
  					 <div id="flashMessage"  style="position: fixed; top: 20px; right: 20px; background: green; color: white; padding: 15px; z-index: 9999;">
-    					<%= welcome[0] %>
-   					 <button onclick="this.parentElement.style.display='none'">&times;</button>
+    					<%= welcome[0] %> -->
+   					 <!-- <button onclick="this.parentElement.style.display='none'">&times;</button>
  					 </div>
-				<% } %>
+				<% } %> -->
 
 				<div class="logo">
 					<h2>
@@ -313,8 +313,8 @@
 						</div>
 
 						<div class="artisan-button-container">
-							<button class="view-profile" type="submit">View profile</button>
-							<button class="book-now" type="submit">Book now</button>
+						 <button type="button" class="view-profile" onclick="location.href='/exploreartisan2'">View Profile</button>
+					  	<button type="button" class="book-now" onclick="location.href='/exploreartisan2'">Book Now</button>
 						</div>
 				</div>
 
@@ -351,8 +351,8 @@
 
 
 					<div class="artisan-button-container">
-						<button class="view-profile" type="submit">View profile</button>
-						<button class="book-now" type="submit">Book now</button>
+						 <button type="button" class="view-profile" onclick="location.href='/exploreartisan2'">View Profile</button>
+					  	<button type="button" class="book-now" onclick="location.href='/exploreartisan2'">Book Now</button>
 					</div>
 				</div>
 
@@ -425,8 +425,8 @@
 
 
 					<div class="artisan-button-container">
-						<button class="view-profile" type="submit">View profile</button>
-						<button class="book-now" type="submit">Book now</button>
+					 <button type="button" class="view-profile" onclick="location.href='/exploreartisan2'">View Profile</button>
+					  	<button type="button" class="book-now" onclick="location.href='/exploreartisan2'">Book Now</button>
 					</div>
 				</div>
 
@@ -463,8 +463,12 @@
 
 
 					<div class="artisan-button-container">
-						<button class="view-profile" type="submit">View profile</button>
-						<button class="book-now" type="submit">Book now</button>
+						<!-- <button class="view-profile" type="submit"><a href="/exploreartisan2">View profile</a>/button>
+					<button class="book-now" type="submit"><a href="/exploreartisan2"></a>Book now</button></a> -->
+
+					  <button type="button" class="view-profile" onclick="location.href='/exploreartisan2'">View Profile</button>
+					  	<button type="button" class="book-now" onclick="location.href='/exploreartisan2'">Book Now</button>
+				
 					</div>
 
 				</div>
@@ -478,7 +482,7 @@
 				
 			<button class="see-all-button" type="submit"> 
 				See all
-				<img src="/images/arrow.svg" alt="button-icon">
+				<img src="/images/images/arrow.svg" alt="button-icon">
 			</button>
 		</div>
 

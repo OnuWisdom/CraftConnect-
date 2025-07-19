@@ -16,21 +16,33 @@ const router = express.Router();
 // Route for the homepage
 // Route for the homepage
 router.get('/', (req, res) => {
-    const welcome = req.flash('welcome');
+    // const welcome = req.flash('welcome');
     res.render('home', {
-        welcome,
+        // welcome,
         title: 'CraftConnect - Your Artisan Hub',
         currentPage: 'home'
     });
 });
 
-
-// router.get('/home-page', (req, res) => {
-//     res.render('home-page', {
-//         title: 'Home - CraftConnect',
-//         currentPage: 'home-page'
-//     });
+// router.get('/',  async (req, res) => {
+//     try {
+//         const universities = await University.find(); // Fetch all artisans
+//         res.render('home', {
+//             title: 'CraftConnect - Your Artisan Hub',
+//             currentPage: 'home',
+//             universities: universities  // Pass artisans to template
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         res.render('user-profile', {
+//             title: 'User-profile - CraftConnect',
+//             currentPage: 'User Profile',
+//             universities: []
+//         });
+//     }
 // });
+
+
 // You'll also want to add your other main website routes here
 // For example:
 router.get('/about', (req, res) => {

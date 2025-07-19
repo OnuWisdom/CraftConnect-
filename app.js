@@ -4,7 +4,21 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const redis = require('redis');
+
+const RedisStore = require('connect-redis').default;
+
+const redisClient = redis.createClient({
+    url: process.env.REDIS_URL
+});
+
+redisClient.on('error', (err) => {
+    console.error('Redis Client Error', err);
+});
+
+redisClient.connect().catch(err => {
+    console.error('Failed to connect to Redis:', err);
+});
 
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -39,11 +53,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session configuration
 
-app.use(session({
-    store: MongoStore.create({
 
-        mongoUrl: process.env.MONGO_URL
-    }),
+
+app.use(session({
+   store: new RedisStore({
+    client: redisClient,
+   }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -78,13 +93,31 @@ app.use('/uploads', express.static(path.join(__dirname, 'upload')));
 
 // Public routes
 app.get('/home', (req, res) => {
-    const welcome = req.flash('welcome') || [];
+    // const welcome = req.flash('welcome') || [];
     res.render('home', {
         welcome,
         title: 'CraftConnect - Your Artisan Hub',
         currentPage: 'home'
     });
 });
+
+// app.get('/home',  async (req, res) => {
+//     try {
+//         const universities = await University.find(); // Fetch all artisans
+//         res.render('home', {
+//             title: 'CraftConnect - Your Artisan Hub',
+//             currentPage: 'home',
+//             universities: universities  // Pass artisans to template
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         res.render('home', {
+//             title: 'User-profile - CraftConnect',
+//             currentPage: 'User Profile',
+//             universities: []
+//         });
+//     }
+// });
 
 app.get('/about', (req, res) => {
     res.render('about', {

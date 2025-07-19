@@ -45,10 +45,10 @@
                 <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
                 <span>Booking</span>
             </a>
-            <!-- <a href="#" class="nav-item">
+            <a href="" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
                 <span>Portfolio</span>
-            </a> -->
+            </a>
             <a href="/reviews" class="nav-item">
                 <div class="nav-icon"><i class="fa-solid fa-star"></i></div>
                 <span>Review</span>
@@ -64,7 +64,7 @@
                 <div class="nav-icon"><i class="fa-regular fa-circle-user"></i></i></div>
                 <span>Profile</span>
             </a>
-            <a href="/notification" class="nav-item">
+            <a href="" class="nav-item">
                 <div class="nav-icon"><i class="fa-regular fa-bell"></i></div>
                 <span>Notifications</span>
             </a>
@@ -75,17 +75,17 @@
         
             <div class="icon top-icon">
                 <div class="nav-icon logo-icon" ><i class="fa-solid fa-bars menu-toggle3"></i></div>
-                <a href="index.html" class="nav-item"><i class="fa-solid fa-grip"></i></a>
+                <a href="/login" class="nav-item"><i class="fa-solid fa-grip"></i></a>
             <a href="/messages" class="nav-item"><i class="fa-solid fa-message"></i></a>
             <a href="/user-booking" class="nav-item nav-item"><i class="fa-solid fa-book"></i></a>
-            <!-- <a href="/portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i></a> -->
+            <a href="" class="nav-item"><i class="fa-solid fa-briefcase"></i></a>
             <a href="/reviews" class="nav-item"><i class="fa-solid fa-star"></i></a>
             <a href="/insights" class="nav-item"><i class="fa-solid fa-chart-line"></i></a>
             </div>
 
             <div class="icon lower-icon">
                 <a href="/user-profile" class="nav-item active"><i class="fa-regular fa-circle-user"></i></a>
-                <a href="/notification" class="nav-item"><i class="fa-regular fa-bell"></i></a>
+                <a href="" class="nav-item"><i class="fa-regular fa-bell"></i></a>
             </div>
     </div>
 
@@ -102,7 +102,7 @@
             <div class="date">
             19 May 2022
             </div>
-            <img src="/images/p (2).jpg" alt="profile">
+            <img src="/images/images/p (2).jpg" alt="profile">
 
               <i class="fa-solid fa-bars menu-toggle" onclick="toggleSidebar()"></i>
          </div>
@@ -167,12 +167,12 @@
           </div>
 
           <div class="menu-icons">
-            <img src="—Pngtree—vector apps icon_4184691.png" alt="">
+            <img src="/images/—Pngtree—vector apps icon_4184691.png" alt="">
             <i class="fa-solid fa-list-ul"></i>
           </div>
 
           <div class="sort">
-            <img src="Sort-alt-02.png" alt="">
+            <img src="/images/Sort-alt-02.png" alt="">
             <span>Sort</span>
           </div>
           
@@ -187,46 +187,87 @@
 
         <div class="artisan-mainContainer">
 
-         <div class="artisan-container position">
-          <span class="badge">Previously Booked</span>
+          <div class="artisan-container">
           
             <% universities.forEach(artisan => { %>
-         <div class="artisan-image">
-            <img src="/images/Rectangle.svg" alt="">
-         <div>
-           <h5><%= artisan.fullname %></h5>
-           <h6><%= artisan.servicecategory %></h6>
+              <div class="artisan-image">
+                     <img src="/images/Rectangle.svg" alt="">
+             <div>
+                  <h5><%= artisan.fullname %></h5>
+                 <h6><%= artisan.servicecategory %></h6>
+              </div>
+              <div class="bookmark">
+                <i class="fa-solid fa-bookmark"></i>
+              </div>
+            </div>
+
+            <div class="artisan-rating-container">
+                <div class="artisan-rating">
+                 <!-- // Display rating stars based on artisan.rating  -->
+                 <% for(let i = 0; i < parseInt(artisan.rating); i++) { %>
+                 <img src="/images/Vector (9).svg" alt="">
+              <% } %>
+           </div>
+
+              <p><span><%= artisan.rating %></span></p>
+      
+            </div>
+              
+             <p><span><%= artisan.rating %></span> Of 5</p>
+
+              <div class="artisan-location">
+              <img src="/images/mynaui_location.svg" alt=""> 
+              <p><%= artisan.location %></p>
+            </div>
+
+              <div class="artisan-button-container">
+              <button class="view-profile" type="button">View profile</button>
+              <a href="/user-bookingform?artisanId=<%= artisan.artisanId %>">
+            <button class="book-now" type="button">Book now</button>
+             </a>
          </div>
-         <div class="bookmark">
-          <i class="fa-solid fa-bookmark"></i>
+       <% }); %>
           </div>
-       </div>
 
-  <div class="artisan-rating-container">
-    <div class="artisan-rating">
-      <!-- Display rating stars based on artisan.rating -->
-      <% for(let i = 0; i < parseInt(artisan.rating); i++) { %>
-        <img src="/images/Vector (9).svg" alt="">
-      <% } %>
-    </div>
-    <p><span><%= artisan.rating %></span> Of 5</p>
-  </div>
-  
-  <p><%= artisan.experience %></p>
+          <!-- <div class="artisan-container position">
+            <span class="badge">Previously Booked</span>
+          
+            <div class="artisan-image">
+              <img src="./images/Rectangle.svg"alt="">
+              <div>
+                <h5>Priya Sharma</h5>
+                <h6>Hair and beauty</h6>
+              </div>
+              <div class="bookmark">
+                <i class="fa-solid fa-bookmark"></i>
+              </div>
+            </div>
 
-  <div class="artisan-location">
-    <img src="/images/mynaui_location.svg" alt=""> 
-    <p><%= artisan.location %></p>
-  </div>
+            <div class="artisan-rating-container">
+              <div class="artisan-rating">
+                <img src="./images/Vector (9).svg" alt="">
+                <img src="./images/Vector (9).svg" alt="">
+                <img src="./images/Vector (9).svg" alt="">
+                <img src="./images/Vector (9).svg" alt="">
+                <img src="./images/Vector (9).svg" alt="">
+              </div>
 
-  <div class="artisan-button-container">
-    <button class="view-profile" type="button">View profile</button>
-    <a href="/user-bookingform?artisanId=<%= artisan.artisanId %>">
-      <button class="book-now" type="button">Book now</button>
-    </a>
-  </div>
-<% }); %>
-          </div>
+              <p><span>5</span> Of 5 |<span> 254</span> ratings</p>
+      
+            </div>
+              
+              <p>Exceptional service, quick and clean braids</p>
+
+              <div class="artisan-location">
+                <img src="./images/mynaui_location.svg" alt=""> 
+                <p>Alimosho,Lagos.</p>
+              </div>
+
+              <div class="artisan-button-container">
+                <button class="view-profile" type="submit">View profile</button>
+                <button class="book-now" type="submit">Book now</button>
+              </div>
+          </div> -->
 
         </div>
 
@@ -240,7 +281,6 @@
 
   </div>
 
-          <script src="/js/user-profile.js"></script>
+   <script src="/js/user-profile.js"></script>
 </body>
 </html>
-
