@@ -9,9 +9,9 @@ const redis = require('redis');
 // Correct import for newer connect-redis versions
 const RedisStore = require('connect-redis')(session);
 const redisClient = redis.createClient({
-    url: process.env.REDIS_URL,
-         password: process.env.REDIS_PASSWORD,
+    url: process.env.REDIS_URL
 });
+
 
 redisClient.on('error', (err) => {
     console.error('Redis Client Error', err);
