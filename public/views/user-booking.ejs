@@ -106,31 +106,60 @@
          <!-- Cards grid -->
         <section class="cards">
           <!-- Card 1 -->
-          <div class="card pending" id="pending" data-card="1">
-            
-            <div class="card-header">
-              <div class="info">
-                <img src="https://i.pravatar.cc/60?img=58" alt="Bisi Samuel" />
+       <!-- Card 1 -->
+<% if (booking && booking._id) { %>
+    <!-- Single booking card -->
+    <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
+        <div class="card-header">
+            <div class="info">
+                <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.fullname ? booking.artisanId.fullname : 'Unknown Artisan' %>" />
                 <div>
-                  <div class="name">Bisi Samuel</div>
-                  <div class="date">Sat, 6th June, 2:00pm</div>
-
+                    <div class="name"><%= booking.userId && (booking.userId.fullname || booking.userId.username) ? (booking.userId.fullname || booking.userId.username) : 'Unknown User' %></div>
+                    <div class="date"><%= booking.date || 'No date' %></div>
                 </div>
-              </div>
-             <span class="status-chip accept">Pending</span>
             </div>
-            <div class="card-body">
-              <span>Service needed: <b>Makeup for event</b></span>
-              <span>Location: <b>Unilag campus</b></span>
-              <span>Price/rate: <b>₦5,000</b></span>
+            <span class="status-chip accept"><%= booking.status || 'Pending' %></span>
+        </div>
+        <div class="card-body">
+            <span>Service needed: <b><%= booking.serviceType || booking.service || 'Not specified' %></b></span>
+            <span>Location: <b><%= booking.location || 'Not specified' %></b></span>
+            <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
+        </div>
+        <div class="card-actions" id="card-actions">
+       <button data-action="accept" data-booking-id="<%= booking._id %>" type="button" class="btn primary accept">Accept</button>
+<button data-action="decline" data-booking-id="<%= booking._id %>" type="button" class="btn decline">Decline</button>
+        </div>
+    </div>
+<% } else if (typeof bookings !== 'undefined' && bookings.length > 0) { %>
+    <!-- Multiple bookings -->
+    <% bookings.forEach(booking => { %>
+        <% if (booking && booking._id) { %>
+            <div class="card pending" id="pending" data-card="1" data-booking-id="<%= booking._id %>">
+                <div class="card-header">
+                    <div class="info">
+                        <img src="https://i.pravatar.cc/60?img=58" alt="<%= booking.artisanId && booking.artisanId.fullname ? booking.artisanId.fullname : 'Unknown Artisan' %>" />
+                        <div>
+                            <div class="name"><%= booking.userId && (booking.userId.fullname || booking.userId.username) ? (booking.userId.fullname || booking.userId.username) : 'Unknown User' %></div>
+                            <div class="date"><%= booking.date || 'No date' %></div>
+                        </div>
+                    </div>
+                    <span class="status-chip accept"><%= booking.status || 'Pending' %></span>
+                </div>
+                <div class="card-body">
+                    <span>Service needed: <b><%= booking.serviceType || booking.service || 'Not specified' %></b></span>
+                    <span>Location: <b><%= booking.location || 'Not specified' %></b></span>
+                    <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
+                </div>
+             <div class="card-actions">
+                 <button data-action="accept" type="button" class="btn primary accept">View Progress</button>
+                  <a href="/messages" data-action="message" class="btn  message" ><i class="fa-solid fa-message"></i> Message client</a>
             </div>
-            <div class="card-actions" id="card-actions">
-              <!-- <button data-action="accept" type="button" class="btn primary accept">Accept</button>
-              <button data-action="decline" type="button" class="btn decline">Decline</button> -->
-              <a href="/messages" data-action="message" class="btn primary message" ><i class="fa-solid fa-message"></i> Message client</a>
-              <button data-action="completed" type="button" class="btn completed">Cancel Booking</button>
             </div>
-          </div>
+        <% } %>
+    <% }) %>
+<% } else { %>
+    <p>No bookings available</p>
+<% } %>
 
           <!-- Card 2 -->
           <div class="card inprogress" id="inprogress" data-card="2">
@@ -156,101 +185,7 @@
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="card completed" id="completed" data-card="3">
-            
-            <div class="card-header">
-              <div class="info">
-                <img src="https://i.pravatar.cc/60?img=15" alt="Bisi Samuel" />
-                <div>
-                  <div class="name">Bisi Samuel</div>
-                  <div class="date">Sat, 6th June, 2:00pm</div>
-                </div>
-              </div>
-              <span class="status-chip">Completed</span>
-            </div>
-            <div class="card-body">
-              <span>Service needed: <b>Makeup for event</b></span>
-              <span>Location: <b>Unilag campus</b></span>
-              <span>Price/rate: <b>₦6,009</b></span>
-            </div>
-            <div class="card-actions">
-              <button data-action="review" type="button" class="btn primary review">Confirm Completion</button>
-              <button data-action="decline" type="button" class="btn decline">Leave a Review</button>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="card pending"  data-card="4">
-            
-            <div class="card-header">
-              <div class="info">
-                <img src="https://i.pravatar.cc/60?img=30" alt="Bisi Samuel" />
-                <div>
-                  <div class="name">Bisi Samuel</div>
-                  <div class="date">Sat, 6th June, 2:00pm</div>
-                </div>
-              </div>
-              <span class="status-chip">Pending</span>
-            </div>
-            <div class="card-body">
-              <span>Service needed: <b>Makeup for event</b></span>
-              <span>Location: <b>Unilag campus</b></span>
-              <span>Price/rate: <b>₦8,000</b></span>
-            </div>
-            <div class="card-actions">
-              <a href="/messages" data-action="message"  class="btn primary message" ><i class="fa-solid fa-message"></i> Message client</a>
-              <button data-action="completed" type="button" class="btn completed">Cancel Booking</button>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="card inprogress"  data-card="5">
-            
-            <div class="card-header">
-              <div class="info">
-                <img src="https://i.pravatar.cc/60?img=52" alt="Bisi Samuel" />
-                <div>
-                  <div class="name">Bisi Samuel</div>
-                  <div class="date">Sat, 6th June, 2:00pm</div>
-                </div>
-              </div>
-              <span class="status-chip">In progress</span>
-            </div>
-            <div class="card-body">
-              <span>Service needed: <b>Makeup for event</b></span>
-              <span>Location: <b> Unilag campus</b></span>
-              <span>Price/rate: <b>₦8,000</b></span>
-            </div>
-            <div class="card-actions">
-              <button data-action="accept" type="button" class="btn primary accept">View Progress</button>
-              <a href="/messages" data-action="message"  class="btn  message" ><i class="fa-solid fa-message"></i> Message client</a>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="card declined"  data-card="6">
-            
-            <div class="card-header">
-              <div class="info">
-                <img src="https://i.pravatar.cc/60?img=31" alt="Bisi Samuel" />
-                <div>
-                  <div class="name">Bisi Samuel</div>
-                  <div class="date">Sat, 6th June, 2:00pm</div>
-                </div>
-              </div>
-              <span class="status-chip">Cancelled</span>
-            </div>
-            <div class="card-body">
-              <span>Service needed: <b>Makeup for event</b></span>
-              <span>Location: <b>Unilag campus</b></span>
-              <span>Price/rate: <b>₦6,000</b></span>
-            </div>
-            <div class="card-actions" id="re-accept">
-              <button data-action="review" type="button" class="btn primary review">Confirm Completion</button>
-              <button data-action="decline" type="button" class="btn decline">Leave a Review</button>
-            </div>
-          </div>
+         
         </section>
     </main>
     </div>

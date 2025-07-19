@@ -69,15 +69,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use((req, res, next) => {
-//     console.log('🔍 SESSION MIDDLEWARE CHECK:', {
-//         sessionId: req.session?.id,
-//         hasUser: !!req.session?.user,
-//         userRole: req.session?.user?.role,
-//         path: req.path
-//     });
-//     next();
-// });
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -193,14 +185,26 @@ app.get('/user-profile', isLoggedIn, (req, res) =>{
 })
 
 
-
-
-app.get('/exploreartisan2', isLoggedIn, (req, res) => {
-    res.render('exploreartisan2', {
+app.get('/exploreartisan2', isLoggedIn, async (req, res) => {
+    try {
+        const universities = await University.find(); // Fetch all artisans
+          res.render('exploreartisan2', {
+          title: 'Explore Artisan - CraftConnect',
+          currentPage: 'Explore Artisan',
+           universities: universities  // Pass artisans to template
+        });
+    } catch (error) {
+        console.error(error);
+          res.render('exploreartisan2', {
         title: 'Explore Artisan - CraftConnect',
-        currentPage: 'Explore Artisan'
-    });
+        currentPage: 'Explore Artisan',
+         universities: []
+        });
+    }
 });
+
+
+
 
 app.get('/user-bookingform', (req, res) => {
     console.log('🔍 Booking form access:');
@@ -223,13 +227,32 @@ app.get('/user-bookingform', (req, res) => {
 
 
 
-app.get('/user-booking', isLoggedIn, (req, res) => {
-    res.render('user-booking', {
-        title: 'User Booking - CraftConnect',
-        currentPage: 'User Booking'
-    });
-});
+// app.get('/user-booking', isLoggedIn, (req, res) => {
+//     res.render('user-booking', {
+//         title: 'User Booking - CraftConnect',
+//         currentPage: 'User Booking'
+//     });
+// });
 
+app.get('/user-booking', isLoggedIn, async (req, res) => {
+    try {
+        const bookings = await Booking.find().populate('userId');
+        res.render('user-booking', {
+            title: 'User Booking - CraftConnect',
+            currentPage: 'User Booking',
+            bookings: bookings,
+            booking: null
+        });
+    } catch (err) {
+        console.log('Booking error:', err);
+        res.render('user-bookingform', {
+            title: 'User Booking - CraftConnect',
+            currentPage: 'User Booking',
+            bookings: [],
+            booking: {}
+        });
+    }
+});
 
 
 

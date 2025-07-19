@@ -29,12 +29,13 @@
 
 				<div class="details-container">
 					<div class="container-1">
+					 <% universities.forEach(artisan => { %>
 						<img src="/images/p (2).jpg" class="artisan-image" alt="">
 
 						<div class="details">
 
-							<h2>Bisi Samuel</h2>
-							<span>Professional Tailor</span>
+							<h2><%= artisan.fullname %></</h2>
+							<span><%= artisan.servicecategory %></span>
 
 							<div class="artisan-rating-container">
 								<div class="artisan-rating">
@@ -44,31 +45,33 @@
 									<img src="/images/Vector (9).svg" alt="">
 									<img src="/images/Vector (9).svg" class="rating-star" alt="">
 								</div>
-								<span>4.0<span>( 32</span> reviews)</span>
+								<span><%= artisan.rating %></<span>( 32</span> reviews)</span>
 							</div>
 							
 							<div class="artisan-location">
-								<p>Alimosho,Lagos.</p>
+								<p><%= artisan.location %></p>
 							</div>
 							<p>Creating custom clothing with precision and style.</p>
 						</div>
 					</div>
 					<button class="share-profile">
-						<img src="/images/majesticons_share-line.svg" alt="">
+						<img src="/images/images/majesticons_share-line.svg" alt="">
 						Share profile
 					</button>
 					
 				</div>
 
 				<div class="button-container">
-					<button class="book-artisan">Book artisan</button>
+					  <a href="/user-bookingform?artisanId=<%= artisan.artisanId %>">
+           					 <button class="book-now" type="button">Book now</button>
+            		 </a>
 					<button class="send-message"><img src="/images/PaperPlaneRight.svg" alt="">Send message</button>
 					<div class="settings">
 						<img src="/images/ci_settings.svg" alt="">
 						<img src="/images/CaretDown.svg" alt="">
 					</div>
 				</div>
-
+			<% }) %>
 				<div class="container-2">
 					<nav class="navbar">
 						<ul class="links">
