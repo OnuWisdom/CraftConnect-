@@ -165,7 +165,9 @@ function renderArtisans(list, containerId) {
                     <div class="connectFrame">
                         <button type="button" id="view">View profile</button>
 
+                        <a href ="bookingprofile/bkff.html">
                         <button type="button" id="book">Book  now</button>
+                        </a>
                     </div>`
 				container.appendChild(card)
 	});
@@ -181,8 +183,6 @@ function handleSearch() {
 		artisans.skill.toLowerCase().includes(input)||
 		artisans.location.toLowerCase().includes(input)
 	);
-
-<<<<<<< HEAD
     if (input === "") {
         explore.style.display = "block";
         search.style.display = "none";
@@ -198,34 +198,3 @@ function handleSearch() {
         noResult.style.display = "block";
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-	if (input === "") {
-		explore.style.display = "block";
-		search.style.display = "none";
-		noResult.style.display = "none";
-	} else if (results.length > 0) {
-		renderArtisans(results, "filteredResults");
-		explore.style.display = "none";
-		search.style.display = "block";
-		noResult.style.display = "none";
-	}else{
-		explore.style.display = "none";
-		search.style.display = "none";
-		noResult.style.display = "block";
-	}
-};
->>>>>>> 1a325d622f68439acbdd4cf3133b03add211ab46
