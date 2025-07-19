@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const University = require('../models/University');
+const University = require('../models/university');
 const User = require('../models/user'); // Import the User model
 const upload = require('../middlewares/uploadMiddleware');
 const { createUniversityEntry } = require('../controllers/universityController');
