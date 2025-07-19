@@ -1,4 +1,4 @@
-const University = require('../models/University')
+const University = require('../models/university')
 const User = require('../models/user'); // ✅ Needed to update user role
 const { v4: uuidv4 } = require('uuid');
 
