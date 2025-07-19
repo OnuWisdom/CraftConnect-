@@ -41,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session configuration
 
+app.set('trust proxy', 1);
 
 
 app.use(session({
@@ -181,23 +182,18 @@ app.get('/notification', isLoggedIn, (req, res) => {
     });
 });
 
-app.get('/user-profile', isLoggedIn, async (req, res) => {
-    try {
-        const universities = await University.find(); // Fetch all artisans
-        res.render('user-profile', {
-            title: 'User-profile - CraftConnect',
-            currentPage: 'User Profile',
-            universities: universities  // Pass artisans to template
-        });
-    } catch (error) {
-        console.error(error);
-        res.render('user-profile', {
-            title: 'User-profile - CraftConnect',
-            currentPage: 'User Profile',
-            universities: []
-        });
-    }
-});
+
+app.get('/user-profile', isLoggedIn, (req, res) =>{
+
+    res.render('user-profile', {
+
+        title: 'User Profile - CraftConnet',
+        currentPage: 'User Profile'
+    })
+})
+
+
+
 
 app.get('/exploreartisan2', isLoggedIn, (req, res) => {
     res.render('exploreartisan2', {
