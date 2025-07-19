@@ -4,22 +4,9 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
 const session = require('express-session');
-const redis = require('redis');
-
-// Correct import for newer connect-redis versions
-const RedisStore = require('connect-redis')(session);
-const redisClient = redis.createClient({
-    url: process.env.REDIS_URL
-});
+const MongoStore = require('connect-mongo');
 
 
-redisClient.on('error', (err) => {
-    console.error('Redis Client Error', err);
-});
-
-redisClient.connect().catch(err => {
-    console.error('Failed to connect to Redis:', err);
-});
 
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -30,7 +17,7 @@ const { isLoggedIn, isArtisan, isUser } = require('./middlewares/authMiddleware'
 
 // Import models
 const Booking = require('./models/booking');
-const University = require('./models/university');
+const University = require('./models/University');
 const User = require('./models/user');
 
 
@@ -57,15 +44,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(session({
-   store: new RedisStore({
-    client: redisClient,
+    store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URL,
+  }),
 
-      serializer: {
-      stringify: JSON.stringify,
-      parse: JSON.parse,
-    },
-   }),
-    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {

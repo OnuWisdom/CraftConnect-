@@ -37,22 +37,10 @@ const registerUser = async (req, res) => {
         const user = new User(userData);
         await user.save();
 
-        console.log('✅ User saved:', user._id);
+        console.log('🔍 User saved successfully:', user._id);
 
-        // 🔧 FIX: Create a plain object for session storage
-        const sessionData = {
-            _id: user._id.toString(), // Convert ObjectId to string
-            fullname: user.fullname,
-            username: user.username,
-            email: user.email.toLowerCase(),
-            role: user.role
-        };
-
-        // Set session with plain object
-        req.session.user = sessionData;
-        
-        console.log('🔐 Session set:', sessionData);
-
+        // Set session
+        req.session.user = user;
         req.flash('welcome', `Welcome, ${username}!`);
 
         // Redirect based on role
