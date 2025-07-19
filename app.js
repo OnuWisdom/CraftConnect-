@@ -6,8 +6,8 @@ const path = require('path');
 const session = require('express-session');
 const redis = require('redis');
 
-const RedisStore = require('connect-redis').default;
-
+// Correct import for newer connect-redis versions
+const RedisStore = require('connect-redis')(session);
 const redisClient = redis.createClient({
     url: process.env.REDIS_URL,
          password: process.env.REDIS_PASSWORD,
