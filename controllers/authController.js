@@ -62,6 +62,7 @@ const registerUser = async (req, res) => {
             }
             
             console.log('✅ Session saved successfully');
+            console.log('🔍 Session data after save:', req.session.user);
             req.flash('welcome', `Welcome, ${username}!`);
 
             // Redirect based on role

@@ -57,6 +57,17 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }));
+
+app.use((req, res, next) => {
+    console.log('🐛 Session middleware debug:', {
+        sessionID: req.sessionID,
+        hasSession: !!req.session,
+        sessionUser: req.session?.user,
+        cookies: req.headers.cookie?.substring(0, 100) + '...'
+    });
+    next();
+});
+
 // app.use((req, res, next) => {
 //     console.log('🔍 SESSION MIDDLEWARE CHECK:', {
 //         sessionId: req.session?.id,
