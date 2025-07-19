@@ -30,7 +30,7 @@ const { isLoggedIn, isArtisan, isUser } = require('./middlewares/authMiddleware'
 
 // Import models
 const Booking = require('./models/booking');
-const University = require('./models/University');
+const University = require('./models/university');
 const User = require('./models/user');
 
 
