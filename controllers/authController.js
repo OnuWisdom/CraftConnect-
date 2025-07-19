@@ -37,20 +37,42 @@ const registerUser = async (req, res) => {
         const user = new User(userData);
         await user.save();
 
-        console.log('🔍 User saved successfully:', user._id);
+        console.log('✅ User saved:', user._id);
 
-        // Set session
-        req.session.user = user;
-        req.flash('welcome', `Welcome, ${username}!`);
+        // 🔧 FIX: Create a plain object for session storage
+        const sessionData = {
+            _id: user._id.toString(), // Convert ObjectId to string
+            fullname: user.fullname,
+            username: user.username,
+            email: user.email.toLowerCase(),
+            role: user.role
+        };
 
-        // Redirect based on role
-        if (role === 'artisan') {
-            console.log('🔍 Redirecting to artisan dashboard');
-            return res.redirect('/dashboard/artisan');
-        } else {
-            console.log('🔍 Redirecting to user dashboard');
-            return res.redirect('/user-dashboard');
-        }
+        // Set session with plain object
+        req.session.user = sessionData;
+        
+        console.log('🔐 Session set:', sessionData);
+
+        // 🔧 CRITICAL: Save session before redirect
+        req.session.save((err) => {
+            if (err) {
+                console.error('❌ Session save error:', err);
+                req.flash('error', 'Registration successful but login failed. Please sign in.');
+                return res.redirect('/auth/sign-in');
+            }
+            
+            console.log('✅ Session saved successfully');
+            req.flash('welcome', `Welcome, ${username}!`);
+
+            // Redirect based on role
+            if (role === 'artisan') {
+                console.log('🔍 Redirecting to artisan dashboard');
+                return res.redirect('/dashboard/artisan');
+            } else {
+                console.log('🔍 Redirecting to user dashboard');
+                return res.redirect('/user-dashboard');
+            }
+        });
 
     } catch (error) {
         console.error('❌ Registration error:', error);
