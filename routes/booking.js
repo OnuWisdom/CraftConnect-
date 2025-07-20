@@ -19,12 +19,15 @@ router.get('/bookings', getBooking);
 
 
 
+
+
 router.post('/create', createBooking);
 
 
 // In your routes file
-router.put('/booking/accept/:id', acceptBooking);
-router.put('/booking/decline/:id', declineBooking);
+// In your routes file
+router.post('/:id/accept', acceptBooking);
+router.post('/:id/decline', declineBooking);
 
 router.put('/:id/reaccept', reacceptBooking);
 
@@ -43,21 +46,3 @@ router.put('/:id/reaccept', reacceptBooking);
 
 module.exports = router;
 
-
-// router.get('/bookings', async (req, res) => {
-//     try {
-//         const bookings = await Booking.find().populate('userId');
-//         res.render('bookings', {
-//             title: 'Booking - CraftConnect',
-//             currentPage: 'become-an-artisan',
-//             bookings: bookings
-//         });
-//     } catch (err) {
-//         console.log('Error fetching bookings:', err);
-//         res.render('booking', {
-//             title: 'Booking - CraftConnect',
-//             currentPage: 'become-an-artisan',
-//             bookings: []
-//         });
-//     }
-// });

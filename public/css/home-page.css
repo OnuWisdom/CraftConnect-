@@ -408,15 +408,17 @@ a:active {
 
 /* Search Section Styles */
 .search-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 12px 30px;
-  background:  var(--search-container-color);
-  border-radius: 12px;
-	margin-top: 150px;
-  margin-bottom: 50px;
-	width: 838px;
+   width: 838px;
+    height: 84px;
+    border-radius: 12px;
+    padding: 18px 30px;
+    gap: 24px;
+    background-color: #E8E8E9;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+    margin-top: 120px;
 }
 
 .search-container {
@@ -1734,6 +1736,7 @@ button {
 		max-width: 100%;
 		text-align: center;
 	}
+
 
 	.bottom {
 		flex-direction: column;

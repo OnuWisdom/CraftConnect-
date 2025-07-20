@@ -126,8 +126,9 @@
             <span>Price/rate: <b>₦<%= booking.price || '0' %></b></span>
         </div>
         <div class="card-actions" id="card-actions">
-       <button data-action="accept" data-booking-id="<%= booking._id %>" type="button" class="btn primary accept">Accept</button>
-<button data-action="decline" data-booking-id="<%= booking._id %>" type="button" class="btn decline">Decline</button>
+    d-actions">
+       <button data-action="accept" type="button" class="btn primary accept">Accept</button>
+        <button data-action="decline"  type="button" class="btn decline">Decline</button>
         </div>
     </div>
 <% } else if (typeof bookings !== 'undefined' && bookings.length > 0) { %>

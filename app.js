@@ -8,6 +8,8 @@ const MongoStore = require('connect-mongo');
 
 
 
+
+
 const flash = require('connect-flash');
 const passport = require('passport');
 require('./googleauth');
@@ -202,6 +204,8 @@ app.get('/exploreartisan2', isLoggedIn, async (req, res) => {
         });
     }
 });
+
+
 
 
 

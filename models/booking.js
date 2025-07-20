@@ -70,11 +70,10 @@ const bookingSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-});
+}, { timestamps: true } );
 
 bookingSchema.pre('save', function(next) {
     this.updatedAt = Date.now();
     next();
 });
-
 module.exports = mongoose.model('Booking', bookingSchema);
