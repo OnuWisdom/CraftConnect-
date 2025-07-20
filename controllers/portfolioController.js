@@ -38,22 +38,18 @@ const postAddPortfolio = async (req, res) => {
                 title: 'Add New Project - CraftConnect',
                 currentPage: 'Portfolio-add-new-project'
             });
-
         }
 
         const portfolioItem = new Portfolio({
             portfolioname: portfolioname,
             portfoliodescription: portfoliodescription,
             servicecategory: servicecategory,
-            image: req.file.filename, // Simplified path
-            artisanId: req.user._id // Assuming req.user is set after authentication
+            image: req.file.filename,
+            artisanId: req.session.user._id // ← Fixed this line
         });
 
-
-        // Changed from Portfolio.create to save method
         await portfolioItem.save();
         res.redirect('/portfolio');
-
 
     } catch (error) {
         console.error('Error adding portfolio:', error);
@@ -65,8 +61,11 @@ const postAddPortfolio = async (req, res) => {
     }
 };
 
+
+
 module.exports = {
     getPortfolio,
     getAddPortfolio,
-    postAddPortfolio
+    postAddPortfolio,
+    
 };
