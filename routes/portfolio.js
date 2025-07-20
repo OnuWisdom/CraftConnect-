@@ -44,5 +44,7 @@ router.get('/add', isLoggedIn, isArtisan, portfolioController.getAddPortfolio);
 
 // Fix: Add the missing middlewares to the POST route
 router.post('/add', isLoggedIn, isArtisan, upload.single('image'), portfolioController.postAddPortfolio);
+// Add this line to your existing routes
+router.post('/delete/:id', isLoggedIn, isArtisan, portfolioController.deletePortfolio);
 
 module.exports = router;

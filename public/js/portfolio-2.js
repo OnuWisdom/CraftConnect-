@@ -78,21 +78,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   // delete portfolio
-  displayPopup.forEach((popup) => {
-
+  // Replace the existing delete section with this:
+displayPopup.forEach((popup, popupIndex) => {
     popup.addEventListener('click', (e) => {
-
-      if (e.target.parentElement.closest('.delete')){
-
-        const popupContainer = e.target.closest('.card');
-        console.log('Yes!')
-
-        popupContainer.remove();
-
-      }else{console.log('No')}
-
+        if (e.target.parentElement.closest('.delete')){
+            const card = e.target.closest('.card');
+            
+            // Get the portfolio item ID from the card (we need to add this)
+            const portfolioId = card.getAttribute('data-portfolio-id');
+            
+            if (confirm('Are you sure you want to delete this portfolio item?')) {
+                // Submit delete request to backend
+                fetch(`/portfolio/delete/${portfolioId}`, {
+                    method: 'POST',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Only remove from DOM after successful backend deletion
+                        card.remove();
+                    } else {
+                        alert('Error deleting portfolio item');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error deleting portfolio item');
+                });
+            }
+        }
     })
-  })
+})
   
 })
 

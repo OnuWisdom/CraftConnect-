@@ -62,10 +62,35 @@ const postAddPortfolio = async (req, res) => {
 };
 
 
+const deletePortfolio = async (req, res) => {
+    try {
+        const portfolioId = req.params.id;
+        
+        const deletedItem = await Portfolio.findOneAndDelete({
+            _id: portfolioId,
+            artisanId: req.session.user._id
+        });
+
+        if (!deletedItem) {
+            console.log('Portfolio item not found');
+        } else {
+            console.log('Portfolio deleted:', deletedItem.portfolioname);
+        }
+
+        res.redirect('/portfolio');
+        
+    } catch (error) {
+        console.error('Error deleting portfolio:', error);
+        res.redirect('/portfolio');
+    }
+};
+
+
 
 module.exports = {
     getPortfolio,
     getAddPortfolio,
     postAddPortfolio,
+    deletePortfolio
     
 };
