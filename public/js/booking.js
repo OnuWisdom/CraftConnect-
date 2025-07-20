@@ -4,8 +4,10 @@ const logoIcon = document.querySelectorAll('.logo-icon');
 const filterButtons = document.querySelectorAll('.pill');
 const btnActions = document.querySelectorAll('.card-actions');
 const filtersWrapper = document.querySelector('.filters');
-// const firstButton   = filterButtons[0];           // the one that stays active
 let currentActive = document.querySelector('.filter-btn.active');
+
+// Initialize Socket.IO connection
+const socket = io();
 
 // Function to toggle Sidebar
 function toggleSidebar() {
@@ -21,6 +23,7 @@ function toggleSidebar() {
 		iconSideBar.classList.add('hidden');
 	}
 }
+
 // It's event listener
 logoIcon.forEach((logo) => {
 	logo.addEventListener('click', toggleSidebar);
@@ -28,16 +31,10 @@ logoIcon.forEach((logo) => {
 
 // Function to select the filter buttons
 filterButtons.forEach((btn) => {
-	// skip the first button entirely; it stays active forever
-	//   if (btn === firstButton) return;
-
 	btn.addEventListener('click', () => {
-		// remove .active from the last non‑first button, if there is one
 		if (currentActive) currentActive.classList.remove('active');
-
-		// mark the newly clicked button as active
 		btn.classList.add('active');
-		currentActive = btn; // update the tracker
+		currentActive = btn;
 	});
 });
 
@@ -48,13 +45,11 @@ function formatDate(date = new Date()) {
 		month: 'short',
 		year: 'numeric',
 	};
-
 	return date.toLocaleDateString('en-US', options);
 }
 
 function updateDate() {
 	const dateElement = document.querySelectorAll('.date');
-
 	dateElement.forEach((date) => {
 		if (date) {
 			date.textContent = formatDate();
@@ -64,36 +59,117 @@ function updateDate() {
 
 // Update date immediately when page loads
 updateDate();
-// Update date every minute to keep it current
 setInterval(updateDate, 60000);
 
+// Socket.IO event listener for real-time updates
+socket.on('bookingStatusUpdate', (data) => {
+    const bookingCard = document.querySelector(`[data-booking-id="${data.bookingId}"]`);
+    
+    if (bookingCard) {
+        const statusChip = bookingCard.querySelector('.status-chip');
+        const cardActions = bookingCard.querySelector('.card-actions');
+        
+        // Update status chip
+        if (statusChip) {
+            statusChip.textContent = capitalizeFirst(data.status);
+            updateStatusChipColor(statusChip, data.status);
+        }
+        
+        // Update card actions based on new status
+        if (cardActions) {
+            updateCardActions(cardActions, data.status, data.bookingId);
+        }
+        
+        console.log(`Booking ${data.bookingId} status updated to: ${data.status}`);
+    }
+});
+
+// Helper function to capitalize first letter
+function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Helper function to update status chip color
+function updateStatusChipColor(statusChip, status) {
+    // Remove existing status classes
+    statusChip.classList.remove('pending', 'accepted', 'declined', 'completed');
+    
+    switch(status) {
+        case 'pending':
+            statusChip.style.backgroundColor = '#ffd1ba';
+            break;
+        case 'accepted':
+            statusChip.style.backgroundColor = '#34d399';
+            statusChip.textContent = 'In Progress';
+            break;
+        case 'declined':
+            statusChip.style.backgroundColor = '#f87171';
+            break;
+        case 'completed':
+            statusChip.style.backgroundColor = '#6fa8ff';
+            break;
+        default:
+            statusChip.style.backgroundColor = '#ffd1ba';
+    }
+}
+
+// Helper function to update card actions based on status
+function updateCardActions(cardActions, status, bookingId) {
+    switch(status) {
+        case 'accepted':
+            cardActions.innerHTML = `
+                <a href="messages.html" class="btn primary message">
+                    <i class="fa-solid fa-message"></i> Message client
+                </a>
+                <button data-action="completed" data-booking-id="${bookingId}" type="button" class="btn completed">Mark as completed</button>
+            `;
+            break;
+        case 'declined':
+            cardActions.innerHTML = `
+                <button data-action="reaccept" data-booking-id="${bookingId}" type="button" class="btn primary re-accept">Request re-accept</button>
+            `;
+            break;
+        case 'completed':
+            cardActions.innerHTML = `
+                <button data-action="review" data-booking-id="${bookingId}" type="button" class="btn primary review">Request a review</button>
+            `;
+            break;
+        case 'pending':
+            cardActions.innerHTML = `
+                <button data-action="accept" data-booking-id="${bookingId}" type="button" class="btn primary accept">Accept</button>
+                <button data-action="decline" data-booking-id="${bookingId}" type="button" class="btn decline">Decline</button>
+            `;
+            break;
+    }
+}
 
 async function handleCardAction(action, bookingId) {
-
-    const statusChip = document.querySelector('.status-chip');
-    const cardActions = document.querySelector('#card-actions');
-
-    try{
-
+    try {
         let response;
-
-       if(action === 'accept') {
+        
+        if(action === 'accept') {
             response = await fetch(`/booking/${bookingId}/accept`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-
-        }else if(action === 'decline') {
+        } else if(action === 'decline') {
             response = await fetch(`/booking/${bookingId}/decline`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-        }else if(action === 'reaccept') {
+        } else if(action === 'reaccept') {
             response = await fetch(`/booking/${bookingId}/reaccept`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        } else if(action === 'completed') {
+            response = await fetch(`/booking/${bookingId}/complete`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,9 +177,10 @@ async function handleCardAction(action, bookingId) {
             });
         }
 
-          if (response && response.ok) {
-            // Update UI only after successful backend update
-            updateUI(action);
+        if (response && response.ok) {
+            const result = await response.json();
+            console.log('Booking updated successfully:', result);
+            // The UI will be updated via Socket.IO event
         } else {
             console.error('Failed to update booking status');
         }
@@ -112,63 +189,59 @@ async function handleCardAction(action, bookingId) {
     }
 }
 
-
-function updateUI(action) {
-    const statusChip = document.querySelector('.status-chip');
-    const cardActions = document.querySelector('#card-actions');
+// Keep your existing updateUI function for fallback/immediate feedback
+function updateUI(action, bookingId) {
+    const bookingCard = document.querySelector(`[data-booking-id="${bookingId}"]`);
+    if (!bookingCard) return;
+    
+    const statusChip = bookingCard.querySelector('.status-chip');
+    const cardActions = bookingCard.querySelector('.card-actions');
 
     if (action === 'accept') {
-        statusChip.textContent = 'In Progress';
-        statusChip.style.backgroundColor = '#34d399';
-        cardActions.innerHTML = `
-            <a href="messages.html" class="btn primary message" id="message">
-              <i class="fa-solid fa-message"></i> Message client
-            </a>
-            <button data-action="completed" type="button" class="btn completed">Mark as completed</button>
-        `;
+        if (statusChip) {
+            statusChip.textContent = 'In Progress';
+            statusChip.style.backgroundColor = '#34d399';
+        }
+        if (cardActions) {
+            cardActions.innerHTML = `
+                <a href="messages.html" class="btn primary message">
+                    <i class="fa-solid fa-message"></i> Message client
+                </a>
+                <button data-action="completed" data-booking-id="${bookingId}" type="button" class="btn completed">Mark as completed</button>
+            `;
+        }
     } else if (action === 'decline') {
-        statusChip.textContent = 'Declined';
-        statusChip.style.backgroundColor = '#f87171';
-        cardActions.innerHTML = `
-            <button data-action="re-accept" type="button" class="btn primary re-accept">Request re-accept</button>
-        `;
+        if (statusChip) {
+            statusChip.textContent = 'Declined';
+            statusChip.style.backgroundColor = '#f87171';
+        }
+        if (cardActions) {
+            cardActions.innerHTML = `
+                <button data-action="reaccept" data-booking-id="${bookingId}" type="button" class="btn primary re-accept">Request re-accept</button>
+            `;
+        }
     } else if (action === 'completed') {
-        statusChip.textContent = 'Completed';
-        statusChip.style.backgroundColor = '#6fa8ff';
-        cardActions.innerHTML = `
-            <button data-action="review" type="button" class="btn primary review">Request a review</button>
-        `;
-    } else if (action === 'review') {
-        statusChip.textContent = 'Completed';
-        statusChip.style.backgroundColor = '#6fa8ff';
-        cardActions.innerHTML = `
-            <button data-action="review" type="button" class="btn primary review">Review Message Sent</button>
-        `;
-    } else if (action === 're-accept') {
-        statusChip.textContent = 'Pending';
-        statusChip.style.backgroundColor = '#ffd1ba';
-        cardActions.innerHTML = `
-            <button data-action="accept" type="button" class="btn primary accept">Accept</button>
-            <button data-action="decline" type="button" class="btn decline">Decline</button>
-        `;
+        if (statusChip) {
+            statusChip.textContent = 'Completed';
+            statusChip.style.backgroundColor = '#6fa8ff';
+        }
+        if (cardActions) {
+            cardActions.innerHTML = `
+                <button data-action="review" data-booking-id="${bookingId}" type="button" class="btn primary review">Request a review</button>
+            `;
+        }
     }
-
 }
 
-
-
-
-
+// Event delegation for dynamic button clicks
 document.addEventListener('click', function(e) {
     if (e.target.hasAttribute('data-action')) {
         const action = e.target.getAttribute('data-action');
         const bookingId = e.target.getAttribute('data-booking-id') || 
-                         e.target.closest('.booking-card').getAttribute('data-booking-id');
+                         e.target.closest('[data-booking-id]').getAttribute('data-booking-id');
         
-        handleCardAction(action, bookingId);
+        if (bookingId) {
+            handleCardAction(action, bookingId);
+        }
     }
 });
-
-
-
-
