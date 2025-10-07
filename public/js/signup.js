@@ -1,25 +1,30 @@
-document
-    .getElementById("login-form")
-    .addEventListener("submit", function (event) {
-        event.preventDefault();
-        alert("Login functionality coming soon!");
-    });
+import { signInWithGoogle, initAuthListener } from './googlefirebaseconfig.js';
 
-function togglePassword() {
-    const passwordInput = document.getElementById("password");
-    const toggleIcon = document.getElementById("toggle-password");
+// Initialize auth listener when page loads
+initAuthListener();
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text"; 
-        toggleIcon.textContent = "🙈"; 
-    } else {
-        passwordInput.type = "password"; 
-        toggleIcon.textContent = "👁️"; 
-    }
+// Google Sign-in button
+const googleBtn = document.getElementById('google-btn');
+
+if (googleBtn) {
+  googleBtn.addEventListener('click', (e) => {
+    console.log('🖱️ Google button clicked!');
+    e.preventDefault();
+    signInWithGoogle()
+  });
+} else {
+  console.error('❌ Google button not found!');
 }
 
+// Password toggle
+function togglePassword(fieldId) {
+  const field = document.getElementById(fieldId);
+  field.type = field.type === 'password' ? 'text' : 'password';
+}
 
+window.togglePassword = togglePassword;
 
+// Artisan fields toggle
 document.querySelectorAll('input[name="role"]').forEach(radio => {
   radio.addEventListener('change', function() {
     const artisanFields = document.getElementById('artisan-fields');
@@ -34,4 +39,3 @@ document.querySelectorAll('input[name="role"]').forEach(radio => {
     }
   });
 });
-

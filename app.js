@@ -8,12 +8,9 @@ const MongoStore = require('connect-mongo');
 
 
 
-
-
-
 const flash = require('connect-flash');
 const passport = require('passport');
-require('./googleauth');
+
 
 // Middleware auth checks
 const { isLoggedIn, isArtisan, isUser } = require('./middlewares/authMiddleware');
@@ -62,15 +59,15 @@ app.use(session({
     }
 }));
 
-app.use((req, res, next) => {
-    console.log('🐛 Session middleware debug:', {
-        sessionID: req.sessionID,
-        hasSession: !!req.session,
-        sessionUser: req.session?.user,
-        cookies: req.headers.cookie?.substring(0, 100) + '...'
-    });
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log('🐛 Session middleware debug:', {
+//         sessionID: req.sessionID,
+//         hasSession: !!req.session,
+//         sessionUser: req.session?.user,
+//         cookies: req.headers.cookie?.substring(0, 100) + '...'
+//     });
+//     next();
+// });
 
 
 app.use(passport.initialize());
@@ -90,7 +87,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'upload')));
 app.get('/home', (req, res) => {
     // const welcome = req.flash('welcome') || [];
     res.render('home', {
-        welcome,
         title: 'CraftConnect - Your Artisan Hub',
         currentPage: 'home'
     });
@@ -157,9 +153,9 @@ app.get('/reviews', (req, res) => {
 });
 
 app.get('/sign-in', (req, res) => {
-    res.render('sign-up', {
-        title: 'Sign-up CraftConnect',
-        currentPage: 'sign-up'
+    res.render('login', {
+        title: 'Sign-in CraftConnect',
+        currentPage: 'Login'
     });
 });
 
@@ -274,7 +270,7 @@ app.get('/dashboard/artisan', isLoggedIn, isArtisan, async (req, res) => {
 
     try {
         const artisan = await University.findById(artisanId);
-        if (!artisan) return res.redirect('/become-an-artisan');
+        // if (!artisan) return res.redirect('/become-an-artisan');
 
         res.render('dashboard', {
             title: 'Dashboard - CraftConnect',
@@ -380,9 +376,9 @@ app.get('/booking', isLoggedIn, async (req, res) => {
 
 // Sign-in page
 app.get('/sign-up', (req, res) => {
-    res.render('login', {
+    res.render('sign-up', {
         title: 'Sign-in - CraftConnect',
-        currentPage: 'sign-in'
+        currentPage: 'Sign-In'
     });
 });
 

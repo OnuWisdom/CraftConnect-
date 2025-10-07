@@ -222,7 +222,7 @@ input {
   margin: 0 auto;
 } */
 
-.google-btn {
+#google-btn {
   display: flex;
   background-color: #e9f8ec;
   color: black;
@@ -238,7 +238,7 @@ input {
   position:relative;
   left: 145px;
 }
-.google-btn img {
+#google-btn img {
   width: 20px;
   height: 20px;
   margin-right: 0px;

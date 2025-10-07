@@ -15,7 +15,7 @@ const router = express.Router();
 
 // Route for the homepage
 // Route for the homepage
-router.get('/', (req, res) => {
+router.get('/home', (req, res) => {
     // const welcome = req.flash('welcome');
     res.render('home', {
         // welcome,
@@ -73,12 +73,12 @@ router.get('/contact', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-    res.render('login', {
-        title: 'Login - CraftConnect',
-        currentPage: 'login'
-    });
-});
+// router.get('/login', (req, res) => {
+//     res.render('login', {
+//         title: 'Login - CraftConnect',
+//         currentPage: 'login'
+//     });
+// });
 
 
 // If you have a separate API endpoint for just checking if the API is running,
