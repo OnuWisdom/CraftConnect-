@@ -1,7 +1,7 @@
 import { signInWithGoogle, initAuthListener } from './googlefirebaseconfig.js';
 
-// Initialize auth listener when page loads
-initAuthListener();
+// // Initialize auth listener when page loads
+// initAuthListener();
 
 // Google Sign-in button
 const googleBtn = document.getElementById('google-btn');

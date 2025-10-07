@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, GoogleAuthProvider, getRedirectResult, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCt6eacS1LAvuulrVRfsp45zdnj1gZqEKY",
@@ -16,45 +16,22 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export function signInWithGoogle() {
-  console.log('🚀 Starting Google redirect...');
-  signInWithRedirect(auth, provider)
-    .catch((error) => {
-      console.error('❌ Redirect error:', error);
-      alert('Failed to redirect: ' + error.message);
-    });
-}
-
-export function initAuthListener() {
-  console.log('👂 Setting up auth listener...');
+  console.log('🚀 Opening Google popup...');
   
-  // Check for redirect result first
-  getRedirectResult(auth)
+  signInWithPopup(auth, provider)
     .then((result) => {
-      console.log('📦 Redirect result:', result);
+      const user = result.user;
+      console.log('✅ Signed in:', user.email);
       
-      if (result && result.user) {
-        const user = result.user;
-        console.log('✅ USER SIGNED IN:', user.email);
-        alert(`Welcome ${user.displayName}!`);
-        
-        // Redirect to home
-        setTimeout(() => {
-          window.location.href = '/home';
-        }, 1000);
-      } else {
-        console.log('ℹ️ No redirect result');
-      }
+      window.location.href = '/user-dashboard'; // Redirect after successful sign-in
     })
     .catch((error) => {
       console.error('❌ Error:', error.code, error.message);
+      
+      if (error.code === 'auth/popup-blocked') {
+        alert('Please allow popups for this site!');
+      } else {
+        alert('Sign-in failed: ' + error.message);
+      }
     });
-  
-  // Set up listener for auth changes
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log('🔔 Auth state: User logged in', user.email);
-    } else {
-      console.log('🔔 Auth state: No user');
-    }
-  });
 }
