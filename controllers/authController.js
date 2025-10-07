@@ -95,8 +95,9 @@ const loginUser = async (req, res) => {
 
         if (!user) {
             console.log('❌ USER NOT FOUND');
-            return res.render('login', {
-                error: 'User not found',
+            alert('Invalid credentials');
+            return res.status(400).render('login', {
+                error: 'Invalid credentials',
                 title: 'Login - CraftConnect',
                 currentPage: 'login'
             });

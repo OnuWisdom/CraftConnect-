@@ -84,7 +84,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'upload')));
 
 // Public routes
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     // const welcome = req.flash('welcome') || [];
     res.render('home', {
         title: 'CraftConnect - Your Artisan Hub',

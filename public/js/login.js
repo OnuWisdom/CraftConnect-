@@ -1,13 +1,16 @@
-import { signInWithGoogle, checkRedirectResult } from './googlefirebaseconfig.js';
+import { signInWithGoogle, } from './googlefirebaseconfig.js';
 
-// Check for redirect result on page load
-checkRedirectResult();
+  const googleBtn = document.getElementById('google-btn');
 
-// Google Sign-in button
-document.getElementById('google-btn').addEventListener('click', (e) => {
-  e.preventDefault();
-  signInWithGoogle();
-});
+if (googleBtn) {
+  googleBtn.addEventListener('click', (e) => {
+    console.log('🖱️ Google button clicked!');
+    e.preventDefault();
+    signInWithGoogle()
+  });
+} else {
+  console.error('❌ Google button not found!');
+}
 
 // Your existing signup.js code (password toggle, form validation, etc.)
 function fave(fieldId) {
@@ -25,6 +28,14 @@ document
         event.preventDefault();
         alert("Login functionality coming soon!");
     });
+
+    // Password toggle
+  function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    field.type = field.type === 'password' ? 'text' : 'password';
+  }
+
+  window.togglePassword = togglePassword;
 
 function togglePassword() {
     const passwordInput = document.getElementById("password");

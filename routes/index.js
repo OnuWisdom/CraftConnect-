@@ -15,7 +15,7 @@ const router = express.Router();
 
 // Route for the homepage
 // Route for the homepage
-router.get('/home', (req, res) => {
+router.get('/', (req, res) => {
     // const welcome = req.flash('welcome');
     res.render('home', {
         // welcome,
